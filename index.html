@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>پاکستان ڈیلکس - کلاسک ناوسٹالجیا</title>
+    <title>ڈیلکس - کلاسک میوزک پلیئر</title>
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -15,28 +15,17 @@
     <style>
         body {
             font-family: 'Noto Nastaliq Urdu', serif;
-            background: #080810;
+            background: #090a0f;
             color: #f3f4f6;
-            overflow-x: hidden;
         }
         .font-gulzar {
             font-family: 'Gulzar', serif;
         }
-        /* Neon Glow Effects */
-        .neon-border-gold {
-            box-shadow: 0 0 15px rgba(234, 179, 8, 0.4), inset 0 0 15px rgba(234, 179, 8, 0.2);
-            border: 2px solid #eab308;
-        }
-        .neon-border-red {
-            box-shadow: 0 0 20px rgba(239, 68, 68, 0.5);
-            border: 2px solid #ef4444;
-        }
-        .glass-panel {
-            background: rgba(17, 24, 39, 0.85);
-            backdrop-filter: blur(12px);
+        .glass-card {
+            background: rgba(18, 20, 29, 0.85);
+            backdrop-filter: blur(16px);
             border: 1px solid rgba(255, 255, 255, 0.08);
         }
-        /* Reel Spin Animation */
         .spinning {
             animation: spin 3s linear infinite;
         }
@@ -45,251 +34,127 @@
         }
     </style>
 </head>
-<body class="min-h-screen flex flex-col justify-between selection:bg-yellow-500 selection:text-black">
+<body class="min-h-screen flex flex-col justify-between selection:bg-amber-500 selection:text-black">
 
-    <!-- Top Neon Header -->
-    <header class="relative bg-black/80 backdrop-blur-md border-b-2 border-yellow-500/50 py-6 px-4 text-center">
-        <div class="absolute inset-0 bg-gradient-to-r from-red-600/10 via-yellow-500/10 to-green-600/10 blur-xl"></div>
-        <h1 class="relative text-4xl md:text-6xl font-bold font-gulzar text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-amber-200 to-yellow-500 drop-shadow-[0_2px_10px_rgba(234,179,8,0.5)]">
-            🇵🇰 پاکستان ڈیلکس ایکسپریس 🇵🇰
+    <!-- Header -->
+    <header class="py-8 text-center border-b border-gray-800/80 bg-black/40">
+        <h1 class="text-4xl md:text-5xl font-bold font-gulzar text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-yellow-200 to-amber-500">
+            ڈیلکس نوسٹالجیا
         </h1>
-        <p class="relative text-xs md:text-sm text-yellow-200/80 mt-2 tracking-widest">
-            شاہین روڈ نوسٹالجیا — کلاسک سفر، سنہرے گانے اور یادیں
-        </p>
+        <p class="text-xs text-gray-400 mt-2 tracking-widest">کلاسک پاکستانی آڈیو کا خزانہ</p>
     </header>
 
-    <!-- Ticker Tape (Truck Art Poetry) -->
-    <div class="bg-gradient-to-r from-red-950 via-yellow-900 to-red-950 border-y border-yellow-500/40 py-2 text-yellow-300 font-bold text-sm tracking-wide">
-        <marquee behavior="scroll" direction="right" scrollamount="7" class="space-x-8">
-            <span>👑 دیکھ مگر پیار سے 👑</span>
-            <span>🛑 فاصلہ رکھیں ورنہ پیار ہو جائے گا 🛑</span>
-            <span>🕊️ ماں کی دعا، جنت کی ہوا 🕊️</span>
-            <span>🚌 پشاور تا کراچی — ڈیلکس نائٹ کوچ 🚌</span>
-            <span>✨ نصیب اپنا اپنا، سفر اپنا اپنا ✨</span>
-        </marquee>
-    </div>
-
-    <!-- Main Dashboard -->
-    <main class="container mx-auto px-4 py-10 grid grid-cols-1 lg:grid-cols-12 gap-8">
+    <!-- Main Music Player Dashboard -->
+    <main class="container mx-auto px-4 py-8 max-w-4xl">
         
-        <!-- Interactive Bus Experience (7 Cols) -->
-        <div class="lg:col-span-7 flex flex-col gap-6">
+        <div class="glass-card rounded-3xl p-6 md:p-10 shadow-2xl">
             
-            <!-- Hero Banner Card with Free HD Pakistani Bus Image -->
-            <div class="glass-panel rounded-3xl neon-border-gold overflow-hidden relative shadow-2xl">
-                <div class="h-56 w-full relative">
-                    <img src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=1000&q=80" 
-                         alt="Pakistani Deluxe Bus" 
-                         class="w-full h-full object-cover opacity-60">
-                    <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/40 to-transparent"></div>
-                    
-                    <div class="absolute bottom-4 right-6 left-6 flex flex-col md:flex-row justify-between items-end gap-2">
-                        <div>
-                            <span class="bg-red-600/90 text-white text-xs px-3 py-1 rounded-full font-bold uppercase tracking-wider">سپر نائٹ کوچ</span>
-                            <h2 class="text-3xl font-bold text-white mt-1">راؤٹ: کراچی ➔ راولپنڈی</h2>
-                        </div>
-                        <div class="bg-black/70 backdrop-blur-md px-4 py-2 rounded-xl border border-yellow-500/30 text-center">
-                            <span class="text-gray-400 text-xs block">ٹکٹ کا کرایہ</span>
-                            <span class="text-xl font-bold text-yellow-400">Rs. 780/-</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Truck Art Visual Gallery Showcase -->
-            <div class="grid grid-cols-2 gap-4">
-                <div class="glass-panel p-2 rounded-2xl border border-yellow-500/20">
-                    <img src="https://images.unsplash.com/photo-1570125909232-eb263c188f7e?auto=format&fit=crop&w=600&q=80" 
-                         alt="Truck Art Details" 
-                         class="rounded-xl h-32 w-full object-cover">
-                    <span class="text-xs text-yellow-300/80 block text-center mt-2 font-bold">اصلی ٹرک آرٹ نسیج</span>
-                </div>
-                <div class="glass-panel p-2 rounded-2xl border border-yellow-500/20">
-                    <img src="https://images.unsplash.com/photo-1557223562-6c77ef16210f?auto=format&fit=crop&w=600&q=80" 
-                         alt="Bus Route Environment" 
-                         class="rounded-xl h-32 w-full object-cover">
-                    <span class="text-xs text-yellow-300/80 block text-center mt-2 font-bold">شاہراہِ پاکستان</span>
-                </div>
-            </div>
-
-            <!-- Seat Layout Grid -->
-            <div class="glass-panel p-6 rounded-3xl border border-gray-800">
-                <div class="flex justify-between items-center mb-6">
-                    <h3 class="text-xl font-bold text-yellow-400 flex items-center gap-2">
-                        <i class="fa-solid fa-bus text-red-500"></i> بس کی سیٹ کا انتخاب
-                    </h3>
-                    <div class="flex gap-4 text-xs">
-                        <span class="flex items-center gap-1"><span class="w-3 h-3 bg-emerald-500 rounded-full inline-block"></span> خالی</span>
-                        <span class="flex items-center gap-1"><span class="w-3 h-3 bg-red-600 rounded-full inline-block"></span> بک شدہ</span>
-                    </div>
-                </div>
-
-                <!-- Bus Interior View -->
-                <div class="bg-black/60 p-6 rounded-2xl border border-gray-800 max-w-md mx-auto">
-                    <!-- Steering Wheel Section -->
-                    <div class="flex justify-between items-center border-b border-gray-700 pb-4 mb-6">
-                        <div class="text-gray-400 text-xs flex items-center gap-2">
-                            <i class="fa-solid fa-compact-disc text-xl text-yellow-500"></i> ڈرائیور کیبن
-                        </div>
-                        <span class="text-xs bg-yellow-500/10 text-yellow-400 px-3 py-1 rounded-full border border-yellow-500/20">فرنٹ کیبن</span>
-                    </div>
-
-                    <!-- Seats Grid -->
-                    <div class="grid grid-cols-4 gap-4 text-center">
-                        <button class="bg-emerald-600/80 hover:bg-emerald-500 text-white p-3 rounded-xl font-bold transition shadow-lg shadow-emerald-900/30">1</button>
-                        <button class="bg-emerald-600/80 hover:bg-emerald-500 text-white p-3 rounded-xl font-bold transition shadow-lg shadow-emerald-900/30">2</button>
-                        <div class="col-span-1 border-r border-dashed border-gray-700/50"></div> <!-- Aisle -->
-                        <button class="bg-red-900/50 text-gray-500 p-3 rounded-xl font-bold cursor-not-allowed border border-red-800/30" disabled>3</button>
-
-                        <button class="bg-emerald-600/80 hover:bg-emerald-500 text-white p-3 rounded-xl font-bold transition shadow-lg shadow-emerald-900/30">4</button>
-                        <button class="bg-emerald-600/80 hover:bg-emerald-500 text-white p-3 rounded-xl font-bold transition shadow-lg shadow-emerald-900/30">5</button>
-                        <div class="col-span-1 border-r border-dashed border-gray-700/50"></div>
-                        <button class="bg-emerald-600/80 hover:bg-emerald-500 text-white p-3 rounded-xl font-bold transition shadow-lg shadow-emerald-900/30">6</button>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-        <!-- Retro High-End Cassette Deck (5 Cols) -->
-        <div class="lg:col-span-5 flex flex-col">
-            <div class="glass-panel p-6 rounded-3xl neon-border-red flex flex-col justify-between h-full relative overflow-hidden">
+            <!-- Cassette & Album Art View -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center mb-8">
                 
-                <div>
-                    <h3 class="text-2xl font-bold text-yellow-400 mb-6 text-center border-b border-gray-800 pb-3 flex items-center justify-center gap-2">
-                        <i class="fa-solid fa-tape text-red-500"></i> ڈیلکس ساؤنڈ سسٹم
+                <!-- Reel Animation Box -->
+                <div class="bg-gradient-to-b from-gray-900 to-black p-6 rounded-2xl border border-amber-500/30 flex flex-col items-center justify-center relative overflow-hidden shadow-inner">
+                    <div class="absolute inset-0 bg-amber-500/5 blur-2xl"></div>
+                    
+                    <span id="player-status" class="text-xs text-amber-400 uppercase tracking-widest mb-4 bg-amber-500/10 px-3 py-1 rounded-full border border-amber-500/20">
+                        تیار ہے
+                    </span>
+
+                    <!-- Spinning Reels -->
+                    <div class="flex justify-center items-center gap-6 my-4 relative z-10">
+                        <div id="reel1" class="w-20 h-20 rounded-full border-4 border-dashed border-amber-400 bg-black flex items-center justify-center shadow-lg">
+                            <div class="w-8 h-8 bg-amber-500/20 rounded-full border border-amber-400/50"></div>
+                        </div>
+                        <div class="h-1.5 w-12 bg-amber-800/80 rounded"></div>
+                        <div id="reel2" class="w-20 h-20 rounded-full border-4 border-dashed border-amber-400 bg-black flex items-center justify-center shadow-lg">
+                            <div class="w-8 h-8 bg-amber-500/20 rounded-full border border-amber-400/50"></div>
+                        </div>
+                    </div>
+
+                    <h3 id="current-title" class="text-lg font-bold text-amber-300 mt-4 text-center truncate w-full">
+                        کوئی گانا منتخب کریں
                     </h3>
-
-                    <!-- Cassette Animation Deck -->
-                    <div class="bg-gradient-to-b from-gray-900 to-black p-5 rounded-2xl border border-yellow-500/30 mb-6 shadow-2xl relative">
-                        <div class="bg-yellow-500/10 rounded-lg p-3 border border-yellow-500/20 text-center mb-4">
-                            <span class="text-xs text-yellow-400/70 block uppercase tracking-wider">ابھی چل رہا ہے</span>
-                            <h4 id="current-title" class="text-lg font-bold text-yellow-300 truncate mt-1">گانا منتخب کریں</h4>
-                        </div>
-
-                        <!-- Physical Cassette Wheels Animation -->
-                        <div class="flex justify-around items-center bg-gray-950 p-4 rounded-xl border border-gray-800 my-4">
-                            <div id="reel1" class="w-16 h-16 rounded-full border-4 border-dashed border-yellow-500 bg-black flex items-center justify-center">
-                                <div class="w-6 h-6 bg-yellow-500/30 rounded-full"></div>
-                            </div>
-                            <div class="h-2 w-16 bg-gradient-to-r from-amber-800 to-amber-600 rounded"></div>
-                            <div id="reel2" class="w-16 h-16 rounded-full border-4 border-dashed border-yellow-500 bg-black flex items-center justify-center">
-                                <div class="w-6 h-6 bg-yellow-500/30 rounded-full"></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Pakistani Hits Playlist -->
-                    <div class="space-y-3">
-                        <button onclick="playTrack('https://ia800201.us.archive.org/21/items/MadamNoorJehanClassicHits/Madam%20Noor%20Jehan%20-%20Aawaz%20De%20Kahan%20Hai.mp3', 'میڈم نور جہان - آواز دے کہاں ہے')" 
-                                class="w-full text-right bg-slate-800/80 hover:bg-yellow-500 hover:text-black p-3.5 rounded-xl font-bold transition flex items-center justify-between border border-gray-700/50 group">
-                            <span class="group-hover:translate-x-[-4px] transition-transform">1. میڈم نور جہان — آواز دے کہاں ہے</span>
-                            <i class="fa-solid fa-play text-yellow-400 group-hover:text-black"></i>
-                        </button>
-
-                        <button onclick="playTrack('https://ia800301.us.archive.org/12/items/NusratFatehAliKhanQawwali/Sanu%20Ek%20Pal%20Chain.mp3', 'نصرت فتح علی خان - سانوں اک پل چین نہ آوے')" 
-                                class="w-full text-right bg-slate-800/80 hover:bg-yellow-500 hover:text-black p-3.5 rounded-xl font-bold transition flex items-center justify-between border border-gray-700/50 group">
-                            <span class="group-hover:translate-x-[-4px] transition-transform">2. نصرت فتح علی خان — سانوں اک پل چین</span>
-                            <i class="fa-solid fa-play text-yellow-400 group-hover:text-black"></i>
-                        </button>
-
-                        <button onclick="playTrack('https://ia800504.us.archive.org/11/items/VitalSignsDilDilPakistan/Dil%20Dil%20Pakistan.mp3', 'وائٹل سائنز - دل دل پاکستان')" 
-                                class="w-full text-right bg-slate-800/80 hover:bg-yellow-500 hover:text-black p-3.5 rounded-xl font-bold transition flex items-center justify-between border border-gray-700/50 group">
-                            <span class="group-hover:translate-x-[-4px] transition-transform">3. وائٹل سائنز — دل دل پاکستان</span>
-                            <i class="fa-solid fa-play text-yellow-400 group-hover:text-black"></i>
-                        </button>
-                    </div>
                 </div>
 
-                <!-- Custom Audio Controls -->
-                <div class="mt-6 pt-4 border-t border-gray-800">
-                    <audio id="main-player" class="w-full" controls></audio>
+                <!-- Playlist Details -->
+                <div class="flex flex-col justify-between">
+                    <div>
+                        <h2 class="text-xl font-bold text-gray-200 mb-4 border-b border-gray-800 pb-2">
+                            <i class="fa-solid fa-list-ul text-amber-400 ml-2"></i> پلے لسٹ (پاکستان کلاسک)
+                        </h2>
+                        
+                        <div class="space-y-3">
+                            <button onclick="playTrack('https://archive.org/download/MadamNoorJehanClassicHits/Madam%20Noor%20Jehan%20-%20Aawaz%20De%20Kahan%20Hai.mp3', 'میڈم نور جہان — آواز دے کہاں ہے')" 
+                                    class="w-full text-right bg-slate-900/60 hover:bg-amber-500 hover:text-black p-4 rounded-xl font-bold transition flex items-center justify-between border border-gray-800 group">
+                                <span class="text-sm">1. میڈم نور جہان — آواز دے کہاں ہے</span>
+                                <i class="fa-solid fa-play text-amber-400 group-hover:text-black"></i>
+                            </button>
+
+                            <button onclick="playTrack('https://archive.org/download/NusratFatehAliKhanQawwali/Sanu%20Ek%20Pal%20Chain.mp3', 'نصرت فتح علی خان — سانوں اک پل چین')" 
+                                    class="w-full text-right bg-slate-900/60 hover:bg-amber-500 hover:text-black p-4 rounded-xl font-bold transition flex items-center justify-between border border-gray-800 group">
+                                <span class="text-sm">2. نصرت فتح علی خان — سانوں اک پل چین</span>
+                                <i class="fa-solid fa-play text-amber-400 group-hover:text-black"></i>
+                            </button>
+
+                            <button onclick="playTrack('https://archive.org/download/VitalSignsDilDilPakistan/Dil%20Dil%20Pakistan.mp3', 'وائٹل سائنز — دل دل پاکستان')" 
+                                    class="w-full text-right bg-slate-900/60 hover:bg-amber-500 hover:text-black p-4 rounded-xl font-bold transition flex items-center justify-between border border-gray-800 group">
+                                <span class="text-sm">3. وائٹل سائنز — دل دل پاکستان</span>
+                                <i class="fa-solid fa-play text-amber-400 group-hover:text-black"></i>
+                            </button>
+                        </div>
+                    </div>
                 </div>
 
             </div>
+
+            <!-- Native Native Player Controls -->
+            <div class="pt-6 border-t border-gray-800">
+                <audio id="main-player" class="w-full" controls></audio>
+            </div>
+
         </div>
 
     </main>
 
     <!-- Footer -->
-    <footer class="bg-black border-t border-yellow-500/20 text-center py-4 text-xs text-gray-500">
-        <p>© 2026 پاکستان ڈیلکس سروس | Retro Bus Nostalgia Web App</p>
+    <footer class="py-6 text-center text-xs text-gray-600 border-t border-gray-900">
+        <p>© 2026 Deluxe Retro Music Web App</p>
     </footer>
 
-    <!-- Audio & Animation Script -->
+    <!-- Logic -->
     <script>
         const player = document.getElementById('main-player');
         const reel1 = document.getElementById('reel1');
         const reel2 = document.getElementById('reel2');
         const titleDisplay = document.getElementById('current-title');
+        const statusDisplay = document.getElementById('player-status');
 
         function playTrack(url, title) {
             player.src = url;
             titleDisplay.innerText = title;
-            player.play();
+            statusDisplay.innerText = "پلے ہو رہا ہے...";
+            player.play().catch(e => {
+                alert("آڈیو لوڈ ہونے میں مسئلہ ہے، برائے مہربانی دوبارہ پلے پر کلک کریں۔");
+            });
             startSpin();
         }
 
         function startSpin() {
             reel1.classList.add('spinning');
             reel2.classList.add('spinning');
+            statusDisplay.innerText = "پلے ہو رہا ہے";
         }
 
         function stopSpin() {
             reel1.classList.remove('spinning');
             reel2.classList.remove('spinning');
+            statusDisplay.innerText = "روکا گیا ہے";
         }
 
         player.onplay = startSpin;
         player.onpause = stopSpin;
         player.onended = stopSpin;
     </script>
+
 </body>
 </html>
-                            <span>1. میڈم نور جہاں - کلاسک ہٹ</span>
-                            <i class="fa-solid fa-play"></i>
-                        </button>
-                    </li>
-                    <li>
-                        <button onclick="playAudio('song2.mp3', 'نصرت فتح علی خان - قوالی سیشن')" class="w-full text-right bg-slate-700/80 hover:bg-yellow-600 hover:text-black p-3 rounded-lg font-bold transition flex items-center justify-between">
-                            <span>2. نصرت فتح علی خان - روڈ ٹرپ سیشن</span>
-                            <i class="fa-solid fa-play"></i>
-                        </button>
-                    </li>
-                    <li>
-                        <button onclick="playAudio('song3.mp3', 'وائٹل سائنز - دل دل پاکستان')" class="w-full text-right bg-slate-700/80 hover:bg-yellow-600 hover:text-black p-3 rounded-lg font-bold transition flex items-center justify-between">
-                            <span>3. وائٹل سائنز - دل دل پاکستان</span>
-                            <i class="fa-solid fa-play"></i>
-                        </button>
-                    </li>
-                </ul>
-            </div>
-
-            <!-- Audio Controller -->
-            <div class="mt-6 pt-4 border-t border-slate-700">
-                <audio id="audio-player" class="w-full" controls></audio>
-            </div>
-        </div>
-
-    </main>
-
-    <!-- Footer -->
-    <footer class="bg-black text-gray-400 text-center py-4 text-xs border-t border-yellow-500/20">
-        <p>© 2026 پاکستان ڈیلکس بس سروس | ساختہ بائے پاکستان کلاسک ناوسٹالجیا</p>
-    </footer>
-
-    <!-- JavaScript logic -->
-    <script>
-        function playAudio(fileUrl, songTitle) {
-            const player = document.getElementById('audio-player');
-            const titleDisplay = document.getElementById('current-song-title');
-            
-            // نوٹ: یہاں آپ اپنے کلاسک پاکستانی گانوں کے ڈائریکٹ آڈیو لنکس لگا سکتے ہیں
-            player.src = fileUrl;
-            titleDisplay.innerText = songTitle;
-            player.play();
-        }
-    </script>
-</body>
-</html>
-
