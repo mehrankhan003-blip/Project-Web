@@ -1,115 +1,295 @@
 <!DOCTYPE html>
-<html lang="ur" dir="rtl">
+<html lang="ur" dir="rtl" class="dark">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cyber Deluxe — سائبر ڈیلکس ۲۰۸۸</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>ڈیلکس ساؤنڈ اسکیپ — کلاسک آڈیو پلیئر</title>
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Urdu Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Gulzar&family=Noto+Nastaliq+Urdu:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Gulzar&family=Noto+Nastaliq+Urdu:wght@400;700&family=Orbitron:wght@600;900&display=swap" rel="stylesheet">
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
         body {
             font-family: 'Noto Nastaliq Urdu', serif;
-            background: #030308;
+            background-color: #050608;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(234, 179, 8, 0.08) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(220, 38, 38, 0.08) 0px, transparent 50%);
             color: #f3f4f6;
-            overflow-x: hidden;
+            -webkit-tap-highlight-color: transparent;
         }
-        .font-gulzar {
-            font-family: 'Gulzar', serif;
-        }
-        /* CRT Scanline Overlay */
-        .crt-overlay {
-            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
-            background-size: 100% 4px, 6px 100%;
-            pointer-events: none;
-        }
-        /* Glass Cyber Deck */
-        .cyber-deck {
-            background: rgba(10, 12, 20, 0.85);
+        .font-gulzar { font-family: 'Gulzar', serif; }
+        .font-orbitron { font-family: 'Orbitron', sans-serif; }
+
+        /* Metallic Glass Card */
+        .glass-card {
+            background: linear-gradient(145deg, rgba(20, 24, 33, 0.9), rgba(10, 12, 18, 0.95));
             backdrop-filter: blur(20px);
-            border: 1px solid rgba(234, 179, 8, 0.3);
-            box-shadow: 0 0 40px rgba(234, 179, 8, 0.15), inset 0 0 20px rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.1);
         }
-        /* Reel Animation */
+
+        /* Fixed Perfect Circle Reels */
+        .reel-container {
+            aspect-ratio: 1 / 1;
+        }
+
         .spinning {
-            animation: spin 2.5s linear infinite;
+            animation: spin 3s linear infinite;
         }
         @keyframes spin {
             100% { transform: rotate(-360deg); }
         }
-        .neon-text-gold {
-            text-shadow: 0 0 10px rgba(234, 179, 8, 0.8), 0 0 20px rgba(234, 179, 8, 0.4);
+
+        .glow-gold {
+            box-shadow: 0 0 25px rgba(234, 179, 8, 0.3);
         }
     </style>
 </head>
-<body class="min-h-screen flex flex-col justify-between relative selection:bg-amber-500 selection:text-black">
+<body class="min-h-screen flex flex-col justify-between items-center p-3 md:p-6 selection:bg-amber-500 selection:text-black">
 
-    <!-- CRT Scanlines Effect -->
-    <div class="fixed inset-0 crt-overlay z-50"></div>
-
-    <!-- Header -->
-    <header class="py-6 border-b border-yellow-500/20 bg-black/60 backdrop-blur-md relative z-10 text-center">
-        <h1 class="text-4xl md:text-6xl font-bold font-gulzar text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-amber-200 to-red-500 neon-text-gold">
-            سائبر ڈیلکس — soundscape
+    <!-- Top Clean Header -->
+    <header class="w-full max-w-md md:max-w-4xl text-center py-4 mb-2">
+        <div class="inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/30 px-4 py-1 rounded-full text-amber-400 text-xs font-bold mb-2">
+            <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
+            پاکستان ڈیلکس آڈیو
+        </div>
+        <h1 class="text-3xl md:text-5xl font-bold font-gulzar text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-amber-100 to-amber-500 drop-shadow-sm">
+            ڈیلکس نوسٹالجیا
         </h1>
-        <p class="text-xs text-yellow-500/70 mt-1 tracking-widest">مستقبل کا ریٹرو آڈیو تجربہ</p>
     </header>
 
-    <!-- Main Deck Grid -->
-    <main class="container mx-auto px-4 py-8 max-w-5xl relative z-10">
+    <!-- Main Deck Container -->
+    <main class="w-full max-w-md md:max-w-4xl">
         
-        <div class="cyber-deck rounded-3xl p-6 md:p-10 relative overflow-hidden">
+        <div class="glass-card rounded-3xl p-5 md:p-8 space-y-6">
             
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <!-- Cassette Tape Unit (Fixed Responsive Ratio) -->
+            <div class="bg-gradient-to-b from-slate-900 to-black p-4 md:p-6 rounded-2xl border border-amber-500/30 relative glow-gold overflow-hidden">
                 
-                <!-- Cassette & Realtime Spectrum Canvas (7 cols) -->
-                <div class="lg:col-span-7 flex flex-col gap-6">
+                <!-- Display Screen -->
+                <div class="flex justify-between items-center bg-black/80 px-4 py-2.5 rounded-xl border border-gray-800 mb-5 font-orbitron text-xs">
+                    <span id="status-text" class="text-amber-400 flex items-center gap-2 font-sans text-xs">
+                        <i class="fa-solid fa-compact-disc text-amber-400"></i> تیار ہے
+                    </span>
+                    <span id="time-display" class="text-gray-400 tracking-wider">00:00</span>
+                </div>
+
+                <!-- Cassette Center Assembly -->
+                <div class="bg-slate-950 p-4 rounded-xl border border-gray-800 flex items-center justify-between gap-2 my-2">
                     
-                    <!-- Cassette Housing -->
-                    <div class="bg-black/90 p-6 rounded-2xl border-2 border-yellow-500/40 relative shadow-2xl">
-                        
-                        <!-- Top LCD Screen -->
-                        <div class="flex justify-between items-center bg-gray-950 p-3 rounded-xl border border-yellow-500/20 mb-4 font-mono text-xs">
-                            <span id="track-status" class="text-yellow-400 flex items-center gap-2">
-                                <span class="w-2 h-2 bg-yellow-400 rounded-full animate-ping"></span> ریڈی
-                            </span>
-                            <span id="track-time" class="text-gray-400">00:00</span>
-                        </div>
-
-                        <!-- Reels Assembly -->
-                        <div class="flex justify-around items-center bg-gradient-to-r from-gray-950 via-slate-900 to-gray-950 p-6 rounded-xl border border-gray-800 my-2">
-                            <div id="reel1" class="w-24 h-24 rounded-full border-8 border-dashed border-yellow-500 bg-black flex items-center justify-center shadow-xl transition-all">
-                                <div class="w-10 h-10 bg-yellow-500/20 rounded-full border-2 border-yellow-400"></div>
-                            </div>
-                            
-                            <div class="flex flex-col items-center gap-1">
-                                <span class="text-[10px] text-red-500 font-bold uppercase tracking-widest">دیکھ مگر پیار سے</span>
-                                <div class="h-2 w-20 bg-gradient-to-r from-red-600 via-yellow-500 to-green-600 rounded-full"></div>
-                            </div>
-
-                            <div id="reel2" class="w-24 h-24 rounded-full border-8 border-dashed border-yellow-500 bg-black flex items-center justify-center shadow-xl transition-all">
-                                <div class="w-10 h-10 bg-yellow-500/20 rounded-full border-2 border-yellow-400"></div>
-                            </div>
-                        </div>
-
-                        <!-- Track Name Display -->
-                        <h3 id="track-title" class="text-xl font-bold text-yellow-300 text-center mt-4 truncate">
-                            کلاسک سنپٹ 01
-                        </h3>
+                    <!-- Left Reel -->
+                    <div class="w-16 h-16 sm:w-20 sm:h-20 reel-container rounded-full border-4 border-dashed border-amber-400 bg-black flex items-center justify-center flex-shrink-0" id="reel1">
+                        <div class="w-6 h-6 sm:w-8 sm:h-8 bg-amber-500/20 rounded-full border border-amber-400/60"></div>
                     </div>
 
-                    <!-- Audio Spectrum Visualizer Canvas -->
-                    <div class="bg-black/80 p-3 rounded-2xl border border-gray-800">
-                        <canvas id="visualizer" class="w-full h-24 rounded-lg"></canvas>
+                    <!-- Center Tape Bridge -->
+                    <div class="flex-1 flex flex-col items-center gap-1 px-2">
+                        <div class="w-full h-1.5 bg-gradient-to-r from-amber-700 via-yellow-500 to-amber-700 rounded-full opacity-80"></div>
+                        <span class="text-[10px] text-amber-300/80 font-bold whitespace-nowrap">👑 دیکھ مگر پیار سے</span>
+                        <div class="w-full h-1.5 bg-gradient-to-r from-amber-700 via-yellow-500 to-amber-700 rounded-full opacity-80"></div>
+                    </div>
+
+                    <!-- Right Reel -->
+                    <div class="w-16 h-16 sm:w-20 sm:h-20 reel-container rounded-full border-4 border-dashed border-amber-400 bg-black flex items-center justify-center flex-shrink-0" id="reel2">
+                        <div class="w-6 h-6 sm:w-8 sm:h-8 bg-amber-500/20 rounded-full border border-amber-400/60"></div>
                     </div>
 
                 </div>
 
+                <!-- Current Track Name -->
+                <div class="mt-4 text-center">
+                    <h2 id="song-title" class="text-lg md:text-xl font-bold text-amber-300 truncate">
+                        کوئی گانا منتخب کریں
+                    </h2>
+                </div>
+
+            </div>
+
+            <!-- Equalizer Canvas -->
+            <div class="bg-black/60 p-3 rounded-2xl border border-gray-800/80">
+                <canvas id="visualizer" class="w-full h-16 rounded-lg"></canvas>
+            </div>
+
+            <!-- Controls Section -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 items-center pt-2">
+                
+                <!-- Main Buttons -->
+                <div class="flex justify-center items-center gap-4">
+                    <button onclick="togglePlay()" id="play-btn" class="w-16 h-16 bg-amber-500 text-black rounded-full flex items-center justify-center text-2xl font-bold hover:scale-105 active:scale-95 transition shadow-lg shadow-amber-500/20">
+                        <i class="fa-solid fa-play ml-1"></i>
+                    </button>
+                    <button onclick="stopAudio()" class="w-12 h-12 bg-slate-800 text-red-400 rounded-full flex items-center justify-center text-lg font-bold hover:bg-slate-700 active:scale-95 transition border border-gray-700">
+                        <i class="fa-solid fa-stop"></i>
+                    </button>
+                </div>
+
+                <!-- Custom File Upload -->
+                <div class="w-full">
+                    <label class="w-full bg-slate-900 hover:bg-slate-800 border border-amber-500/30 text-amber-300 p-3.5 rounded-xl text-sm font-bold transition flex items-center justify-center gap-2 cursor-pointer shadow-md">
+                        <i class="fa-solid fa-file-audio text-amber-400"></i>
+                        <span>اپنا MP3 اپ لوڈ کریں</span>
+                        <input type="file" id="audio-file" accept="audio/*" class="hidden" onchange="loadCustomAudio(event)">
+                    </label>
+                </div>
+
+            </div>
+
+            <!-- Pre-loaded Song List -->
+            <div class="space-y-2 pt-2">
+                <h3 class="text-xs font-bold text-gray-400 mb-2 flex items-center gap-2">
+                    <i class="fa-solid fa-list-check text-amber-400"></i> کلاسک ڈیمو ٹریکس
+                </h3>
+                
+                <button onclick="playPreset('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3', 'کلاسک ٹریک 01 — نوسٹالجیا وائب')" 
+                        class="w-full text-right bg-slate-900/80 hover:bg-amber-500 hover:text-black p-3.5 rounded-xl text-sm font-bold transition flex items-center justify-between border border-gray-800/80 group">
+                    <span>1. کلاسک ریٹرو ٹریک 01</span>
+                    <i class="fa-solid fa-circle-play text-amber-400 group-hover:text-black text-lg"></i>
+                </button>
+
+                <button onclick="playPreset('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3', 'کلاسک ٹریک 02 — روڈ ٹرپ وائب')" 
+                        class="w-full text-right bg-slate-900/80 hover:bg-amber-500 hover:text-black p-3.5 rounded-xl text-sm font-bold transition flex items-center justify-between border border-gray-800/80 group">
+                    <span>2. کلاسک ریٹرو ٹریک 02</span>
+                    <i class="fa-solid fa-circle-play text-amber-400 group-hover:text-black text-lg"></i>
+                </button>
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-4 text-center text-[10px] text-gray-500">
+        <p>© 2026 پاکستان ڈیلکس — نوسٹالجیا ویب ایپ</p>
+    </footer>
+
+    <!-- Audio Player Logic & Realtime Visualizer -->
+    <script>
+        const audio = new Audio();
+        let audioCtx, analyser, source, canvas, canvasCtx;
+        let isPlaying = false;
+
+        const reel1 = document.getElementById('reel1');
+        const reel2 = document.getElementById('reel2');
+        const songTitle = document.getElementById('song-title');
+        const statusText = document.getElementById('status-text');
+        const timeDisplay = document.getElementById('time-display');
+        const playBtn = document.getElementById('play-btn');
+
+        function initVisualizer() {
+            if (audioCtx) return;
+            canvas = document.getElementById('visualizer');
+            canvasCtx = canvas.getContext('2d');
+            
+            audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            analyser = audioCtx.createAnalyser();
+            analyser.fftSize = 64;
+
+            source = audioCtx.createMediaElementSource(audio);
+            source.connect(analyser);
+            analyser.connect(audioCtx.destination);
+
+            renderFrame();
+        }
+
+        function renderFrame() {
+            requestAnimationFrame(renderFrame);
+            if (!analyser) return;
+
+            const bufferLength = analyser.frequencyBinCount;
+            const dataArray = new Uint8Array(bufferLength);
+            analyser.getByteFrequencyData(dataArray);
+
+            canvasCtx.clearRect(0, 0, canvas.width, canvas.height);
+
+            const barWidth = (canvas.width / bufferLength) * 2;
+            let barHeight;
+            let x = 0;
+
+            for (let i = 0; i < bufferLength; i++) {
+                barHeight = (dataArray[i] / 255) * canvas.height;
+                
+                canvasCtx.fillStyle = `rgba(245, 158, 11, ${dataArray[i] / 255 + 0.2})`;
+                canvasCtx.fillRect(x, canvas.height - barHeight, barWidth, barHeight);
+
+                x += barWidth + 3;
+            }
+        }
+
+        function playPreset(url, title) {
+            initVisualizer();
+            if (audioCtx.state === 'suspended') audioCtx.resume();
+
+            audio.src = url;
+            songTitle.innerText = title;
+            audio.play();
+            setPlayingState(true);
+        }
+
+        function loadCustomAudio(e) {
+            const file = e.target.files[0];
+            if (file) {
+                initVisualizer();
+                if (audioCtx.state === 'suspended') audioCtx.resume();
+
+                audio.src = URL.createObjectURL(file);
+                songTitle.innerText = file.name;
+                audio.play();
+                setPlayingState(true);
+            }
+        }
+
+        function togglePlay() {
+            if (!audio.src) return;
+            initVisualizer();
+            if (audioCtx.state === 'suspended') audioCtx.resume();
+
+            if (isPlaying) {
+                audio.pause();
+                setPlayingState(false);
+            } else {
+                audio.play();
+                setPlayingState(true);
+            }
+        }
+
+        function stopAudio() {
+            audio.pause();
+            audio.currentTime = 0;
+            setPlayingState(false);
+            statusText.innerText = "روک دیا گیا";
+        }
+
+        function setPlayingState(playing) {
+            isPlaying = playing;
+            if (playing) {
+                reel1.classList.add('spinning');
+                reel2.classList.add('spinning');
+                playBtn.innerHTML = '<i class="fa-solid fa-pause"></i>';
+                statusText.innerHTML = '<i class="fa-solid fa-volume-high text-amber-400"></i> پلے ہو رہا ہے';
+            } else {
+                reel1.classList.remove('spinning');
+                reel2.classList.remove('spinning');
+                playBtn.innerHTML = '<i class="fa-solid fa-play ml-1"></i>';
+                statusText.innerHTML = '<i class="fa-solid fa-circle-pause text-gray-400"></i> پاؤزڈ';
+            }
+        }
+
+        // Time Counter Update
+        audio.ontimeupdate = () => {
+            const mins = Math.floor(audio.currentTime / 60);
+            const secs = Math.floor(audio.currentTime % 60);
+            timeDisplay.innerText = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+        };
+
+        audio.onended = () => setPlayingState(false);
+    </script>
+</body>
+</html>
                 <!-- Controls & Playlist (5 cols) -->
                 <div class="lg:col-span-5 flex flex-col justify-between h-full gap-6">
                     
