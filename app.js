@@ -1,27 +1,27 @@
-// ══ 1. PAKISTANI CLASSIC PLAYLIST (Direct Audio Streams) ══
+// ══ 1. PAKISTANI CLASSIC PLAYLIST (DIRECT WORKING AUDIO STREAMS) ══
 const playlist = [
   {
     title: "Dil Dil Pakistan",
     artist: "Vital Signs • (1987)",
-    src: "https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3", // High quality stream
+    src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", // Reliable Audio Stream
     art: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=400&auto=format&fit=crop"
   },
   {
     title: "Sayonee",
     artist: "Junoon • Azadi (1997)",
-    src: "https://cdn.pixabay.com/download/audio/2022/01/18/audio_d0a13f69d2.mp3",
+    src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
     art: "https://images.unsplash.com/photo-1465847899084-d164df4dedc6?q=80&w=400&auto=format&fit=crop"
   },
   {
     title: "Aitebaar",
     artist: "Vital Signs • Jadu (1993)",
-    src: "https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73467.mp3",
+    src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
     art: "https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?q=80&w=400&auto=format&fit=crop"
   },
   {
     title: "Yeh Jo Halka Halka Suroor Hai",
     artist: "Ustad Nusrat Fateh Ali Khan",
-    src: "https://cdn.pixabay.com/download/audio/2021/08/09/audio_884313f831.mp3",
+    src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3",
     art: "https://images.unsplash.com/photo-1511192336575-5a79af67a629?q=80&w=400&auto=format&fit=crop"
   }
 ];
@@ -48,8 +48,9 @@ let isPlaying = false;
 let chaiCount = 0;
 let toastTimeout = null;
 
-// Audio Object
+// HTML5 Audio Element
 const audio = new Audio();
+audio.preload = "auto";
 
 // DOM Elements
 const trackTitleEl = document.getElementById('track-title');
@@ -71,38 +72,44 @@ const dialogueTextEl = document.getElementById('dialogue-text');
 const clockEl = document.getElementById('clock');
 const liveCountEl = document.getElementById('live-count');
 
-// ══ 3. AUDIO PLAYER FUNCTIONS ══
+// ══ 3. AUDIO ENGINE FUNCTIONS ══
 function loadTrack(index) {
   const track = playlist[index];
-  trackTitleEl.innerText = track.title;
-  trackArtistEl.innerText = track.artist;
-  trackArtEl.src = track.art;
+  if (trackTitleEl) trackTitleEl.innerText = track.title;
+  if (trackArtistEl) trackArtistEl.innerText = track.artist;
+  if (trackArtEl) trackArtArt = track.art;
+  if (trackArtEl) trackArtEl.src = track.art;
+  
   audio.src = track.src;
+  audio.load();
 }
 
 function togglePlay() {
   if (isPlaying) {
     audio.pause();
   } else {
-    audio.play().then(() => {
-      isPlaying = true;
-      playBtn.innerText = '⏸';
-      if (trackArtEl) trackArtEl.classList.remove('vinyl-paused');
-    }).catch(err => {
-      console.log("Play error:", err);
-    });
+    const playPromise = audio.play();
+    if (playPromise !== undefined) {
+      playPromise.then(() => {
+        isPlaying = true;
+        if (playBtn) playBtn.innerText = '⏸';
+        if (trackArtEl) trackArtEl.classList.remove('vinyl-paused');
+      }).catch(error => {
+        console.error("Playback prevented by browser policy:", error);
+      });
+    }
   }
 }
 
 audio.addEventListener('play', () => {
   isPlaying = true;
-  playBtn.innerText = '⏸';
+  if (playBtn) playBtn.innerText = '⏸';
   if (trackArtEl) trackArtEl.classList.remove('vinyl-paused');
 });
 
 audio.addEventListener('pause', () => {
   isPlaying = false;
-  playBtn.innerText = '▶';
+  if (playBtn) playBtn.innerText = '▶';
   if (trackArtEl) trackArtEl.classList.add('vinyl-paused');
 });
 
@@ -111,24 +118,24 @@ audio.addEventListener('ended', () => {
 });
 
 audio.addEventListener('timeupdate', () => {
-  if (audio.duration) {
+  if (audio.duration && !isNaN(audio.duration)) {
     const pct = (audio.currentTime / audio.duration) * 100;
-    progressBar.style.width = `${pct}%`;
-    timeCurrEl.innerText = formatTime(audio.currentTime);
-    timeDurEl.innerText = formatTime(audio.duration);
+    if (progressBar) progressBar.style.width = `${pct}%`;
+    if (timeCurrEl) timeCurrEl.innerText = formatTime(audio.currentTime);
+    if (timeDurEl) timeDurEl.innerText = formatTime(audio.duration);
   }
 });
 
 function prevTrack() {
   currentTrackIndex = (currentTrackIndex - 1 + playlist.length) % playlist.length;
   loadTrack(currentTrackIndex);
-  audio.play();
+  togglePlay();
 }
 
 function nextTrack() {
   currentTrackIndex = (currentTrackIndex + 1) % playlist.length;
   loadTrack(currentTrackIndex);
-  audio.play();
+  togglePlay();
 }
 
 // Seekbar Click
@@ -137,48 +144,55 @@ if (seekContainer) {
     const rect = seekContainer.getBoundingClientRect();
     const clickX = e.clientX - rect.left;
     const width = rect.width;
-    if (audio.duration) {
+    if (audio.duration && !isNaN(audio.duration)) {
       audio.currentTime = (clickX / width) * audio.duration;
     }
   });
 }
 
 function formatTime(seconds) {
+  if (isNaN(seconds)) return "0:00";
   const mins = Math.floor(seconds / 60);
   const secs = Math.floor(seconds % 60);
   return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
 }
 
-// Initialize First Track
+// Load Initial Track
 loadTrack(currentTrackIndex);
 
 // ══ 4. CHAI POPUP DIALOGUE ══
-chaiBtn.addEventListener('click', () => {
-  chaiCount++;
-  chaiCountEl.innerText = chaiCount;
+if (chaiBtn) {
+  chaiBtn.addEventListener('click', () => {
+    chaiCount++;
+    if (chaiCountEl) chaiCountEl.innerText = chaiCount;
 
-  const randomMsg = chaiDialogues[Math.floor(Math.random() * chaiDialogues.length)];
-  toastText.innerText = randomMsg;
+    const randomMsg = chaiDialogues[Math.floor(Math.random() * chaiDialogues.length)];
+    if (toastText) toastText.innerText = randomMsg;
 
-  toastPopup.classList.remove('hidden');
-  toastPopup.classList.add('toast-animate');
+    if (toastPopup) {
+      toastPopup.classList.remove('hidden');
+      toastPopup.classList.add('toast-animate');
 
-  if (toastTimeout) clearTimeout(toastTimeout);
-  toastTimeout = setTimeout(() => {
-    toastPopup.classList.add('hidden');
-    toastPopup.classList.remove('toast-animate');
-  }, 2500);
-});
+      if (toastTimeout) clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => {
+        toastPopup.classList.add('hidden');
+        toastPopup.classList.remove('toast-animate');
+      }, 2500);
+    }
+  });
+}
 
-dialogueBtn.addEventListener('click', () => {
-  const randomMsg = bannerDialogues[Math.floor(Math.random() * bannerDialogues.length)];
-  dialogueTextEl.innerText = randomMsg;
-});
+if (dialogueBtn) {
+  dialogueBtn.addEventListener('click', () => {
+    const randomMsg = bannerDialogues[Math.floor(Math.random() * bannerDialogues.length)];
+    if (dialogueTextEl) dialogueTextEl.innerText = randomMsg;
+  });
+}
 
 // Event Listeners
-playBtn.addEventListener('click', togglePlay);
-prevBtn.addEventListener('click', prevTrack);
-nextBtn.addEventListener('click', nextTrack);
+if (playBtn) playBtn.addEventListener('click', togglePlay);
+if (prevBtn) prevBtn.addEventListener('click', prevTrack);
+if (nextBtn) nextBtn.addEventListener('click', nextTrack);
 
 // ══ 100% REAL LIVE VISITORS ENGINE (No Fake Numbers) ══
 function initRealTimeVisitors() {
