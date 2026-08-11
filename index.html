@@ -33,9 +33,9 @@
   </script>
 
   <style>
-    /* Background Image setup with minimal dark overlay so hero-bg.png is clearly visible */
+    /* Background Image setup with crystal clear visibility */
     .hero-bg-container {
-      background-image: linear-gradient(to bottom, rgba(15, 23, 42, 0.35), rgba(15, 23, 42, 0.55)), url('hero-bg.png');
+      background-image: linear-gradient(to bottom, rgba(15, 23, 42, 0.25), rgba(15, 23, 42, 0.45)), url('hero-bg.png');
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
@@ -54,9 +54,28 @@
       animation-play-state: paused;
     }
 
-    /* Text Glow */
-    .title-glow {
-      text-shadow: 0 2px 10px rgba(0,0,0,0.8), 0 0 20px rgba(255, 183, 3, 0.4);
+    /* Pan Wala Style Gentle Floating / Swaying Animation for Headings & Banner */
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-7px); }
+    }
+    .animate-float {
+      animation: float 4s ease-in-out infinite;
+    }
+
+    /* Shahi Gold/Amber Gradient Text */
+    .gradient-title {
+      background: linear-gradient(180deg, #FFE600 0%, #FFB703 50%, #D48800 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0px 3px 12px rgba(0, 0, 0, 0.9));
+    }
+
+    .gradient-subtitle {
+      background: linear-gradient(180deg, #FFF176 0%, #FFB703 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0px 2px 8px rgba(0, 0, 0, 0.8));
     }
   </style>
 </head>
@@ -64,101 +83,100 @@
 <body class="bg-zinc-950 text-white min-h-full font-sans hero-bg-container flex flex-col justify-between selection:bg-truckYellow selection:text-black relative">
 
   <!-- TOP BAR (Pan Wala Style) -->
-  <header class="w-full px-4 sm:px-8 py-4 flex justify-between items-center z-50 select-none">
+  <header class="w-full px-4 sm:px-8 py-3 flex justify-between items-center z-50 select-none">
     
     <!-- Time Pill -->
-    <div class="bg-black/40 backdrop-blur-md border border-white/10 px-4 py-1.5 rounded-full flex items-center gap-2">
+    <div class="bg-black/50 backdrop-blur-md border border-white/10 px-3.5 py-1 rounded-full flex items-center gap-2 shadow-lg">
       <span class="text-xs font-mono font-medium text-amber-300" id="clock">--:-- --</span>
       <span class="text-[11px] font-nastaliq text-white/70">پاکستان</span>
     </div>
 
-    <!-- Live Visitors Pill -->
-    <div class="bg-black/40 backdrop-blur-md border border-white/10 px-4 py-1.5 rounded-full flex items-center gap-2">
+    <!-- Real Live Visitors Pill -->
+    <div class="bg-black/50 backdrop-blur-md border border-white/10 px-3.5 py-1 rounded-full flex items-center gap-2 shadow-lg">
       <span class="relative flex h-2 w-2">
         <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
         <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
       </span>
-      <span class="text-xs font-bold text-emerald-300" id="live-count">32</span>
+      <span class="text-xs font-bold font-mono text-emerald-300" id="live-count">28</span>
       <span class="text-xs font-nastaliq text-white/80">ڈھابے پر موجود ہیں</span>
     </div>
 
   </header>
 
-  <!-- MAIN CONTAINER -->
-  <main class="max-w-xl w-full mx-auto px-4 py-2 flex flex-col items-center justify-center gap-4 z-10 my-auto">
+  <!-- MAIN CONTAINER (Compact Height & Pan Wala Spacing) -->
+  <main class="max-w-md w-full mx-auto px-4 py-2 flex flex-col items-center justify-center gap-3.5 z-10 my-auto">
 
-    <!-- LOGO / HEADINGS (ALL URDU) -->
-    <div class="text-center space-y-1">
-      <h1 class="text-5xl sm:text-6xl font-bold font-gulzar text-amber-300 title-glow tracking-wide">
+    <!-- LOGO / HEADINGS WITH FLOATING ANIMATION & GRADIENT -->
+    <div class="text-center space-y-0.5 animate-float select-none">
+      <h1 class="text-4xl sm:text-5xl font-bold font-gulzar gradient-title tracking-wide">
         کوئٹہ رنگین ہوٹل
       </h1>
-      <p class="font-nastaliq text-base text-yellow-200/90 font-medium drop-shadow-md">
+      <p class="font-nastaliq text-sm sm:text-base gradient-subtitle font-medium">
         دیکھ مگر پیار سے
       </p>
     </div>
 
-    <!-- DIALOGUE BANNER (PAN WALA STYLE) -->
-    <div id="dialogue-btn" class="bg-black/50 border border-emerald-500/30 hover:border-emerald-400/60 px-5 py-2 rounded-full backdrop-blur-md text-center transition cursor-pointer shadow-lg group flex items-center gap-2">
-      <span class="text-emerald-400 text-sm">💬</span>
-      <span id="dialogue-text" class="font-nastaliq text-emerald-200 text-sm group-hover:text-white transition">
+    <!-- DIALOGUE BANNER (FLOATING EFFECT & COMPACT) -->
+    <div id="dialogue-btn" class="bg-black/60 border border-emerald-500/30 hover:border-emerald-400/60 px-4 py-1.5 rounded-full backdrop-blur-md text-center transition cursor-pointer shadow-lg group flex items-center gap-2 animate-float" style="animation-delay: 0.5s;">
+      <span class="text-emerald-400 text-xs">💬</span>
+      <span id="dialogue-text" class="font-nastaliq text-emerald-200 text-xs group-hover:text-white transition">
         "استاد! ایک کڑک چائے اور پراٹھا لگانا!"
       </span>
     </div>
 
-    <!-- MUSIC PLAYER CARD (PAN WALA STYLE WITH VINYL DISC) -->
-    <div class="w-full bg-black/60 backdrop-blur-xl border border-white/15 rounded-3xl p-4 sm:p-5 shadow-2xl relative overflow-hidden">
+    <!-- COMPACT MUSIC PLAYER CARD (PAN WALA EXACT SIZE MATCH) -->
+    <div class="w-full bg-black/65 backdrop-blur-xl border border-white/15 rounded-2xl p-3.5 shadow-2xl relative overflow-hidden">
       
-      <div class="flex items-center gap-4">
-        <!-- Spinning Album Disc -->
-        <div class="relative w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden border-2 border-amber-400/60 shrink-0 shadow-lg group">
+      <div class="flex items-center gap-3">
+        <!-- Spinning Vinyl Disc -->
+        <div class="relative w-14 h-14 sm:w-16 sm:h-16 rounded-full overflow-hidden border-2 border-amber-400/70 shrink-0 shadow-md">
           <img id="track-art" src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=300&auto=format&fit=crop" class="w-full h-full object-cover vinyl-spin vinyl-paused" alt="Album Disc" />
-          <!-- Center Vinyl Hole -->
-          <div class="absolute inset-0 m-auto w-5 h-5 bg-zinc-950 border-2 border-amber-400/80 rounded-full shadow-inner"></div>
+          <div class="absolute inset-0 m-auto w-3.5 h-3.5 bg-zinc-950 border-2 border-amber-400/80 rounded-full shadow-inner"></div>
         </div>
 
-        <!-- Track Info & Controls Row -->
-        <div class="flex-1 overflow-hidden text-right space-y-1" dir="rtl">
-          <h2 id="track-title" class="font-gulzar text-xl sm:text-2xl text-white truncate">
+        <!-- Track Info & Progress -->
+        <div class="flex-1 overflow-hidden text-right space-y-0.5" dir="rtl">
+          <h2 id="track-title" class="font-gulzar text-base sm:text-lg text-white truncate leading-tight">
             دل دل پاکستان
           </h2>
-          <p id="track-artist" class="font-nastaliq text-xs text-white/70 truncate">
+          <p id="track-artist" class="font-nastaliq text-[11px] text-white/70 truncate">
             وائٹل سائنز (Vital Signs)
           </p>
 
-          <!-- Time & Progress -->
-          <div class="space-y-1 pt-1">
-            <div id="seek-container" class="w-full bg-white/10 rounded-full h-1.5 overflow-hidden cursor-pointer">
+          <!-- Compact Seek Bar -->
+          <div class="space-y-0.5 pt-1">
+            <div id="seek-container" class="w-full bg-white/10 rounded-full h-1 overflow-hidden cursor-pointer">
               <div id="progress-bar" class="bg-amber-400 h-full w-0 rounded-full transition-all duration-150"></div>
             </div>
-            <div class="flex justify-between text-[10px] font-mono text-white/60 dir-ltr">
+            <div class="flex justify-between text-[9px] font-mono text-white/50 dir-ltr">
               <span id="time-curr">0:00</span>
               <span id="time-dur">0:00</span>
             </div>
           </div>
         </div>
 
-        <!-- Main Play/Pause Button -->
-        <button id="play-btn" class="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-white text-black font-bold shadow-xl hover:scale-105 active:scale-95 transition flex items-center justify-center shrink-0 text-xl">
+        <!-- Play/Pause Button -->
+        <button id="play-btn" class="w-10 h-10 rounded-full bg-white text-black font-bold shadow-lg hover:scale-105 active:scale-95 transition flex items-center justify-center shrink-0 text-base">
           ▶
         </button>
       </div>
 
-      <!-- Controls Row (Prev, Next, Horn) -->
-      <div class="flex items-center justify-between mt-4 pt-3 border-t border-white/10 px-1">
-        <button id="horn-btn" class="px-3 py-1.5 bg-white/5 hover:bg-white/10 border border-white/10 rounded-full transition text-xs font-nastaliq text-amber-300 flex items-center gap-1">
+      <!-- Controls Bottom Bar -->
+      <div class="flex items-center justify-between mt-2.5 pt-2 border-t border-white/10 px-0.5">
+        <button id="horn-btn" class="px-2.5 py-1 bg-white/5 hover:bg-white/10 border border-white/10 rounded-full transition text-[11px] font-nastaliq text-amber-300 flex items-center gap-1">
           <span>🎺</span> <span>ہارن</span>
         </button>
 
-        <div class="flex items-center gap-4 dir-ltr">
-          <button id="prev-btn" class="text-white/70 hover:text-white active:scale-90 transition text-lg">
+        <div class="flex items-center gap-3 dir-ltr">
+          <button id="prev-btn" class="text-white/70 hover:text-white active:scale-90 transition text-sm">
             ⏮
           </button>
-          <button id="next-btn" class="text-white/70 hover:text-white active:scale-90 transition text-lg">
+          <button id="next-btn" class="text-white/70 hover:text-white active:scale-90 transition text-sm">
             ⏭
           </button>
         </div>
 
-        <button id="mute-btn" class="p-2 text-white/70 hover:text-white transition text-base">
+        <button id="mute-btn" class="p-1 text-white/70 hover:text-white transition text-sm">
           🔊
         </button>
       </div>
@@ -166,16 +184,16 @@
     </div>
 
     <!-- ACTION BUTTONS (PAN WALA STYLE CHAI BUTTON & SHARE) -->
-    <div class="w-full flex gap-3">
-      <button id="chai-btn" class="flex-1 bg-emerald-800/80 hover:bg-emerald-700/80 border border-emerald-500/40 p-3 rounded-2xl flex items-center justify-center gap-3 active:scale-95 transition shadow-lg backdrop-blur-md">
-        <span class="text-xl">☕</span>
+    <div class="w-full flex gap-2.5">
+      <button id="chai-btn" class="flex-1 bg-emerald-800/80 hover:bg-emerald-700/80 border border-emerald-500/40 py-2 px-3 rounded-xl flex items-center justify-center gap-2 active:scale-95 transition shadow-lg backdrop-blur-md">
+        <span class="text-base">☕</span>
         <div class="text-right" dir="rtl">
-          <p class="font-gulzar text-sm text-emerald-100">ایک کڑک چائے لگاؤ</p>
+          <p class="font-gulzar text-xs text-emerald-100">ایک کڑک چائے لگاؤ</p>
         </div>
-        <span id="chai-count" class="bg-emerald-950 text-emerald-300 font-bold font-mono text-xs px-2 py-0.5 rounded-full border border-emerald-500/30 mr-auto">0</span>
+        <span id="chai-count" class="bg-emerald-950 text-emerald-300 font-bold font-mono text-[11px] px-2 py-0.2 rounded-full border border-emerald-500/30 mr-auto">0</span>
       </button>
 
-      <button id="share-btn" class="bg-black/50 hover:bg-black/70 border border-white/15 px-5 rounded-2xl flex items-center justify-center text-sm font-nastaliq text-white/90 active:scale-95 transition backdrop-blur-md gap-2">
+      <button id="share-btn" class="bg-black/50 hover:bg-black/70 border border-white/15 px-4 rounded-xl flex items-center justify-center text-xs font-nastaliq text-white/90 active:scale-95 transition backdrop-blur-md gap-1.5">
         <span>🔗</span>
         <span>شیئر</span>
       </button>
@@ -184,7 +202,7 @@
   </main>
 
   <!-- FOOTER -->
-  <footer class="w-full text-center py-3 bg-black/40 backdrop-blur-md text-xs font-nastaliq text-white/60 border-t border-white/10 z-10">
+  <footer class="w-full text-center py-2.5 bg-black/40 backdrop-blur-md text-[11px] font-nastaliq text-white/60 border-t border-white/10 z-10">
     دیکھ مگر پیار سے — <strong>کوئٹہ رنگین ہوٹل ریڈیو</strong> ❤️
   </footer>
 
