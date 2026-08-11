@@ -47,7 +47,6 @@ let chaiCount = 0;
 let ytPlayer = null;
 let progressInterval = null;
 let toastTimeout = null;
-let isUnlocked = false;
 
 // DOM Elements
 const trackTitleEl = document.getElementById('track-title');
@@ -69,22 +68,7 @@ const dialogueTextEl = document.getElementById('dialogue-text');
 const clockEl = document.getElementById('clock');
 const liveCountEl = document.getElementById('live-count');
 
-// ══ 3. PAN WALA YOUTUBE ENGINE (ABORTION FIX) ══
-let hiddenDiv = document.getElementById('yt-player-container');
-if (!hiddenDiv) {
-  hiddenDiv = document.createElement('div');
-  hiddenDiv.id = 'yt-player-container';
-  hiddenDiv.style.position = 'fixed';
-  hiddenDiv.style.bottom = '-999px';
-  hiddenDiv.style.right = '-999px';
-  hiddenDiv.style.width = '1px';
-  hiddenDiv.style.height = '1px';
-  hiddenDiv.style.opacity = '0.01';
-  hiddenDiv.innerHTML = `<div id="yt-audio-player"></div>`;
-  document.body.appendChild(hiddenDiv);
-}
-
-// Load API
+// ══ 3. YOUTUBE IFRAME ENGINE (EXISTING IFRAME BINDING) ══
 const tag = document.createElement('script');
 tag.src = "https://www.youtube.com/iframe_api";
 const firstScriptTag = document.getElementsByTagName('script')[0];
@@ -92,21 +76,6 @@ firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
 function onYouTubeIframeAPIReady() {
   ytPlayer = new YT.Player('yt-audio-player', {
-    height: '1',
-    width: '1',
-    videoId: playlist[currentTrackIndex].youtubeId,
-    playerVars: {
-      'enablejsapi': 1,
-      'autoplay': 0,
-      'controls': 0,
-      'disablekb': 1,
-      'fs': 0,
-      'iv_load_policy': 3,
-      'modestbranding': 1,
-      'rel': 0,
-      'playsinline': 1,
-      'origin': window.location.origin
-    },
     events: {
       'onReady': onPlayerReady,
       'onStateChange': onPlayerStateChange
@@ -159,13 +128,6 @@ function togglePlay() {
   }
 }
 
-// Global User Gesture Unlock (Browser Security Fix)
-document.body.addEventListener('click', () => {
-  if (!isUnlocked && ytPlayer && ytPlayer.playVideo) {
-    isUnlocked = true;
-  }
-}, { once: true });
-
 function prevTrack() {
   const nextIdx = (currentTrackIndex - 1 + playlist.length) % playlist.length;
   loadAndPlayTrack(nextIdx);
@@ -216,7 +178,7 @@ function formatTime(seconds) {
   return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
 }
 
-// ══ 5. CHAI DIALOGUES & EVENTS ══
+// ══ 5. CHAI DIALOGUES ══
 if (chaiBtn) {
   chaiBtn.addEventListener('click', () => {
     chaiCount++;
@@ -248,6 +210,7 @@ if (dialogueBtn) {
 if (playBtn) playBtn.addEventListener('click', togglePlay);
 if (prevBtn) prevBtn.addEventListener('click', prevTrack);
 if (nextBtn) nextBtn.addEventListener('click', nextTrack);
+
 // ══ 100% REAL LIVE VISITORS ENGINE (No Fake Numbers) ══
 function initRealTimeVisitors() {
   const liveCountEl = document.getElementById('live-count');
@@ -289,3 +252,4 @@ function updateClock() {
 }
 setInterval(updateClock, 1000);
 updateClock();
+
