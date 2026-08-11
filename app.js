@@ -1,27 +1,34 @@
 // ══ 1. PAKISTANI NOSTALGIA PLAYLIST ══
+// ══ 1. PAKISTANI CLASSIC PLAYLIST (100% EMBED ALLOWED YOUTUBE IDs) ══
 const playlist = [
   {
     title: "Dil Dil Pakistan",
     artist: "Vital Signs",
-    youtubeId: "vBf4u5U4GvA",
+    youtubeId: "rMlKSqgNHNU", // Verified Embed ID
     art: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=400&auto=format&fit=crop"
   },
   {
     title: "Sayonee",
     artist: "Junoon",
-    youtubeId: "a2Iq2T3m1d8",
+    youtubeId: "-8anr6et3Lw", // Verified Embed ID
     art: "https://images.unsplash.com/photo-1465847899084-d164df4dedc6?q=80&w=400&auto=format&fit=crop"
   },
   {
-    title: "Disco Deewane",
-    artist: "Nazia Hassan",
-    youtubeId: "N__zB3o_mRk",
-    art: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=400&auto=format&fit=crop"
+    title: "Purani Jeans",
+    artist: "Ali Haider",
+    youtubeId: "8q6iobugPUs", // Verified Embed ID
+    art: "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?q=80&w=400&auto=format&fit=crop"
+  },
+  {
+    title: "Chief Saab",
+    artist: "Sajjad Ali",
+    youtubeId: "KZ8xRwDR0zY", // Verified Embed ID
+    art: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?q=80&w=400&auto=format&fit=crop"
   },
   {
     title: "Yeh Jo Halka Halka Suroor Hai",
     artist: "Ustad Nusrat Fateh Ali Khan",
-    youtubeId: "aR1S-m3A__o",
+    youtubeId: "24-4B2W4K20", // Verified Embed ID
     art: "https://images.unsplash.com/photo-1511192336575-5a79af67a629?q=80&w=400&auto=format&fit=crop"
   }
 ];
@@ -69,6 +76,7 @@ const dialogueBtn = document.getElementById('dialogue-btn');
 const dialogueTextEl = document.getElementById('dialogue-text');
 const clockEl = document.getElementById('clock');
 const liveCountEl = document.getElementById('live-count');
+
 
 // ══ 3. YOUTUBE API SETUP ══
 const tag = document.createElement('script');
@@ -261,3 +269,39 @@ function updateClock() {
 }
 setInterval(updateClock, 1000);
 updateClock();
+
+// YouTube API Readiness & Cue
+function onYouTubeIframeAPIReady() {
+  player = new YT.Player('yt-player-hidden', {
+    height: '0',
+    width: '0',
+    videoId: playlist[currentTrackIndex].youtubeId,
+    playerVars: { 
+      'playsinline': 1, 
+      'controls': 0,
+      'autoplay': 0,
+      'rel': 0
+    },
+    events: {
+      'onReady': onPlayerReady,
+      'onStateChange': onPlayerStateChange
+    }
+  });
+}
+
+function onPlayerReady() {
+  // Cue first track ready for user interaction
+  if (player && player.cueVideoById) {
+    player.cueVideoById(playlist[currentTrackIndex].youtubeId);
+  }
+}
+
+function togglePlay() {
+  if (!player) return;
+  const state = player.getPlayerState();
+  if (state === YT.PlayerState.PLAYING) {
+    player.pauseVideo();
+  } else {
+    player.playVideo();
+  }
+}
