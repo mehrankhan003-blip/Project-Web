@@ -117,6 +117,24 @@ function onPlayerStateChange(event) {
   }
 }
 
+// NEW: Agar error aaye toh automatically agla gaana chala do
+function onPlayerError(event) {
+    console.log("Gaana play nahi ho raha, skipping...");
+    nextTrack(); 
+}
+
+// YT Player events mein onPlayerError zaroor likhein:
+function onYouTubeIframeAPIReady() {
+  ytPlayer = new YT.Player('yt-audio-player', {
+    events: {
+      'onReady': onPlayerReady,
+      'onStateChange': onPlayerStateChange,
+      'onError': onPlayerError // <--- YE ZAROORI HAI
+    }
+  });
+}
+
+
 function updateTrackUI(index) {
   const track = playlist[index];
   if (trackTitleEl) trackTitleEl.innerText = track.title;
@@ -263,3 +281,23 @@ function updateClock() {
 }
 setInterval(updateClock, 1000);
 updateClock();
+
+// Dynamic UI Updater with Fade Effect
+function updateTrackUI(index) {
+  const track = playlist[index];
+  
+  // 1. Text Update
+  if (trackTitleEl) trackTitleEl.innerText = track.title;
+  if (trackArtistEl) trackArtistEl.innerText = track.artist;
+  
+  // 2. CD/Album Art Update with Fade
+  if (trackArtEl) {
+    trackArtEl.style.transition = "opacity 0.3s ease";
+    trackArtEl.style.opacity = 0; // Fade out
+    
+    setTimeout(() => {
+      trackArtEl.src = track.art; // Change image
+      trackArtEl.style.opacity = 1; // Fade in
+    }, 150);
+  }
+}
