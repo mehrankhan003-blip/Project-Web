@@ -27,6 +27,78 @@
     }
   </script>
 
+
+<style>
+  /* 📱 MOBILE BACKGROUND (Default for Small Screens) */
+  .hero-bg-container {
+    background-image: linear-gradient(to bottom, rgba(15, 23, 42, 0.25), rgba(15, 23, 42, 0.55)), url('hero-mob.png');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+  }
+
+  /* 💻 DESKTOP & TABLET BACKGROUND (Switches automatically on larger screens) */
+  @media (min-width: 640px) {
+    .hero-bg-container {
+      background-image: linear-gradient(to bottom, rgba(15, 23, 42, 0.3), rgba(15, 23, 42, 0.55)), url('hero-bg.png');
+      background-position: center bottom;
+      background-attachment: fixed;
+    }
+  }
+
+  /* Spinning Vinyl Disc */
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  .vinyl-spin {
+    animation: spin 10s linear infinite;
+  }
+  .vinyl-paused {
+    animation-play-state: paused;
+  }
+
+  /* Smooth Floating Animation for Titles */
+  @keyframes gentleFloat {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-4px); }
+  }
+  .title-float {
+    animation: gentleFloat 3.5s ease-in-out infinite;
+  }
+
+  /* Crisp High-Contrast Golden Urdu Titles */
+  .heading-gold {
+    color: #FFC72C;
+    text-shadow: 
+      0 2px 4px rgba(0, 0, 0, 0.9),
+      0 0 12px rgba(255, 199, 44, 0.4),
+      0 0 25px rgba(0, 0, 0, 0.8);
+  }
+
+  .subheading-gold {
+    color: #FFE58F;
+    text-shadow: 
+      0 2px 4px rgba(0, 0, 0, 0.9),
+      0 0 8px rgba(255, 229, 143, 0.3);
+  }
+
+  /* Toast Animation */
+  @keyframes slideUpFade {
+    0% { opacity: 0; transform: translate(-50%, 20px) scale(0.95); }
+    100% { opacity: 1; transform: translate(-50%, 0) scale(1); }
+  }
+  .toast-animate {
+    animation: slideUpFade 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+</style>
+  
+
+
+
+  
+
   <style>
     /* Background Image setup for Mobile & Desktop */
     .hero-bg-container {
