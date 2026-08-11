@@ -30,7 +30,7 @@
   <style>
     /* 📱 MOBILE BACKGROUND */
     .hero-bg-container {
-      background-image: linear-gradient(to bottom, rgba(15, 23, 42, 0.35), rgba(15, 23, 42, 0.65)), url('hero-mob.png');
+      background-image: linear-gradient(to bottom, rgba(15, 23, 42, 0.4), rgba(15, 23, 42, 0.7)), url('hero-mob.png');
       background-size: cover;
       background-position: center center;
       background-repeat: no-repeat;
@@ -40,7 +40,7 @@
     /* 💻 DESKTOP BACKGROUND */
     @media (min-width: 640px) {
       .hero-bg-container {
-        background-image: linear-gradient(to bottom, rgba(15, 23, 42, 0.35), rgba(15, 23, 42, 0.65)), url('hero-bg.png');
+        background-image: linear-gradient(to bottom, rgba(15, 23, 42, 0.4), rgba(15, 23, 42, 0.7)), url('hero-bg.png');
         background-position: center bottom;
         background-attachment: fixed;
       }
@@ -58,7 +58,7 @@
       animation-play-state: paused;
     }
 
-    /* Crisp High-Contrast Golden Urdu Titles */
+    /* High-Contrast Golden Urdu Titles */
     .heading-gold {
       color: #FFC72C;
       text-shadow: 
@@ -95,16 +95,16 @@
 <body class="bg-zinc-950 text-white min-h-screen font-sans hero-bg-container flex flex-col justify-between selection:bg-amber-400 selection:text-black relative overflow-x-hidden">
 
   <!-- TOP BAR -->
-  <header class="w-full px-4 sm:px-8 py-3 flex justify-between items-center z-50 select-none">
+  <header class="w-full px-3.5 sm:px-8 py-3 flex justify-between items-center z-50 select-none">
     
-    <!-- Time Pill -->
-    <div class="bg-black/50 backdrop-blur-md border border-white/10 px-3 py-1 rounded-full flex items-center gap-1.5 shadow-lg">
-      <span class="text-xs font-mono font-semibold text-amber-300" id="clock">--:-- --</span>
-      <span class="text-[10px] font-nastaliq text-white/70">پاکستان</span>
+    <!-- Time Pill (Fixed Order: Pakistan First, Then Time) -->
+    <div class="bg-black/70 backdrop-blur-md border border-white/15 px-3 py-1.5 rounded-full flex items-center gap-2 shadow-xl">
+      <span class="text-[11px] font-nastaliq text-amber-200">پاکستان</span>
+      <span class="text-xs font-mono font-bold text-amber-300 dir-ltr" id="clock">--:--:-- --</span>
     </div>
 
     <!-- Live Visitors Pill -->
-    <div class="bg-black/50 backdrop-blur-md border border-white/10 px-3 py-1 rounded-full flex items-center gap-1.5 shadow-lg">
+    <div class="bg-black/70 backdrop-blur-md border border-white/15 px-3 py-1.5 rounded-full flex items-center gap-2 shadow-xl">
       <span class="relative flex h-2 w-2">
         <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
         <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
@@ -128,12 +128,12 @@
       </p>
     </div>
 
-    <!-- DIALOGUE BANNER -->
-    <div id="dialogue-btn" class="bg-[#1a2d23]/80 border border-emerald-700/50 hover:border-emerald-500/60 px-4 py-2 rounded-full backdrop-blur-md text-center transition cursor-pointer shadow-xl group flex items-center gap-2 max-w-[90vw]">
-      <span class="text-emerald-300 text-xs">💬</span>
-      <span id="dialogue-text" class="font-nastaliq text-emerald-100 text-xs sm:text-sm group-hover:text-white transition truncate">
+    <!-- DIALOGUE BANNER (Crisp High-Contrast Dark Emerald) -->
+    <div id="dialogue-btn" class="bg-[#0b1d14]/95 border border-emerald-500/60 hover:border-emerald-400 px-4 py-2 rounded-full backdrop-blur-xl text-center transition cursor-pointer shadow-2xl group flex items-center gap-2 max-w-[92vw]">
+      <span id="dialogue-text" class="font-nastaliq text-emerald-100 text-xs sm:text-sm group-hover:text-white transition truncate drop-shadow-md">
         "استاد! ایک کڑک چائے اور پراٹھا لگانا!"
       </span>
+      <span class="text-emerald-300 text-xs shrink-0">💬</span>
     </div>
 
     <!-- EXACT PAN WALA PLAYER CARD DESIGN -->
@@ -176,8 +176,8 @@
             ⏮
           </button>
 
-          <!-- Pure White Circular Play Button (Pan Wala Exact Style) -->
-          <button id="play-btn" class="w-11 h-11 rounded-full bg-white text-black font-bold shadow-xl hover:scale-105 active:scale-95 transition flex items-center justify-center text-base pl-0.5">
+          <!-- Pure White Circular Play/Pause Button (Pan Wala Clean Style) -->
+          <button id="play-btn" class="w-11 h-11 rounded-full bg-white text-zinc-950 font-black shadow-xl hover:scale-105 active:scale-95 transition flex items-center justify-center text-sm pl-0.5">
             ▶
           </button>
 
@@ -190,7 +190,7 @@
 
     </div>
 
-    <!-- ACTION BUTTONS (PAN WALA EXACT STYLE) -->
+    <!-- ACTION BUTTONS -->
     <div class="w-full flex flex-row items-center gap-2.5">
       <!-- Dark Green Pill Button with Yellow Badge -->
       <button id="chai-btn" class="flex-1 bg-[#1a382b]/90 hover:bg-[#204535] border border-emerald-700/40 py-2.5 px-3.5 rounded-full flex items-center justify-between active:scale-95 transition shadow-lg backdrop-blur-md">
@@ -211,7 +211,7 @@
   </main>
 
   <!-- POPUP TOAST -->
-  <div id="toast-popup" class="fixed bottom-12 left-1/2 -translate-x-1/2 bg-[#1a382b]/95 border border-emerald-600 text-emerald-100 font-nastaliq text-xs px-4 py-2 rounded-full shadow-2xl backdrop-blur-md hidden z-50 transition-all pointer-events-none text-center whitespace-nowrap max-w-[90vw] truncate">
+  <div id="toast-popup" class="fixed bottom-12 left-1/2 -translate-x-1/2 bg-[#0b1d14]/95 border border-emerald-500 text-emerald-100 font-nastaliq text-xs px-4 py-2 rounded-full shadow-2xl backdrop-blur-md hidden z-50 transition-all pointer-events-none text-center whitespace-nowrap max-w-[90vw] truncate">
     <span id="toast-text">استاد! ایک کڑک چائے اور پراٹھا لگانا!</span>
   </div>
 
