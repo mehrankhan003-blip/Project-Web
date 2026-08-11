@@ -2,7 +2,7 @@
 <html lang="ur" dir="rtl" class="h-full">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>کوئٹہ رنگین ہوٹل ☕ — 90s پاکستانی کلاسک ریڈیو</title>
   
   <!-- Tailwind CSS CDN -->
@@ -28,13 +28,19 @@
   </script>
 
   <style>
-    /* Background Image setup */
+    /* Background Image setup for Perfect Mobile & Desktop Scaling */
     .hero-bg-container {
-      background-image: linear-gradient(to bottom, rgba(15, 23, 42, 0.25), rgba(15, 23, 42, 0.45)), url('hero-bg.png');
+      background-image: linear-gradient(to bottom, rgba(15, 23, 42, 0.3), rgba(15, 23, 42, 0.55)), url('hero-bg.png');
       background-size: cover;
-      background-position: center;
+      background-position: center bottom;
       background-repeat: no-repeat;
-      background-attachment: fixed;
+      background-attachment: scroll;
+    }
+
+    @media (min-width: 640px) {
+      .hero-bg-container {
+        background-attachment: fixed;
+      }
     }
 
     /* Spinning Vinyl Disc */
@@ -49,10 +55,10 @@
       animation-play-state: paused;
     }
 
-    /* Smooth Floating Animation for Headings */
+    /* Smooth Floating Animation for Titles */
     @keyframes gentleFloat {
       0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-6px); }
+      50% { transform: translateY(-4px); }
     }
     .title-float {
       animation: gentleFloat 3.5s ease-in-out infinite;
@@ -63,21 +69,21 @@
       color: #FFC72C;
       text-shadow: 
         0 2px 4px rgba(0, 0, 0, 0.9),
-        0 0 15px rgba(255, 199, 44, 0.4),
-        0 0 30px rgba(0, 0, 0, 0.8);
+        0 0 12px rgba(255, 199, 44, 0.4),
+        0 0 25px rgba(0, 0, 0, 0.8);
     }
 
     .subheading-gold {
       color: #FFE58F;
       text-shadow: 
         0 2px 4px rgba(0, 0, 0, 0.9),
-        0 0 10px rgba(255, 229, 143, 0.3);
+        0 0 8px rgba(255, 229, 143, 0.3);
     }
 
     /* Toast Animation */
     @keyframes slideUpFade {
-      0% { opacity: 0; transform: translateY(20px) scale(0.95); }
-      100% { opacity: 1; transform: translateY(0) scale(1); }
+      0% { opacity: 0; transform: translate(-50%, 20px) scale(0.95); }
+      100% { opacity: 1; transform: translate(-50%, 0) scale(1); }
     }
     .toast-animate {
       animation: slideUpFade 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
@@ -85,127 +91,145 @@
   </style>
 </head>
 
-<body class="bg-zinc-950 text-white min-h-full font-sans hero-bg-container flex flex-col justify-between selection:bg-amber-400 selection:text-black relative overflow-x-hidden">
+<body class="bg-zinc-950 text-white min-h-screen font-sans hero-bg-container flex flex-col justify-between selection:bg-amber-400 selection:text-black relative overflow-x-hidden">
 
-  <!-- TOP BAR (Pan Wala Style) -->
-  <header class="w-full px-4 sm:px-8 py-3.5 flex justify-between items-center z-50 select-none">
+  <!-- TOP BAR (Mobile Responsive Layout) -->
+  <header class="w-full px-3 sm:px-8 py-2.5 sm:py-3.5 flex justify-between items-center z-50 select-none">
     
     <!-- Time Pill -->
-    <div class="bg-black/50 backdrop-blur-md border border-white/10 px-4 py-1.5 rounded-full flex items-center gap-2 shadow-lg">
-      <span class="text-xs font-mono font-semibold text-amber-300" id="clock">--:-- --</span>
-      <span class="text-[11px] font-nastaliq text-white/70">پاکستان</span>
+    <div class="bg-black/60 backdrop-blur-md border border-white/10 px-2.5 sm:px-4 py-1 sm:py-1.5 rounded-full flex items-center gap-1.5 shadow-lg">
+      <span class="text-[10px] sm:text-xs font-mono font-semibold text-amber-300" id="clock">--:-- --</span>
+      <span class="text-[10px] sm:text-[11px] font-nastaliq text-white/70">پاکستان</span>
     </div>
 
     <!-- Live Real Visitors Pill -->
-    <div class="bg-black/50 backdrop-blur-md border border-white/10 px-4 py-1.5 rounded-full flex items-center gap-2 shadow-lg">
+    <div class="bg-black/60 backdrop-blur-md border border-white/10 px-2.5 sm:px-4 py-1 sm:py-1.5 rounded-full flex items-center gap-1.5 shadow-lg">
       <span class="relative flex h-2 w-2">
         <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
         <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
       </span>
-      <span class="text-xs font-bold font-mono text-emerald-300" id="live-count">12</span>
-      <span class="text-xs font-nastaliq text-white/80">ڈھابے پر موجود ہیں</span>
+      <span class="text-[11px] sm:text-xs font-bold font-mono text-emerald-300" id="live-count">1</span>
+      <span class="text-[10px] sm:text-xs font-nastaliq text-white/80">ڈھابے پر موجود ہیں</span>
     </div>
 
   </header>
 
   <!-- MAIN CONTENT CONTAINER -->
-  <main class="max-w-xl w-full mx-auto px-4 py-2 flex flex-col items-center justify-center gap-4 z-10 my-auto">
+  <main class="w-full max-w-md sm:max-w-xl mx-auto px-3 sm:px-4 py-2 flex flex-col items-center justify-center gap-3 sm:gap-4 z-10 my-auto">
 
-    <!-- HEADINGS -->
-    <div class="text-center space-y-1 title-float select-none">
-      <h1 class="text-5xl sm:text-6xl font-bold font-gulzar heading-gold tracking-wide leading-tight">
+    <!-- HEADINGS (Scaled for Mobile) -->
+    <div class="text-center space-y-0.5 sm:space-y-1 title-float select-none">
+      <h1 class="text-3xl sm:text-5xl md:text-6xl font-bold font-gulzar heading-gold tracking-wide leading-tight px-2">
         کوئٹہ رنگین ہوٹل
       </h1>
-      <p class="font-nastaliq text-base sm:text-lg subheading-gold font-medium">
+      <p class="font-nastaliq text-xs sm:text-base subheading-gold font-medium">
         دیکھ مگر پیار سے
       </p>
     </div>
 
     <!-- DIALOGUE BANNER -->
-    <div id="dialogue-btn" class="bg-black/60 border border-emerald-500/40 hover:border-emerald-400 px-5 py-2 rounded-full backdrop-blur-md text-center transition cursor-pointer shadow-xl group flex items-center gap-2">
-      <span class="text-emerald-400 text-sm">💬</span>
-      <span id="dialogue-text" class="font-nastaliq text-emerald-200 text-xs sm:text-sm group-hover:text-white transition">
+    <div id="dialogue-btn" class="bg-black/60 border border-emerald-500/40 hover:border-emerald-400 px-3.5 sm:px-5 py-1.5 sm:py-2 rounded-full backdrop-blur-md text-center transition cursor-pointer shadow-xl group flex items-center gap-1.5 max-w-[90vw]">
+      <span class="text-emerald-400 text-xs sm:text-sm">💬</span>
+      <span id="dialogue-text" class="font-nastaliq text-emerald-200 text-[11px] sm:text-sm group-hover:text-white transition truncate">
         "استاد! ایک کڑک چائے اور پراٹھا لگانا!"
       </span>
     </div>
 
-<!-- PAN WALA PLAYER CARD -->
-<div class="w-full max-w-lg bg-[#21140A]/90 backdrop-blur-xl border border-amber-900/40 rounded-[28px] p-4 shadow-2xl relative overflow-hidden">
-  
-  <div class="flex items-center gap-4">
-    <!-- Vinyl Disc (Left Side) -->
-    <div class="relative w-16 h-16 sm:w-20 sm:h-20 rounded-full overflow-hidden shrink-0 shadow-2xl border border-amber-500/20">
-      <img id="track-art" src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=300&auto=format&fit=crop" class="w-full h-full object-cover vinyl-spin vinyl-paused" alt="Album Disc" />
-      <div class="absolute inset-0 m-auto w-4 h-4 bg-zinc-950 border-2 border-amber-500/60 rounded-full shadow-inner"></div>
-    </div>
+    <!-- PAN WALA STYLE MOBILE RESPONSIVE PLAYER -->
+    <div class="w-full bg-[#21140A]/95 backdrop-blur-xl border border-amber-900/40 rounded-2xl sm:rounded-[28px] p-3 sm:p-4 shadow-2xl relative overflow-hidden">
+      
+      <div class="flex items-center gap-2.5 sm:gap-4">
+        
+        <!-- Vinyl Disc (Left Side) -->
+        <div class="relative w-13 h-13 xs:w-14 xs:h-14 sm:w-20 sm:h-20 rounded-full overflow-hidden shrink-0 shadow-2xl border border-amber-500/20">
+          <img id="track-art" src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=300&auto=format&fit=crop" class="w-full h-full object-cover vinyl-spin vinyl-paused" alt="Album Disc" />
+          <div class="absolute inset-0 m-auto w-3 h-3 sm:w-4 sm:h-4 bg-zinc-950 border-2 border-amber-500/60 rounded-full shadow-inner"></div>
+        </div>
 
-    <!-- Track Info & Progress Bar (Center) -->
-    <div class="flex-1 overflow-hidden text-right space-y-1.5" dir="rtl">
-      <h2 id="track-title" class="font-sans font-bold text-base sm:text-lg text-white truncate leading-snug">
-        Dil Dil Pakistan
-      </h2>
-      <p id="track-artist" class="font-sans text-xs text-white/60 truncate text-right">
-        Vital Signs
-      </p>
+        <!-- Track Info & Progress Bar (Center) -->
+        <div class="flex-1 min-w-0 text-right space-y-1" dir="rtl">
+          <h2 id="track-title" class="font-sans font-bold text-sm sm:text-lg text-white truncate leading-snug">
+            Dil Dil Pakistan
+          </h2>
+          <p id="track-artist" class="font-sans text-[10px] sm:text-xs text-white/60 truncate dir-ltr text-right">
+            Vital Signs
+          </p>
 
-      <!-- Progress Bar (Explicit LTR direction for correct L-to-R seeking) -->
-      <div class="space-y-1 pt-1" dir="ltr">
-        <div id="seek-container" class="w-full bg-white/20 hover:bg-white/30 rounded-full h-2 overflow-visible cursor-pointer relative flex items-center">
-          <!-- White Progress Fill -->
-          <div id="progress-bar" class="bg-white h-full w-0 rounded-full transition-all duration-150 relative"></div>
-          
-          <!-- Moving Lala Chai Pin Avatar -->
-          <div id="chai-pin" class="absolute -top-3.5 -ml-3 text-lg transition-all duration-150 select-none pointer-events-none drop-shadow-md" style="left: 0%;">
-            ☕
+          <!-- Progress Bar & Moving Chai Pin -->
+          <div class="space-y-0.5 pt-0.5" dir="ltr">
+            <div id="seek-container" class="w-full bg-white/20 hover:bg-white/30 rounded-full h-1.5 relative cursor-pointer flex items-center overflow-visible">
+              
+              <!-- Progress Fill Line -->
+              <div id="progress-bar" class="bg-white h-full w-0 rounded-full relative transition-all duration-150"></div>
+              
+              <!-- Moving Vector Chai Cup Pin -->
+              <div id="chai-pin" class="absolute -top-3.5 -ml-3.5 z-20 transition-all duration-150 select-none pointer-events-none drop-shadow-[0_4px_8px_rgba(0,0,0,0.8)]" style="left: 0%;">
+                <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-amber-500 border border-yellow-300 flex items-center justify-center p-1 shadow-lg">
+                  <svg viewBox="0 0 24 24" fill="none" class="w-full h-full text-zinc-950" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M6 2s1 1 1 2-1 2-1 3" class="animate-pulse text-amber-100" stroke-width="1.5" />
+                    <path d="M12 2s1 1 1 2-1 2-1 3" class="animate-pulse text-amber-100" stroke-width="1.5" />
+                    <path d="M17 8H3v5a4 4 0 004 4h6a4 4 0 004-4V8z" fill="#FFF176" stroke="#27272a" />
+                    <path d="M17 9h1a3 3 0 013 3v0a3 3 0 01-3 3h-1" stroke="#27272a" />
+                    <path d="M2 19h18" stroke="#FFE58F" stroke-width="2.5" />
+                  </svg>
+                </div>
+              </div>
+
+            </div>
+            
+            <div class="flex justify-between text-[9px] sm:text-[11px] font-mono text-white/50 dir-ltr pt-0.5">
+              <span id="time-curr">0:00</span>
+              <span>/</span>
+              <span id="time-dur">0:00</span>
+            </div>
           </div>
         </div>
-        
-        <div class="flex justify-between text-[11px] font-mono text-white/50 dir-ltr pt-0.5">
-          <span id="time-curr">0:00</span>
-          <span>/</span>
-          <span id="time-dur">0:00</span>
+
+        <!-- Player Controls (Right Side) -->
+        <div class="flex items-center gap-1 sm:gap-2 dir-ltr shrink-0">
+          <button id="prev-btn" class="text-white/70 hover:text-white active:scale-90 transition text-xs sm:text-sm p-1">
+            ⏮
+          </button>
+
+          <!-- Play/Pause Circle -->
+          <button id="play-btn" class="w-10 h-10 sm:w-13 sm:h-13 rounded-full bg-white text-black font-bold shadow-2xl hover:scale-105 active:scale-95 transition flex items-center justify-center text-base sm:text-lg pl-0.5">
+            ▶
+          </button>
+
+          <button id="next-btn" class="text-white/70 hover:text-white active:scale-90 transition text-xs sm:text-sm p-1">
+            ⏭
+          </button>
         </div>
+
       </div>
+
     </div>
-
-    <!-- Player Controls (Right Side) -->
-    <div class="flex items-center gap-2 dir-ltr shrink-0">
-      <button id="prev-btn" class="text-white/70 hover:text-white active:scale-90 transition text-sm p-1">
-        ⏮
-      </button>
-
-      <button id="play-btn" class="w-12 h-12 sm:w-13 sm:h-13 rounded-full bg-white text-black font-bold shadow-2xl hover:scale-105 active:scale-95 transition flex items-center justify-center text-lg pl-0.5">
-        ▶
-      </button>
-
-      <button id="next-btn" class="text-white/70 hover:text-white active:scale-90 transition text-sm p-1">
-        ⏭
-      </button>
-    </div>
-  </div>
-
-</div>
 
     <!-- ACTION BUTTONS (CHAI BUTTON & SHARE) -->
-    <div class="w-full max-w-lg flex gap-3">
-      <button id="chai-btn" class="flex-1 bg-emerald-800/80 hover:bg-emerald-700/80 border border-emerald-500/40 py-2.5 px-4 rounded-2xl flex items-center justify-between active:scale-95 transition shadow-lg backdrop-blur-md">
-        <div class="flex items-center gap-2" dir="rtl">
-          <span class="text-lg">☕</span>
-          <span class="font-gulzar text-sm text-emerald-100">ایک کڑک چائے لگاؤ</span>
+    <div class="w-full flex gap-2.5 sm:gap-3">
+      <button id="chai-btn" class="flex-1 bg-emerald-800/80 hover:bg-emerald-700/80 border border-emerald-500/40 py-2 sm:py-2.5 px-3 sm:px-4 rounded-xl sm:rounded-2xl flex items-center justify-between active:scale-95 transition shadow-lg backdrop-blur-md">
+        <div class="flex items-center gap-1.5 sm:gap-2" dir="rtl">
+          <span class="text-base sm:text-lg">☕</span>
+          <span class="font-gulzar text-xs sm:text-sm text-emerald-100">ایک کڑک چائے لگاؤ</span>
         </div>
-        <span id="chai-count" class="bg-emerald-950 text-emerald-300 font-bold font-mono text-xs px-2.5 py-0.5 rounded-full border border-emerald-500/30">0</span>
+        <span id="chai-count" class="bg-emerald-950 text-emerald-300 font-bold font-mono text-[11px] sm:text-xs px-2 py-0.5 rounded-full border border-emerald-500/30">0</span>
       </button>
 
-      <button id="share-btn" class="bg-black/50 hover:bg-black/70 border border-white/15 px-5 rounded-2xl flex items-center justify-center text-xs font-nastaliq text-white/90 active:scale-95 transition backdrop-blur-md gap-2">
+      <button id="share-btn" class="bg-black/60 hover:bg-black/80 border border-white/15 px-3.5 sm:px-5 rounded-xl sm:rounded-2xl flex items-center justify-center text-xs font-nastaliq text-white/90 active:scale-95 transition backdrop-blur-md gap-1.5">
         <span>🔗</span>
         <span>شیئر</span>
       </button>
     </div>
 
-  </main
+  </main>
 
-      <!-- Hidden YouTube Player Iframe (Exact Pan Wala Setup) -->
-<div class="hidden-player-container" style="position: absolute; width: 1px; height: 1px; overflow: hidden; opacity: 0; pointer-events: none;">
+  <!-- POPUP DIALOGUE TOAST -->
+  <div id="toast-popup" class="fixed bottom-12 left-1/2 -translate-x-1/2 bg-amber-950/95 border border-amber-500/50 text-amber-100 font-nastaliq text-xs sm:text-sm px-4 py-2 rounded-full shadow-2xl backdrop-blur-md hidden z-50 transition-all pointer-events-none text-center whitespace-nowrap max-w-[90vw] truncate">
+    <span id="toast-text">استاد! دودھ پتی یا سادہ؟</span>
+  </div>
+
+  <!-- HIDDEN IFRAME FOR YOUTUBE PLAYER -->
+  <div class="hidden-player-container" style="position: absolute; width: 1px; height: 1px; overflow: hidden; opacity: 0; pointer-events: none;">
     <iframe 
       id="yt-audio-player" 
       src="https://www.youtube.com/embed/rMlKSqgNHNU?enablejsapi=1&autoplay=0&controls=0&disablekb=1&fs=0&iv_load_policy=3&modestbranding=1&rel=0&playsinline=1" 
@@ -214,14 +238,8 @@
     </iframe>
   </div>
 
-
-  <!-- POPUP DIALOGUE TOAST (Bottom Floating Popup) -->
-  <div id="toast-popup" class="fixed bottom-16 left-1/2 -translate-x-1/2 bg-amber-950/90 border border-amber-500/50 text-amber-100 font-nastaliq text-xs sm:text-sm px-5 py-2.5 rounded-full shadow-2xl backdrop-blur-md hidden z-50 transition-all pointer-events-none text-center whitespace-nowrap">
-    <span id="toast-text">استاد! دودھ پتی یا سادہ؟</span>
-  </div>
-
   <!-- FOOTER -->
-  <footer class="w-full text-center py-3 bg-black/40 backdrop-blur-md text-xs font-nastaliq text-white/60 border-t border-white/10 z-10">
+  <footer class="w-full text-center py-2 sm:py-3 bg-black/50 backdrop-blur-md text-[10px] sm:text-xs font-nastaliq text-white/60 border-t border-white/10 z-10">
     دیکھ مگر پیار سے — <strong>کوئٹہ رنگین ہوٹل ریڈیو</strong> ❤️
   </footer>
 
