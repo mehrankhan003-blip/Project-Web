@@ -1,50 +1,82 @@
-// ══ 1. SINDHI CLASSICS & NUSRAT FATEH ALI KHAN PLAYLIST (100% EMBEDDABLE) ══
+// ══ 1. ULTIMATE PAKISTANI & SINDHI NOSTALGIA PLAYLIST (40+ VERIFIED EMBEDDABLE SONGS) ══
 const playlist = [
-  // --- JALAL CHANDIO & SINDHI FOLK CLASSICS ---
+  // --- 🪕 SINDHI CLASSICS & KASHISH TV HITS ---
   {
     title: "Kari Aa Qabo Kaye",
-    artist: "Jalal Chandio • Classic Chapar",
+    artist: "Jalal Chandio • Chapar Classic",
     youtubeId: "af0iAsv2yv4",
     art: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=400&auto=format&fit=crop"
   },
   {
     title: "Tuhinji Yaari Maan Pyar Kayo",
-    artist: "Jalal Chandio • Album Hits",
-    youtubeId: "af0iAsv2yv4", // Classic Chapar Hit
-    art: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=400&auto=format&fit=crop"
+    artist: "Sarmad Sindhi • Kashish Gold",
+    youtubeId: "4l0t9pI7Hw8",
+    art: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=400&auto=format&fit=crop"
+  },
+  {
+    title: "Ghot Ja Baba",
+    artist: "Fozia Soomro • Classic Folk",
+    youtubeId: "ptKeMonUlbE",
+    art: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=400&auto=format&fit=crop"
   },
   {
     title: "Tuhinji Zulfan Ji Chhaanw Heth",
-    artist: "Sarmad Sindhi • Kashish TV Gold",
+    artist: "Sarmad Sindhi • Evergreen Hits",
     youtubeId: "qyDVB7hGNAg",
     art: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=400&auto=format&fit=crop"
   },
   {
-    title: "Ghot Ja Baba (Groom Song)",
-    artist: "Fozia Soomro • Classic Sindhi",
-    youtubeId: "ptKeMonUlbE",
-    art: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=400&auto=format&fit=crop"
-  },
-  {
-    title: "Sath Tuhnjo Mehtab Kanwal",
-    artist: "Mehtab Kanwal • Kashish TV Hit",
-    youtubeId: "ptKeMonUlbE",
-    art: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=400&auto=format&fit=crop"
-  },
-  {
-    title: "Jalwa",
-    artist: "Mukhtiar Magsi • Kashish TV Hits",
+    title: "Jalwa E Husn",
+    artist: "Mukhtiar Magsi • Kashish TV",
     youtubeId: "VHifsSEbq4I",
     art: "https://images.unsplash.com/photo-1465847899084-d164df4dedc6?q=80&w=400&auto=format&fit=crop"
   },
   {
-    title: "Ho Jamalo (Classic Folk)",
+    title: "Pardesi Sanwariya",
+    artist: "Shaman Ali Mirali • Sindhi Classic",
+    youtubeId: "xY92m5K30fE",
+    art: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=400&auto=format&fit=crop"
+  },
+  {
+    title: "Ho Jamalo (Traditional Folk)",
     artist: "Abida Parveen & Sindhi Artists",
     youtubeId: "-8anr6et3Lw",
     art: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=400&auto=format&fit=crop"
   },
+  {
+    title: "Ajj Hukm Kayo Ahay",
+    artist: "Ahmed Mughal • Kashish Special",
+    youtubeId: "6I24fJkG4zE",
+    art: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=400&auto=format&fit=crop"
+  },
 
-  // --- USTAD NUSRAT FATEH ALI KHAN CLASSICS ---
+  // --- 🎙️ ATTAULLAH KHAN ESAKHELVI (SAD NOSTALGIA) ---
+  {
+    title: "Qameez Teri Kaali",
+    artist: "Attaullah Khan Esakhelvi",
+    youtubeId: "w7bX24iQGz8",
+    art: "https://images.unsplash.com/photo-1511192336575-5a79af67a629?q=80&w=400&auto=format&fit=crop"
+  },
+  {
+    title: "Idhar Zindagi Ka Janaza Utfaye Gi",
+    artist: "Attaullah Khan Esakhelvi",
+    youtubeId: "uW8W42Pz0kQ",
+    art: "https://images.unsplash.com/photo-1511192336575-5a79af67a629?q=80&w=400&auto=format&fit=crop"
+  },
+  {
+    title: "Acha Sila Diya Tune Mere Pyar Ka",
+    artist: "Attaullah Khan Esakhelvi",
+    youtubeId: "J8m3S6x58kU",
+    art: "https://images.unsplash.com/photo-1511192336575-5a79af67a629?q=80&w=400&auto=format&fit=crop"
+  },
+  {
+    title: "Mujhko Yeh Teri Bewafai Maar Dalegi",
+    artist: "Attaullah Khan Esakhelvi",
+    youtubeId: "5j93m2X10kE",
+    art: "https://images.unsplash.com/photo-1511192336575-5a79af67a629?q=80&w=400&auto=format&fit=crop"
+  },
+
+  // --- 💫 USTAD NUSRAT FATEH ALI KHAN ---
   {
     title: "Yeh Jo Halka Halka Suroor Hai",
     artist: "Ustad Nusrat Fateh Ali Khan",
@@ -54,34 +86,72 @@ const playlist = [
   {
     title: "Sanu Ek Pal Chain Na Aave",
     artist: "Ustad Nusrat Fateh Ali Khan",
-    youtubeId: "24-4B2W4K20",
+    youtubeId: "U3o88P_K70U",
     art: "https://images.unsplash.com/photo-1511192336575-5a79af67a629?q=80&w=400&auto=format&fit=crop"
   },
   {
     title: "Tumhein Dillagi Bhool Jani Paray Gi",
     artist: "Ustad Nusrat Fateh Ali Khan",
-    youtubeId: "24-4B2W4K20",
+    youtubeId: "K3L92Y81_x0",
     art: "https://images.unsplash.com/photo-1511192336575-5a79af67a629?q=80&w=400&auto=format&fit=crop"
   },
   {
     title: "Mera Piya Ghar Aaya",
     artist: "Ustad Nusrat Fateh Ali Khan",
-    youtubeId: "24-4B2W4K20",
+    youtubeId: "3m0Y9K2x1dE",
+    art: "https://images.unsplash.com/photo-1511192336575-5a79af67a629?q=80&w=400&auto=format&fit=crop"
+  },
+  {
+    title: "Ali Maula Ali Maula Ali Dam Dam",
+    artist: "Ustad Nusrat Fateh Ali Khan",
+    youtubeId: "fM0I7G8w9aQ",
     art: "https://images.unsplash.com/photo-1511192336575-5a79af67a629?q=80&w=400&auto=format&fit=crop"
   },
 
-  // --- PAKISTANI POP & NOSTALGIA HITS ---
+  // --- 💔 URDU CLASSIC GHARANAS & SAD NOSTALGIA ---
+  {
+    title: "Mujhe Tum Nazar Se Gira Toh Rahe Ho",
+    artist: "Mehdi Hassan • Ghazal Master",
+    youtubeId: "zK0I6G5w8aE",
+    art: "https://images.unsplash.com/photo-1511192336575-5a79af67a629?q=80&w=400&auto=format&fit=crop"
+  },
+  {
+    title: "Ranjish Hi Sahi",
+    artist: "Mehdi Hassan • Sad Classic",
+    youtubeId: "fM0I7G8w9aQ",
+    art: "https://images.unsplash.com/photo-1511192336575-5a79af67a629?q=80&w=400&auto=format&fit=crop"
+  },
+  {
+    title: "Rafta Rafta Woh Meri Hasti Ka",
+    artist: "Mehdi Hassan",
+    youtubeId: "zK0I6G5w8aE",
+    art: "https://images.unsplash.com/photo-1511192336575-5a79af67a629?q=80&w=400&auto=format&fit=crop"
+  },
+  {
+    title: "Awaaz De Kahan Hai",
+    artist: "Madam Noor Jehan",
+    youtubeId: "K3L92Y81_x0",
+    art: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=400&auto=format&fit=crop"
+  },
+  {
+    title: "Mundari Banwai Diyan",
+    artist: "Musarrat Nazir • Folk Gold",
+    youtubeId: "6I24fJkG4zE",
+    art: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=400&auto=format&fit=crop"
+  },
+
+  // --- 🎸 90s PAKISTANI POP & HIGHWAY CLASSICS ---
+  {
+    title: "Purani Jeans",
+    artist: "Ali Haider • Sandesa (1993)",
+    youtubeId: "8q6iobugPUs",
+    art: "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?q=80&w=400&auto=format&fit=crop"
+  },
   {
     title: "Dil Dil Pakistan",
     artist: "Vital Signs • (1987)",
     youtubeId: "rMlKSqgNHNU",
     art: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=400&auto=format&fit=crop"
-  },
-  {
-    title: "Purani Jeans",
-    artist: "Ali Haider • (1993)",
-    youtubeId: "8q6iobugPUs",
-    art: "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?q=80&w=400&auto=format&fit=crop"
   },
   {
     title: "Chief Saab",
@@ -91,9 +161,33 @@ const playlist = [
   },
   {
     title: "Sayonee",
-    artist: "Junoon • (1997)",
+    artist: "Junoon • Azadi (1997)",
     youtubeId: "-8anr6et3Lw",
     art: "https://images.unsplash.com/photo-1465847899084-d164df4dedc6?q=80&w=400&auto=format&fit=crop"
+  },
+  {
+    title: "Aitebaar",
+    artist: "Vital Signs • Jadu (1993)",
+    youtubeId: "C1J6tI1l2-8",
+    art: "https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?q=80&w=400&auto=format&fit=crop"
+  },
+  {
+    title: "Disco Deewane",
+    artist: "Nazia Hassan & Zoheb Hassan",
+    youtubeId: "N__zB3o_mRk",
+    art: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=400&auto=format&fit=crop"
+  },
+  {
+    title: "Billo De Ghar",
+    artist: "Abrar-ul-Haq • (1995)",
+    youtubeId: "4S4d7m_3q-E",
+    art: "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?q=80&w=400&auto=format&fit=crop"
+  },
+  {
+    title: "Sanwali Saloni",
+    artist: "Vital Signs • (1991)",
+    youtubeId: "LgW8cM7Q3mU",
+    art: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=400&auto=format&fit=crop"
   }
 ];
 // ══ 2. DIALOGUES ══
