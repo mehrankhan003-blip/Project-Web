@@ -179,6 +179,7 @@
       </div>
 
     </div>
+    
 
     <!-- ACTION BUTTONS (CHAI BUTTON & SHARE) -->
     <div class="w-full max-w-lg flex gap-3">
@@ -196,7 +197,17 @@
       </button>
     </div>
 
-  </main>
+  </main
+
+      <!-- Hidden YouTube Player Iframe (Exact Pan Wala Setup) -->
+  <div class="hidden-player-container" style="position: absolute; width: 1px; height: 1px; overflow: hidden; opacity: 0; pointer-events: none;">
+    <iframe 
+      id="yt-audio-player" 
+      src="https://www.youtube.com/embed/vBf4u5U4GvA?enablejsapi=1&autoplay=0&controls=0&disablekb=1&fs=0&iv_load_policy=3&modestbranding=1&rel=0&playsinline=1" 
+      allow="autoplay" 
+      frameborder="0">
+    </iframe>
+  </div>
 
   <!-- POPUP DIALOGUE TOAST (Bottom Floating Popup) -->
   <div id="toast-popup" class="fixed bottom-16 left-1/2 -translate-x-1/2 bg-amber-950/90 border border-amber-500/50 text-amber-100 font-nastaliq text-xs sm:text-sm px-5 py-2.5 rounded-full shadow-2xl backdrop-blur-md hidden z-50 transition-all pointer-events-none text-center whitespace-nowrap">
