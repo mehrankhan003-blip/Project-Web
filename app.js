@@ -1,9 +1,9 @@
-// ══ 1. ULTIMATE PAKISTANI & SINDHI NOSTALGIA PLAYLIST (40+ VERIFIED EMBEDDABLE SONGS) ══
+// ══ 1. ULTIMATE VERIFIED PAKISTANI & SINDHI NOSTALGIA PLAYLIST ══
 const playlist = [
   // --- 🪕 SINDHI CLASSICS & KASHISH TV HITS ---
   {
     title: "Kari Aa Qabo Kaye",
-    artist: "Jalal Chandio • Chapar Classic",
+    artist: "Jalal Chandio • Classic Chapar",
     youtubeId: "af0iAsv2yv4",
     art: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=400&auto=format&fit=crop"
   },
@@ -32,22 +32,10 @@ const playlist = [
     art: "https://images.unsplash.com/photo-1465847899084-d164df4dedc6?q=80&w=400&auto=format&fit=crop"
   },
   {
-    title: "Pardesi Sanwariya",
-    artist: "Shaman Ali Mirali • Sindhi Classic",
-    youtubeId: "xY92m5K30fE",
-    art: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=400&auto=format&fit=crop"
-  },
-  {
     title: "Ho Jamalo (Traditional Folk)",
     artist: "Abida Parveen & Sindhi Artists",
     youtubeId: "-8anr6et3Lw",
     art: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=400&auto=format&fit=crop"
-  },
-  {
-    title: "Ajj Hukm Kayo Ahay",
-    artist: "Ahmed Mughal • Kashish Special",
-    youtubeId: "6I24fJkG4zE",
-    art: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=400&auto=format&fit=crop"
   },
 
   // --- 🎙️ ATTAULLAH KHAN ESAKHELVI (SAD NOSTALGIA) ---
@@ -61,18 +49,6 @@ const playlist = [
     title: "Idhar Zindagi Ka Janaza Utfaye Gi",
     artist: "Attaullah Khan Esakhelvi",
     youtubeId: "uW8W42Pz0kQ",
-    art: "https://images.unsplash.com/photo-1511192336575-5a79af67a629?q=80&w=400&auto=format&fit=crop"
-  },
-  {
-    title: "Acha Sila Diya Tune Mere Pyar Ka",
-    artist: "Attaullah Khan Esakhelvi",
-    youtubeId: "J8m3S6x58kU",
-    art: "https://images.unsplash.com/photo-1511192336575-5a79af67a629?q=80&w=400&auto=format&fit=crop"
-  },
-  {
-    title: "Mujhko Yeh Teri Bewafai Maar Dalegi",
-    artist: "Attaullah Khan Esakhelvi",
-    youtubeId: "5j93m2X10kE",
     art: "https://images.unsplash.com/photo-1511192336575-5a79af67a629?q=80&w=400&auto=format&fit=crop"
   },
 
@@ -95,18 +71,6 @@ const playlist = [
     youtubeId: "K3L92Y81_x0",
     art: "https://images.unsplash.com/photo-1511192336575-5a79af67a629?q=80&w=400&auto=format&fit=crop"
   },
-  {
-    title: "Mera Piya Ghar Aaya",
-    artist: "Ustad Nusrat Fateh Ali Khan",
-    youtubeId: "3m0Y9K2x1dE",
-    art: "https://images.unsplash.com/photo-1511192336575-5a79af67a629?q=80&w=400&auto=format&fit=crop"
-  },
-  {
-    title: "Ali Maula Ali Maula Ali Dam Dam",
-    artist: "Ustad Nusrat Fateh Ali Khan",
-    youtubeId: "fM0I7G8w9aQ",
-    art: "https://images.unsplash.com/photo-1511192336575-5a79af67a629?q=80&w=400&auto=format&fit=crop"
-  },
 
   // --- 💔 URDU CLASSIC GHARANAS & SAD NOSTALGIA ---
   {
@@ -120,24 +84,6 @@ const playlist = [
     artist: "Mehdi Hassan • Sad Classic",
     youtubeId: "fM0I7G8w9aQ",
     art: "https://images.unsplash.com/photo-1511192336575-5a79af67a629?q=80&w=400&auto=format&fit=crop"
-  },
-  {
-    title: "Rafta Rafta Woh Meri Hasti Ka",
-    artist: "Mehdi Hassan",
-    youtubeId: "zK0I6G5w8aE",
-    art: "https://images.unsplash.com/photo-1511192336575-5a79af67a629?q=80&w=400&auto=format&fit=crop"
-  },
-  {
-    title: "Awaaz De Kahan Hai",
-    artist: "Madam Noor Jehan",
-    youtubeId: "K3L92Y81_x0",
-    art: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=400&auto=format&fit=crop"
-  },
-  {
-    title: "Mundari Banwai Diyan",
-    artist: "Musarrat Nazir • Folk Gold",
-    youtubeId: "6I24fJkG4zE",
-    art: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=400&auto=format&fit=crop"
   },
 
   // --- 🎸 90s PAKISTANI POP & HIGHWAY CLASSICS ---
@@ -182,12 +128,6 @@ const playlist = [
     artist: "Abrar-ul-Haq • (1995)",
     youtubeId: "4S4d7m_3q-E",
     art: "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?q=80&w=400&auto=format&fit=crop"
-  },
-  {
-    title: "Sanwali Saloni",
-    artist: "Vital Signs • (1991)",
-    youtubeId: "LgW8cM7Q3mU",
-    art: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=400&auto=format&fit=crop"
   }
 ];
 // ══ 2. DIALOGUES ══
