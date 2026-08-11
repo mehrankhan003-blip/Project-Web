@@ -1,46 +1,52 @@
-// ══ 1. DIRECT AUDIO STREAM PLAYLIST (100% WORKING STREAMS) ══
+// ══ 1. MASTER YOUTUBE PLAYLIST ══
 const playlist = [
   {
     title: "Kari Aa Qabo Kaye",
     artist: "Jalal Chandio • Folk Classic",
-    audioUrl: "https://archive.org/download/JalalChandioSongs/Kari%20Aa%20Qabo%20Kaye.mp3",
-    art: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=400&auto=format&fit=crop"
+    youtubeId: "UKpC72Lgtz4",
+    art: "https://i.ytimg.com/vi/UKpC72Lgtz4/hqdefault.jpg"
   },
   {
     title: "Tuhinji Yaari Maan Pyar Kayo",
     artist: "Sarmad Sindhi • Sindhi Hit",
-    audioUrl: "https://archive.org/download/SarmadSindhiHits/Tuhinji%20Yaari%20Maan%20Pyar%20Kayo.mp3",
-    art: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=400&auto=format&fit=crop"
+    youtubeId: "qyDVB7hGNAg",
+    art: "https://i.ytimg.com/vi/qyDVB7hGNAg/hqdefault.jpg"
   },
   {
     title: "Qameez Teri Kaali",
     artist: "Attaullah Khan Esakhelvi",
-    audioUrl: "https://archive.org/download/AttaullahKhanCollection/Qameez%20Teri%20Kaali.mp3",
-    art: "https://images.unsplash.com/photo-1511192336575-5a79af67a629?q=80&w=400&auto=format&fit=crop"
+    youtubeId: "w7bX24iQGz8",
+    art: "https://i.ytimg.com/vi/w7bX24iQGz8/hqdefault.jpg"
   },
   {
     title: "Yeh Jo Halka Halka Suroor Hai",
     artist: "Ustad Nusrat Fateh Ali Khan",
-    audioUrl: "https://archive.org/download/NusratFatehAliKhanQawwalis/Halka%20Halka%20Suroor.mp3",
-    art: "https://images.unsplash.com/photo-1511192336575-5a79af67a629?q=80&w=400&auto=format&fit=crop"
+    youtubeId: "24-4B2W4K20",
+    art: "https://i.ytimg.com/vi/24-4B2W4K20/hqdefault.jpg"
   },
   {
     title: "Dil Dil Pakistan",
     artist: "Vital Signs • (1987)",
-    audioUrl: "https://archive.org/download/VitalSignsCollection/Dil%20Dil%20Pakistan.mp3",
-    art: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=400&auto=format&fit=crop"
+    youtubeId: "rMlKSqgNHNU",
+    art: "https://i.ytimg.com/vi/rMlKSqgNHNU/hqdefault.jpg"
   },
   {
     title: "Purani Jeans",
     artist: "Ali Haider • Sandesa (1993)",
-    audioUrl: "https://archive.org/download/90sPakistaniPop/Purani%20Jeans.mp3",
-    art: "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?q=80&w=400&auto=format&fit=crop"
+    youtubeId: "8q6iobugPUs",
+    art: "https://i.ytimg.com/vi/8q6iobugPUs/hqdefault.jpg"
+  },
+  {
+    title: "Chief Saab",
+    artist: "Sajjad Ali • Classic Hit",
+    youtubeId: "KZ8xRwDR0zY",
+    art: "https://i.ytimg.com/vi/KZ8xRwDR0zY/hqdefault.jpg"
   },
   {
     title: "Ranjish Hi Sahi",
-    artist: "Mehdi Hassan • Classic Ghazal",
-    audioUrl: "https://archive.org/download/MehdiHassanGhazals/Ranjish%20Hi%20Sahi.mp3",
-    art: "https://images.unsplash.com/photo-1511192336575-5a79af67a629?q=80&w=400&auto=format&fit=crop"
+    artist: "Mehdi Hassan • Sad Classic",
+    youtubeId: "fM0I7G8w9aQ",
+    art: "https://i.ytimg.com/vi/fM0I7G8w9aQ/hqdefault.jpg"
   }
 ];
 
@@ -59,95 +65,122 @@ const bannerDialogues = [
   '"سفر لمبا ہے، کوئی اچھا گانا لگاؤ!"'
 ];
 
-// Global Variables
+// Global States
 let currentTrackIndex = 0;
+let isPlaying = false;
 let chaiCount = 0;
-let audioPlayer = null;
+let ytPlayer = null;
+let progressInterval = null;
 let toastTimeout = null;
 
-// ══ 3. DOM INITIALIZATION ══
+// ══ 3. DOM LOADED INITIALIZATION ══
 document.addEventListener('DOMContentLoaded', () => {
-  audioPlayer = document.getElementById('main-audio-player');
-  
   initClock();
   initVisitors();
-  initAudioEngine();
   initEventListeners();
-
-  // Initial UI Setup
-  loadTrack(0, false);
+  loadYouTubeAPI();
 });
 
-// ══ 4. NATIVE AUDIO ENGINE ══
-function initAudioEngine() {
-  if (!audioPlayer) return;
-
-  // Audio Events
-  audioPlayer.addEventListener('play', () => updatePlayBtnUI(true));
-  audioPlayer.addEventListener('pause', () => updatePlayBtnUI(false));
-  audioPlayer.addEventListener('ended', () => nextTrack());
-
-  audioPlayer.addEventListener('timeupdate', () => {
-    if (!audioPlayer.duration) return;
-    const cur = audioPlayer.currentTime || 0;
-    const dur = audioPlayer.duration || 1;
-    const pct = (cur / dur) * 100;
-
-    const progressBar = document.getElementById('progress-bar');
-    const timeCurrEl = document.getElementById('time-curr');
-    const timeDurEl = document.getElementById('time-dur');
-
-    if (progressBar) progressBar.style.width = `${pct}%`;
-    if (timeCurrEl) timeCurrEl.innerText = formatTime(cur);
-    if (timeDurEl && !isNaN(dur)) timeDurEl.innerText = formatTime(dur);
-  });
-
-  audioPlayer.addEventListener('error', () => {
-    console.warn("Audio load error, skipping to next track...");
-    setTimeout(() => { nextTrack(); }, 500);
-  });
+// ══ 4. YOUTUBE API ENGINE ══
+function loadYouTubeAPI() {
+  if (window.YT && window.YT.Player) {
+    onYouTubeIframeAPIReady();
+    return;
+  }
+  const tag = document.createElement('script');
+  tag.src = "https://www.youtube.com/iframe_api";
+  const firstScriptTag = document.getElementsByTagName('script')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 }
 
-function loadTrack(index, autoPlay = true) {
-  currentTrackIndex = index;
-  const track = playlist[currentTrackIndex];
+window.onYouTubeIframeAPIReady = function () {
+  ytPlayer = new YT.Player('yt-audio-player', {
+    events: {
+      'onReady': onPlayerReady,
+      'onStateChange': onPlayerStateChange,
+      'onError': onPlayerError
+    }
+  });
+};
 
-  // UI Update
+function onPlayerReady() {
+  updateTrackUI(currentTrackIndex);
+}
+
+function onPlayerStateChange(event) {
+  if (event.data === YT.PlayerState.PLAYING) {
+    isPlaying = true;
+    updatePlayBtnUI(true);
+    startSeekLoop();
+  } else if (event.data === YT.PlayerState.PAUSED) {
+    isPlaying = false;
+    updatePlayBtnUI(false);
+    stopSeekLoop();
+  } else if (event.data === YT.PlayerState.ENDED) {
+    nextTrack();
+  }
+}
+
+// Auto-Skip Error Handler (Prevents player freeze)
+function onPlayerError(event) {
+  console.warn("YouTube Track Blocked/Error Code:", event.data, "— Skipping to next...");
+  setTimeout(() => { nextTrack(); }, 500);
+}
+
+function updateTrackUI(index) {
+  const track = playlist[index];
   const titleEl = document.getElementById('track-title');
   const artistEl = document.getElementById('track-artist');
   const artEl = document.getElementById('track-art');
 
   if (titleEl) titleEl.innerText = track.title;
   if (artistEl) artistEl.innerText = track.artist;
-  if (artEl) artEl.src = track.art;
+  if (artEl) {
+    artEl.style.transition = "opacity 0.2s ease";
+    artEl.style.opacity = "0.3";
+    setTimeout(() => {
+      artEl.src = track.art;
+      artEl.style.opacity = "1";
+    }, 150);
+  }
+}
 
-  // Audio Load
-  if (audioPlayer) {
-    audioPlayer.src = track.audioUrl;
-    audioPlayer.load();
-    if (autoPlay) {
-      audioPlayer.play().catch(() => {});
+function loadAndPlayTrack(index) {
+  currentTrackIndex = index;
+  updateTrackUI(currentTrackIndex);
+
+  const track = playlist[currentTrackIndex];
+  if (ytPlayer && typeof ytPlayer.loadVideoById === 'function') {
+    ytPlayer.loadVideoById(track.youtubeId);
+  } else {
+    const iframe = document.getElementById('yt-audio-player');
+    if (iframe) {
+      iframe.src = `https://www.youtube.com/embed/${track.youtubeId}?enablejsapi=1&autoplay=1&controls=0&disablekb=1&fs=0&iv_load_policy=3&modestbranding=1&rel=0&playsinline=1`;
     }
   }
 }
 
 function togglePlay() {
-  if (!audioPlayer) return;
-  if (audioPlayer.paused) {
-    audioPlayer.play().catch(() => {});
+  if (!ytPlayer || typeof ytPlayer.getPlayerState !== 'function') {
+    loadAndPlayTrack(currentTrackIndex);
+    return;
+  }
+  const state = ytPlayer.getPlayerState();
+  if (state === YT.PlayerState.PLAYING) {
+    ytPlayer.pauseVideo();
   } else {
-    audioPlayer.pause();
+    ytPlayer.playVideo();
   }
 }
 
 function nextTrack() {
   const nextIdx = (currentTrackIndex + 1) % playlist.length;
-  loadTrack(nextIdx, true);
+  loadAndPlayTrack(nextIdx);
 }
 
 function prevTrack() {
   const prevIdx = (currentTrackIndex - 1 + playlist.length) % playlist.length;
-  loadTrack(prevIdx, true);
+  loadAndPlayTrack(prevIdx);
 }
 
 function updatePlayBtnUI(playing) {
@@ -161,6 +194,30 @@ function updatePlayBtnUI(playing) {
   }
 }
 
+// ══ 5. SEEKBAR LOOP ══
+function startSeekLoop() {
+  stopSeekLoop();
+  progressInterval = setInterval(() => {
+    if (ytPlayer && ytPlayer.getCurrentTime && ytPlayer.getDuration) {
+      const cur = ytPlayer.getCurrentTime() || 0;
+      const dur = ytPlayer.getDuration() || 1;
+      const pct = Math.min(100, Math.max(0, (cur / dur) * 100));
+
+      const progressBar = document.getElementById('progress-bar');
+      const timeCurrEl = document.getElementById('time-curr');
+      const timeDurEl = document.getElementById('time-dur');
+
+      if (progressBar) progressBar.style.width = `${pct}%`;
+      if (timeCurrEl) timeCurrEl.innerText = formatTime(cur);
+      if (timeDurEl && dur > 1) timeDurEl.innerText = formatTime(dur);
+    }
+  }, 300);
+}
+
+function stopSeekLoop() {
+  if (progressInterval) clearInterval(progressInterval);
+}
+
 function formatTime(seconds) {
   if (isNaN(seconds)) return "0:00";
   const mins = Math.floor(seconds / 60);
@@ -168,7 +225,7 @@ function formatTime(seconds) {
   return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
 }
 
-// ══ 5. EVENT LISTENERS ══
+// ══ 6. EVENT LISTENERS ══
 function initEventListeners() {
   const playBtn = document.getElementById('play-btn');
   const prevBtn = document.getElementById('prev-btn');
@@ -184,11 +241,15 @@ function initEventListeners() {
 
   if (seekContainer) {
     seekContainer.onclick = (e) => {
-      if (!audioPlayer || !audioPlayer.duration) return;
+      if (!ytPlayer || !ytPlayer.getDuration) return;
       const rect = seekContainer.getBoundingClientRect();
       const clickX = e.clientX - rect.left;
-      const pct = clickX / rect.width;
-      audioPlayer.currentTime = pct * audioPlayer.duration;
+      const width = rect.width;
+      const duration = ytPlayer.getDuration();
+      if (duration > 0) {
+        const seekTime = (clickX / width) * duration;
+        ytPlayer.seekTo(seekTime, true);
+      }
     };
   }
 
@@ -236,15 +297,17 @@ function initEventListeners() {
   }
 }
 
-// ══ 6. UTILS ══
+// ══ 7. UTILS ══
 function initClock() {
-  setInterval(() => {
+  function updateClock() {
     const clockEl = document.getElementById('clock');
     if (clockEl) {
       const options = { timeZone: 'Asia/Karachi', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true };
       clockEl.innerText = new Date().toLocaleTimeString('en-US', options);
     }
-  }, 1000);
+  }
+  setInterval(updateClock, 1000);
+  updateClock();
 }
 
 function initVisitors() {
