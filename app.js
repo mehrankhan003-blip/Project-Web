@@ -399,22 +399,3 @@ function startSeekLoop() {
     }
   }, 300);
 }
-
-// Vector Icon Motion Engine
-const chaiPin = document.getElementById('chai-pin');
-
-function startSeekLoop() {
-  stopSeekLoop();
-  progressInterval = setInterval(() => {
-    if (ytPlayer && ytPlayer.getCurrentTime && ytPlayer.getDuration) {
-      const cur = ytPlayer.getCurrentTime() || 0;
-      const dur = ytPlayer.getDuration() || 1;
-      const pct = Math.min(100, Math.max(0, (cur / dur) * 100));
-      
-      if (progressBar) progressBar.style.width = `${pct}%`;
-      if (chaiPin) chaiPin.style.left = `${pct}%`;
-      if (timeCurrEl) timeCurrEl.innerText = formatTime(cur);
-      if (timeDurEl) timeDurEl.innerText = formatTime(dur);
-    }
-  }, 300);
-}
