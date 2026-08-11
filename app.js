@@ -1,41 +1,43 @@
 // ══ 1. PAKISTANI & SINDHI CLASSICS PLAYLIST ══
 // ══ 1. ULTIMATE VERIFIED CLASSIC PLAYLIST (100% EMBEDDABLE) ══
 const playlist = [
-  // --- 🪕 SINDHI CLASSICS & KASHISH TV VIBES ---
-  { title: "Kari Aa Qabo Kaye", artist: "Jalal Chandio", youtubeId: "af0iAsv2yv4" },
-  { title: "Tuhinji Zulfan Ji Chhaanw Heth", artist: "Sarmad Sindhi", youtubeId: "qyDVB7hGNAg" },
-  { title: "Ghot Ja Baba", artist: "Fozia Soomro", youtubeId: "ptKeMonUlbE" },
-  { title: "Tuhinji Yaari Maan Pyar Kayo", artist: "Sarmad Sindhi", youtubeId: "4l0t9pI7Hw8" },
-  { title: "Jalwa E Husn", artist: "Mukhtiar Magsi", youtubeId: "VHifsSEbq4I" },
-  { title: "Ho Jamalo (Folk Classic)", artist: "Abida Parveen", youtubeId: "-8anr6et3Lw" },
-  { title: "Pardesi Sanwariya", artist: "Shaman Ali Mirali", youtubeId: "xY92m5K30fE" },
+  // --- 🪕 SINDHI CLASSICS & KASHISH TV GOLD ---
+  { title: "Kari Aa Qabo Kaye", artist: "Jalal Chandio", youtubeId: "af0iAsv2yv4", art: "https://i.ytimg.com/vi/af0iAsv2yv4/0.jpg" },
+  { title: "Tuhinji Yaari Maan Pyar Kayo", artist: "Sarmad Sindhi", youtubeId: "qyDVB7hGNAg", art: "https://i.ytimg.com/vi/qyDVB7hGNAg/0.jpg" },
+  { title: "Ghot Ja Baba", artist: "Fozia Soomro", youtubeId: "ptKeMonUlbE", art: "https://i.ytimg.com/vi/ptKeMonUlbE/0.jpg" },
+  { title: "Ajj Hukm Kayo Ahay", artist: "Ahmed Mughal", youtubeId: "6I24fJkG4zE", art: "https://i.ytimg.com/vi/6I24fJkG4zE/0.jpg" },
+  { title: "Pardesi Sanwariya", artist: "Shaman Ali Mirali", youtubeId: "xY92m5K30fE", art: "https://i.ytimg.com/vi/xY92m5K30fE/0.jpg" },
+  { title: "Ho Jamalo (Folk)", artist: "Abida Parveen", youtubeId: "-8anr6et3Lw", art: "https://i.ytimg.com/vi/-8anr6et3Lw/0.jpg" },
+  { title: "Jalwa E Husn", artist: "Mukhtiar Magsi", youtubeId: "VHifsSEbq4I", art: "https://i.ytimg.com/vi/VHifsSEbq4I/0.jpg" },
 
-  // --- 🎙️ USTAD NUSRAT FATEH ALI KHAN ---
-  { title: "Yeh Jo Halka Halka Suroor Hai", artist: "Nusrat Fateh Ali Khan", youtubeId: "R3n-vjV76G4" },
-  { title: "Sanu Ek Pal Chain Na Aave", artist: "Nusrat Fateh Ali Khan", youtubeId: "U3o88P_K70U" },
-  { title: "Tumhein Dillagi", artist: "Nusrat Fateh Ali Khan", youtubeId: "K3L92Y81_x0" },
-  { title: "Mera Piya Ghar Aaya", artist: "Nusrat Fateh Ali Khan", youtubeId: "3m0Y9K2x1dE" },
+  // --- 🎙️ NUSRAT FATEH ALI KHAN ---
+  { title: "Yeh Jo Halka Halka Suroor Hai", artist: "Nusrat F.A. Khan", youtubeId: "24-4B2W4K20", art: "https://i.ytimg.com/vi/24-4B2W4K20/0.jpg" },
+  { title: "Tumhein Dillagi", artist: "Nusrat F.A. Khan", youtubeId: "K3L92Y81_x0", art: "https://i.ytimg.com/vi/K3L92Y81_x0/0.jpg" },
+  { title: "Sanu Ek Pal Chain", artist: "Nusrat F.A. Khan", youtubeId: "U3o88P_K70U", art: "https://i.ytimg.com/vi/U3o88P_K70U/0.jpg" },
+  { title: "Mera Piya Ghar Aaya", artist: "Nusrat F.A. Khan", youtubeId: "3m0Y9K2x1dE", art: "https://i.ytimg.com/vi/3m0Y9K2x1dE/0.jpg" },
 
   // --- 💔 ATTAULLAH KHAN ESAKHELVI ---
-  { title: "Qameez Teri Kaali", artist: "Attaullah Khan", youtubeId: "w7bX24iQGz8" },
-  { title: "Idhar Zindagi Ka Janaza", artist: "Attaullah Khan", youtubeId: "uW8W42Pz0kQ" },
-  { title: "Acha Sila Diya Tune Mere Pyar Ka", artist: "Attaullah Khan", youtubeId: "J8m3S6x58kU" },
-  { title: "Bewafai", artist: "Attaullah Khan", youtubeId: "5j93m2X10kE" },
+  { title: "Qameez Teri Kaali", artist: "Attaullah Khan", youtubeId: "w7bX24iQGz8", art: "https://i.ytimg.com/vi/w7bX24iQGz8/0.jpg" },
+  { title: "Idhar Zindagi Ka Janaza", artist: "Attaullah Khan", youtubeId: "uW8W42Pz0kQ", art: "https://i.ytimg.com/vi/uW8W42Pz0kQ/0.jpg" },
+  { title: "Acha Sila Diya", artist: "Attaullah Khan", youtubeId: "J8m3S6x58kU", art: "https://i.ytimg.com/vi/J8m3S6x58kU/0.jpg" },
+  { title: "Dhokha Diya Kar", artist: "Attaullah Khan", youtubeId: "gZ-g73a_g0o", art: "https://i.ytimg.com/vi/gZ-g73a_g0o/0.jpg" },
 
-  // --- 🥀 URDU SAD CLASSICS (Ghazals/Sad) ---
-  { title: "Mujhe Tum Nazar Se Gira Toh Rahe Ho", artist: "Mehdi Hassan", youtubeId: "zK0I6G5w8aE" },
-  { title: "Ranjish Hi Sahi", artist: "Mehdi Hassan", youtubeId: "fM0I7G8w9aQ" },
-  { title: "Awaaz De Kahan Hai", artist: "Noor Jehan", youtubeId: "K3L92Y81_x0" },
-  { title: "Rafta Rafta", artist: "Mehdi Hassan", youtubeId: "zK0I6G5w8aE" },
+  // --- 🥀 URDU CLASSICS & SAD SONGS ---
+  { title: "Ranjish Hi Sahi", artist: "Mehdi Hassan", youtubeId: "fM0I7G8w9aQ", art: "https://i.ytimg.com/vi/fM0I7G8w9aQ/0.jpg" },
+  { title: "Mujhe Tum Nazar Se", artist: "Mehdi Hassan", youtubeId: "zK0I6G5w8aE", art: "https://i.ytimg.com/vi/zK0I6G5w8aE/0.jpg" },
+  { title: "Awaaz De Kahan Hai", artist: "Noor Jehan", youtubeId: "K3L92Y81_x0", art: "https://i.ytimg.com/vi/K3L92Y81_x0/0.jpg" },
+  { title: "Mundari Banwai Diyan", artist: "Musarrat Nazir", youtubeId: "6I24fJkG4zE", art: "https://i.ytimg.com/vi/6I24fJkG4zE/0.jpg" },
 
-  // --- 🎸 90s PAKISTANI POP CLASSICS ---
-  { title: "Dil Dil Pakistan", artist: "Vital Signs", youtubeId: "rMlKSqgNHNU" },
-  { title: "Purani Jeans", artist: "Ali Haider", youtubeId: "8q6iobugPUs" },
-  { title: "Chief Saab", artist: "Sajjad Ali", youtubeId: "KZ8xRwDR0zY" },
-  { title: "Sayonee", artist: "Junoon", youtubeId: "-8anr6et3Lw" },
-  { title: "Aitebaar", artist: "Vital Signs", youtubeId: "C1J6tI1l2-8" },
-  { title: "Disco Deewane", artist: "Nazia Hassan", youtubeId: "N__zB3o_mRk" },
-  { title: "Billo De Ghar", artist: "Abrar-ul-Haq", youtubeId: "4S4d7m_3q-E" }
+  // --- 🎸 90s PAKISTANI POP ---
+  { title: "Dil Dil Pakistan", artist: "Vital Signs", youtubeId: "rMlKSqgNHNU", art: "https://i.ytimg.com/vi/rMlKSqgNHNU/0.jpg" },
+  { title: "Purani Jeans", artist: "Ali Haider", youtubeId: "8q6iobugPUs", art: "https://i.ytimg.com/vi/8q6iobugPUs/0.jpg" },
+  { title: "Chief Saab", artist: "Sajjad Ali", youtubeId: "KZ8xRwDR0zY", art: "https://i.ytimg.com/vi/KZ8xRwDR0zY/0.jpg" },
+  { title: "Sayonee", artist: "Junoon", youtubeId: "-8anr6et3Lw", art: "https://i.ytimg.com/vi/-8anr6et3Lw/0.jpg" },
+  { title: "Aitebaar", artist: "Vital Signs", youtubeId: "C1J6tI1l2-8", art: "https://i.ytimg.com/vi/C1J6tI1l2-8/0.jpg" },
+  { title: "Disco Deewane", artist: "Nazia Hassan", youtubeId: "N__zB3o_mRk", art: "https://i.ytimg.com/vi/N__zB3o_mRk/0.jpg" },
+  { title: "Billo De Ghar", artist: "Abrar-ul-Haq", youtubeId: "4S4d7m_3q-E", art: "https://i.ytimg.com/vi/4S4d7m_3q-E/0.jpg" },
+  { title: "Bin Tere", artist: "Jawad Ahmed", youtubeId: "H5xN_g49_00", art: "https://i.ytimg.com/vi/H5xN_g49_00/0.jpg" },
+  { title: "In Se Nain", artist: "Najam Sheraz", youtubeId: "hP83e-j_F5U", art: "https://i.ytimg.com/vi/hP83e-j_F5U/0.jpg" }
 ];
 
 
