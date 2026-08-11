@@ -129,56 +129,62 @@
       </span>
     </div>
 
-    <!-- PAN WALA EXACT REPLICA PLAYER -->
-    <div class="w-full max-w-lg bg-[#21140A]/90 backdrop-blur-xl border border-amber-900/40 rounded-[28px] p-4 shadow-2xl relative overflow-hidden">
-      
-      <div class="flex items-center gap-4">
-        <!-- Vinyl Disc (Left Side) -->
-        <div class="relative w-16 h-16 sm:w-20 sm:h-20 rounded-full overflow-hidden shrink-0 shadow-2xl border border-amber-500/20">
-          <img id="track-art" src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=300&auto=format&fit=crop" class="w-full h-full object-cover vinyl-spin vinyl-paused" alt="Album Disc" />
-          <div class="absolute inset-0 m-auto w-4 h-4 bg-zinc-950 border-2 border-amber-500/60 rounded-full shadow-inner"></div>
-        </div>
+<!-- PAN WALA PLAYER CARD -->
+<div class="w-full max-w-lg bg-[#21140A]/90 backdrop-blur-xl border border-amber-900/40 rounded-[28px] p-4 shadow-2xl relative overflow-hidden">
+  
+  <div class="flex items-center gap-4">
+    <!-- Vinyl Disc (Left Side) -->
+    <div class="relative w-16 h-16 sm:w-20 sm:h-20 rounded-full overflow-hidden shrink-0 shadow-2xl border border-amber-500/20">
+      <img id="track-art" src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=300&auto=format&fit=crop" class="w-full h-full object-cover vinyl-spin vinyl-paused" alt="Album Disc" />
+      <div class="absolute inset-0 m-auto w-4 h-4 bg-zinc-950 border-2 border-amber-500/60 rounded-full shadow-inner"></div>
+    </div>
 
-        <!-- Track Info & Progress Bar (Center) -->
-        <div class="flex-1 overflow-hidden text-right space-y-1.5" dir="rtl">
-          <h2 id="track-title" class="font-sans font-bold text-base sm:text-lg text-white truncate leading-snug">
-            Jeeta Tha Jiske Liye
-          </h2>
-          <p id="track-artist" class="font-sans text-xs text-white/60 truncate dir-ltr text-right">
-            Vital Signs • Dil Dil Pakistan
-          </p>
+    <!-- Track Info & Progress Bar (Center) -->
+    <div class="flex-1 overflow-hidden text-right space-y-1.5" dir="rtl">
+      <h2 id="track-title" class="font-sans font-bold text-base sm:text-lg text-white truncate leading-snug">
+        Dil Dil Pakistan
+      </h2>
+      <p id="track-artist" class="font-sans text-xs text-white/60 truncate text-right">
+        Vital Signs
+      </p>
 
-          <!-- White Progress Bar -->
-          <div class="space-y-1 pt-1">
-            <div id="seek-container" class="w-full bg-white/20 hover:bg-white/30 rounded-full h-1 overflow-hidden cursor-pointer transition">
-              <div id="progress-bar" class="bg-white h-full w-0 rounded-full transition-all duration-150"></div>
-            </div>
-            <div class="flex justify-start text-[11px] font-mono text-white/50 dir-ltr gap-1">
-              <span id="time-curr">0:00</span>
-              <span>/</span>
-              <span id="time-dur">0:00</span>
-            </div>
+      <!-- Progress Bar (Explicit LTR direction for correct L-to-R seeking) -->
+      <div class="space-y-1 pt-1" dir="ltr">
+        <div id="seek-container" class="w-full bg-white/20 hover:bg-white/30 rounded-full h-2 overflow-visible cursor-pointer relative flex items-center">
+          <!-- White Progress Fill -->
+          <div id="progress-bar" class="bg-white h-full w-0 rounded-full transition-all duration-150 relative"></div>
+          
+          <!-- Moving Lala Chai Pin Avatar -->
+          <div id="chai-pin" class="absolute -top-3.5 -ml-3 text-lg transition-all duration-150 select-none pointer-events-none drop-shadow-md" style="left: 0%;">
+            ☕
           </div>
         </div>
-
-        <!-- Player Controls (Right Side) -->
-        <div class="flex items-center gap-2 dir-ltr shrink-0">
-          <button id="prev-btn" class="text-white/70 hover:text-white active:scale-90 transition text-sm p-1">
-            ⏮
-          </button>
-
-          <!-- Big White Play Circle -->
-          <button id="play-btn" class="w-12 h-12 sm:w-13 sm:h-13 rounded-full bg-white text-black font-bold shadow-2xl hover:scale-105 active:scale-95 transition flex items-center justify-center text-lg pl-0.5">
-            ▶
-          </button>
-
-          <button id="next-btn" class="text-white/70 hover:text-white active:scale-90 transition text-sm p-1">
-            ⏭
-          </button>
+        
+        <div class="flex justify-between text-[11px] font-mono text-white/50 dir-ltr pt-0.5">
+          <span id="time-curr">0:00</span>
+          <span>/</span>
+          <span id="time-dur">0:00</span>
         </div>
       </div>
-
     </div>
+
+    <!-- Player Controls (Right Side) -->
+    <div class="flex items-center gap-2 dir-ltr shrink-0">
+      <button id="prev-btn" class="text-white/70 hover:text-white active:scale-90 transition text-sm p-1">
+        ⏮
+      </button>
+
+      <button id="play-btn" class="w-12 h-12 sm:w-13 sm:h-13 rounded-full bg-white text-black font-bold shadow-2xl hover:scale-105 active:scale-95 transition flex items-center justify-center text-lg pl-0.5">
+        ▶
+      </button>
+
+      <button id="next-btn" class="text-white/70 hover:text-white active:scale-90 transition text-sm p-1">
+        ⏭
+      </button>
+    </div>
+  </div>
+
+</div>
     
 
     <!-- ACTION BUTTONS (CHAI BUTTON & SHARE) -->
