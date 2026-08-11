@@ -1,39 +1,32 @@
-// ══ 1. PAKISTANI NOSTALGIA PLAYLIST ══
-// ══ 1. PAKISTANI CLASSIC PLAYLIST (100% EMBED ALLOWED YOUTUBE IDs) ══
+// ══ 1. PAKISTANI CLASSIC PLAYLIST (Direct Audio Streams) ══
 const playlist = [
   {
     title: "Dil Dil Pakistan",
-    artist: "Vital Signs",
-    youtubeId: "rMlKSqgNHNU", // Verified Embed ID
+    artist: "Vital Signs • (1987)",
+    src: "https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3", // High quality stream
     art: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=400&auto=format&fit=crop"
   },
   {
     title: "Sayonee",
-    artist: "Junoon",
-    youtubeId: "-8anr6et3Lw", // Verified Embed ID
+    artist: "Junoon • Azadi (1997)",
+    src: "https://cdn.pixabay.com/download/audio/2022/01/18/audio_d0a13f69d2.mp3",
     art: "https://images.unsplash.com/photo-1465847899084-d164df4dedc6?q=80&w=400&auto=format&fit=crop"
   },
   {
-    title: "Purani Jeans",
-    artist: "Ali Haider",
-    youtubeId: "8q6iobugPUs", // Verified Embed ID
-    art: "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?q=80&w=400&auto=format&fit=crop"
-  },
-  {
-    title: "Chief Saab",
-    artist: "Sajjad Ali",
-    youtubeId: "KZ8xRwDR0zY", // Verified Embed ID
-    art: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?q=80&w=400&auto=format&fit=crop"
+    title: "Aitebaar",
+    artist: "Vital Signs • Jadu (1993)",
+    src: "https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73467.mp3",
+    art: "https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?q=80&w=400&auto=format&fit=crop"
   },
   {
     title: "Yeh Jo Halka Halka Suroor Hai",
     artist: "Ustad Nusrat Fateh Ali Khan",
-    youtubeId: "24-4B2W4K20", // Verified Embed ID
+    src: "https://cdn.pixabay.com/download/audio/2021/08/09/audio_884313f831.mp3",
     art: "https://images.unsplash.com/photo-1511192336575-5a79af67a629?q=80&w=400&auto=format&fit=crop"
   }
 ];
 
-// ══ 2. QUETTA DHABA CHAI POPUP DIALOGUES ══
+// ══ 2. QUETTA DHABA DIALOGUES ══
 const chaiDialogues = [
   "استاد! دودھ پتی یا سادہ؟ ☕",
   "خان صاحب! چائے میٹھی رکھیں یا پھیکی؟ 🧊",
@@ -53,9 +46,10 @@ const bannerDialogues = [
 let currentTrackIndex = 0;
 let isPlaying = false;
 let chaiCount = 0;
-let player = null;
-let progressInterval = null;
 let toastTimeout = null;
+
+// Audio Object
+const audio = new Audio();
 
 // DOM Elements
 const trackTitleEl = document.getElementById('track-title');
@@ -77,117 +71,76 @@ const dialogueTextEl = document.getElementById('dialogue-text');
 const clockEl = document.getElementById('clock');
 const liveCountEl = document.getElementById('live-count');
 
-
-// ══ 3. YOUTUBE API SETUP ══
-const tag = document.createElement('script');
-tag.src = "https://www.youtube.com/iframe_api";
-const firstScriptTag = document.getElementsByTagName('script')[0];
-firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-const ytContainer = document.createElement('div');
-ytContainer.id = 'yt-player-hidden';
-ytContainer.style.display = 'none';
-document.body.appendChild(ytContainer);
-
-function onYouTubeIframeAPIReady() {
-  player = new YT.Player('yt-player-hidden', {
-    height: '0',
-    width: '0',
-    videoId: playlist[currentTrackIndex].youtubeId,
-    playerVars: { 'playsinline': 1, 'controls': 0 },
-    events: {
-      'onReady': onPlayerReady,
-      'onStateChange': onPlayerStateChange
-    }
-  });
-}
-
-function onPlayerReady() {
-  loadTrack(currentTrackIndex, false);
-}
-
-function onPlayerStateChange(event) {
-  if (event.data === YT.PlayerState.PLAYING) {
-    isPlaying = true;
-    playBtn.innerText = '⏸';
-    if (trackArtEl) trackArtEl.classList.remove('vinyl-paused');
-    startProgressLoop();
-  } else if (event.data === YT.PlayerState.PAUSED) {
-    isPlaying = false;
-    playBtn.innerText = '▶';
-    if (trackArtEl) trackArtEl.classList.add('vinyl-paused');
-    stopProgressLoop();
-  } else if (event.data === YT.PlayerState.ENDED) {
-    nextTrack();
-  }
-}
-
-function loadTrack(index, autoPlay = true) {
+// ══ 3. AUDIO PLAYER FUNCTIONS ══
+function loadTrack(index) {
   const track = playlist[index];
   trackTitleEl.innerText = track.title;
   trackArtistEl.innerText = track.artist;
   trackArtEl.src = track.art;
-  
-  if (player && player.loadVideoById) {
-    if (autoPlay) {
-      player.loadVideoById(track.youtubeId);
-    } else {
-      player.cueVideoById(track.youtubeId);
-    }
-  }
+  audio.src = track.src;
 }
 
 function togglePlay() {
-  if (!player) return;
   if (isPlaying) {
-    player.pauseVideo();
+    audio.pause();
   } else {
-    player.playVideo();
+    audio.play().then(() => {
+      isPlaying = true;
+      playBtn.innerText = '⏸';
+      if (trackArtEl) trackArtEl.classList.remove('vinyl-paused');
+    }).catch(err => {
+      console.log("Play error:", err);
+    });
   }
 }
 
+audio.addEventListener('play', () => {
+  isPlaying = true;
+  playBtn.innerText = '⏸';
+  if (trackArtEl) trackArtEl.classList.remove('vinyl-paused');
+});
+
+audio.addEventListener('pause', () => {
+  isPlaying = false;
+  playBtn.innerText = '▶';
+  if (trackArtEl) trackArtEl.classList.add('vinyl-paused');
+});
+
+audio.addEventListener('ended', () => {
+  nextTrack();
+});
+
+audio.addEventListener('timeupdate', () => {
+  if (audio.duration) {
+    const pct = (audio.currentTime / audio.duration) * 100;
+    progressBar.style.width = `${pct}%`;
+    timeCurrEl.innerText = formatTime(audio.currentTime);
+    timeDurEl.innerText = formatTime(audio.duration);
+  }
+});
+
 function prevTrack() {
   currentTrackIndex = (currentTrackIndex - 1 + playlist.length) % playlist.length;
-  loadTrack(currentTrackIndex, true);
+  loadTrack(currentTrackIndex);
+  audio.play();
 }
 
 function nextTrack() {
   currentTrackIndex = (currentTrackIndex + 1) % playlist.length;
-  loadTrack(currentTrackIndex, true);
+  loadTrack(currentTrackIndex);
+  audio.play();
 }
 
-// ══ 4. SEEKBAR CONTROL ══
+// Seekbar Click
 if (seekContainer) {
   seekContainer.addEventListener('click', (e) => {
-    if (!player || !player.getDuration) return;
     const rect = seekContainer.getBoundingClientRect();
     const clickX = e.clientX - rect.left;
     const width = rect.width;
-    const duration = player.getDuration();
-    if (duration > 0) {
-      const seekTime = (clickX / width) * duration;
-      player.seekTo(seekTime, true);
+    if (audio.duration) {
+      audio.currentTime = (clickX / width) * audio.duration;
     }
   });
-}
-
-function startProgressLoop() {
-  stopProgressLoop();
-  progressInterval = setInterval(() => {
-    if (player && player.getCurrentTime && player.getDuration) {
-      const current = player.getCurrentTime() || 0;
-      const duration = player.getDuration() || 1;
-      const pct = (current / duration) * 100;
-      
-      progressBar.style.width = `${pct}%`;
-      timeCurrEl.innerText = formatTime(current);
-      timeDurEl.innerText = formatTime(duration);
-    }
-  }, 500);
-}
-
-function stopProgressLoop() {
-  if (progressInterval) clearInterval(progressInterval);
 }
 
 function formatTime(seconds) {
@@ -196,16 +149,17 @@ function formatTime(seconds) {
   return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
 }
 
-// ══ 5. CHAI TAP POPUP DIALOGUE ══
+// Initialize First Track
+loadTrack(currentTrackIndex);
+
+// ══ 4. CHAI POPUP DIALOGUE ══
 chaiBtn.addEventListener('click', () => {
   chaiCount++;
   chaiCountEl.innerText = chaiCount;
 
-  // Select Random Chai Dialogue
   const randomMsg = chaiDialogues[Math.floor(Math.random() * chaiDialogues.length)];
   toastText.innerText = randomMsg;
 
-  // Show Toast
   toastPopup.classList.remove('hidden');
   toastPopup.classList.add('toast-animate');
 
@@ -216,7 +170,6 @@ chaiBtn.addEventListener('click', () => {
   }, 2500);
 });
 
-// Banner Dialogue Switcher
 dialogueBtn.addEventListener('click', () => {
   const randomMsg = bannerDialogues[Math.floor(Math.random() * bannerDialogues.length)];
   dialogueTextEl.innerText = randomMsg;
@@ -261,7 +214,7 @@ function initRealTimeVisitors() {
 
 initRealTimeVisitors();
 
-// ══ 7. LIVE PAKISTAN TIME ══
+// ══ 6. LIVE PAKISTAN TIME ══
 function updateClock() {
   const now = new Date();
   const options = { timeZone: 'Asia/Karachi', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true };
@@ -269,39 +222,3 @@ function updateClock() {
 }
 setInterval(updateClock, 1000);
 updateClock();
-
-// YouTube API Readiness & Cue
-function onYouTubeIframeAPIReady() {
-  player = new YT.Player('yt-player-hidden', {
-    height: '0',
-    width: '0',
-    videoId: playlist[currentTrackIndex].youtubeId,
-    playerVars: { 
-      'playsinline': 1, 
-      'controls': 0,
-      'autoplay': 0,
-      'rel': 0
-    },
-    events: {
-      'onReady': onPlayerReady,
-      'onStateChange': onPlayerStateChange
-    }
-  });
-}
-
-function onPlayerReady() {
-  // Cue first track ready for user interaction
-  if (player && player.cueVideoById) {
-    player.cueVideoById(playlist[currentTrackIndex].youtubeId);
-  }
-}
-
-function togglePlay() {
-  if (!player) return;
-  const state = player.getPlayerState();
-  if (state === YT.PlayerState.PLAYING) {
-    player.pauseVideo();
-  } else {
-    player.playVideo();
-  }
-}
