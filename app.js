@@ -129,21 +129,25 @@ function updateTrackUI(index) {
 }
 
 function loadAndPlayTrack(index) {
-  currentTrackIndex = index;
-  updateTrackUI(currentTrackIndex);
-
-  const targetId = playlist[currentTrackIndex].youtubeId;
-
-  if (ytPlayer && typeof ytPlayer.loadVideoById === 'function') {
-    ytPlayer.loadVideoById(targetId);
-  } else {
-    // Direct Fallback Reload
-    const iframe = document.getElementById('yt-audio-player');
-    if (iframe) {
-      iframe.src = `https://www.youtube.com/embed/${targetId}?enablejsapi=1&autoplay=1&controls=0&disablekb=1&fs=0&iv_load_policy=3&modestbranding=1&rel=0&playsinline=1`;
+    currentTrackIndex = index;
+    const track = playlist[index];
+    
+    // 1. Audio Load
+    if (ytPlayer && ytPlayer.loadVideoById) {
+        ytPlayer.loadVideoById(track.youtubeId);
+    } else {
+        const iframe = document.getElementById('yt-audio-player');
+        iframe.src = `https://www.youtube.com/embed/${track.youtubeId}?enablejsapi=1&autoplay=1&controls=0`;
     }
-  }
+
+    // 2. Title aur Artist Update (Audio load hone ke foran baad)
+    document.getElementById('track-title').innerText = track.title;
+    document.getElementById('track-artist').innerText = track.artist;
+    document.getElementById('track-art').src = track.art;
+    
+    console.log("Playing:", track.title); // Inspect Console mein check karein
 }
+
 
 function togglePlay() {
   if (!ytPlayer || !ytPlayer.getPlayerState) {
