@@ -28,17 +28,20 @@
   </script>
 
   <style>
-    /* Background Image & Overlay */
+    /* 📱 MOBILE BACKGROUND (Default for Small Screens) */
     .hero-bg-container {
-      background-image: linear-gradient(to bottom, rgba(15, 23, 42, 0.4), rgba(15, 23, 42, 0.65)), url('hero-bg.png');
+      background-image: linear-gradient(to bottom, rgba(15, 23, 42, 0.4), rgba(15, 23, 42, 0.65)), url('hero-mob.png');
       background-size: cover;
-      background-position: center bottom;
+      background-position: center center;
       background-repeat: no-repeat;
       background-attachment: scroll;
     }
 
+    /* 💻 DESKTOP & TABLET BACKGROUND (Switches automatically above 640px) */
     @media (min-width: 640px) {
       .hero-bg-container {
+        background-image: linear-gradient(to bottom, rgba(15, 23, 42, 0.4), rgba(15, 23, 42, 0.65)), url('hero-bg.png');
+        background-position: center bottom;
         background-attachment: fixed;
       }
     }
@@ -191,7 +194,7 @@
             ⏮
           </button>
 
-          <!-- Play/Pause Button (PAN WALA WHTE SQUARE ROUNDED) -->
+          <!-- Play/Pause Button (PAN WALA WHITE SQUARE ROUNDED) -->
           <button id="play-btn" class="w-11 h-11 sm:w-13 sm:h-13 rounded-2xl bg-white text-black font-bold shadow-2xl hover:scale-105 active:scale-95 transition flex items-center justify-center text-sm sm:text-lg pl-0.5">
             ▶
           </button>
@@ -230,7 +233,7 @@
     <span id="toast-text">استاد! ایک کڑک چائے اور پراٹھا لگانا!</span>
   </div>
 
-      <!-- HIDDEN IFRAME FOR YOUTUBE ENGINE -->
+  <!-- HIDDEN IFRAME FOR YOUTUBE ENGINE -->
   <div class="hidden-player-container" style="position: absolute; width: 1px; height: 1px; overflow: hidden; opacity: 0; pointer-events: none;">
     <iframe 
       id="yt-audio-player" 
@@ -239,8 +242,6 @@
       frameborder="0">
     </iframe>
   </div>
-
-
 
   <!-- FOOTER (Clean Pan Wala Style) -->
   <footer class="w-full text-center py-2 sm:py-3 bg-black/60 backdrop-blur-md text-[10px] sm:text-xs font-nastaliq text-white/50 border-t border-white/5 z-10">
