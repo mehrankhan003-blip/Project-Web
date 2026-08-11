@@ -230,18 +230,22 @@
     <span id="toast-text">استاد! ایک کڑک چائے اور پراٹھا لگانا!</span>
   </div>
 
-  <!-- HIDDEN IFRAME FOR SOUNDCLOUD PLAYER -->
-  <div class="hidden-player-container" style="position: absolute; width: 1px; height: 1px; overflow: hidden; opacity: 0; pointer-events: none;">
+    <!-- HIDDEN SOUNDCLOUD IFRAME -->
+  <div style="position: absolute; width: 1px; height: 1px; overflow: hidden; opacity: 0; pointer-events: none;">
     <iframe 
       id="sc-audio-player" 
-      src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1" 
+      src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/293" 
       allow="autoplay" 
       frameborder="0">
     </iframe>
   </div>
 
-    <!-- NATIVE AUDIO ENGINE (NO IFRAME / NO EMBED BLOCK) -->
-  <audio id="main-audio-player" preload="auto"></audio>
+  <!-- SOUNDCLOUD OFFICIAL WIDGET API -->
+  <script src="https://w.soundcloud.com/player/api.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
+
 
 
   <!-- FOOTER (Clean Pan Wala Style) -->
