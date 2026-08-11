@@ -187,12 +187,17 @@ function updatePlayBtnUI(playing) {
   const playBtn = document.getElementById('play-btn');
   const trackArtEl = document.getElementById('track-art');
 
-  if (playBtn) playBtn.innerText = playing ? '⏸' : '▶';
+  if (playBtn) {
+    // Pure Black Crisp Icons inside Pure White Circle
+    playBtn.innerHTML = playing ? '❚❚' : '▶';
+    playBtn.style.color = '#09090b'; // Pure dark black
+  }
   if (trackArtEl) {
     if (playing) trackArtEl.classList.remove('vinyl-paused');
     else trackArtEl.classList.add('vinyl-paused');
   }
 }
+
 
 // ══ 5. SEEKBAR LOOP ══
 function startSeekLoop() {
@@ -302,14 +307,14 @@ function initClock() {
   function updateClock() {
     const clockEl = document.getElementById('clock');
     if (clockEl) {
+      const now = new Date();
       const options = { timeZone: 'Asia/Karachi', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true };
-      clockEl.innerText = new Date().toLocaleTimeString('en-US', options);
+      clockEl.innerText = now.toLocaleTimeString('en-US', options);
     }
   }
   setInterval(updateClock, 1000);
   updateClock();
 }
-
 function initVisitors() {
   const liveCountEl = document.getElementById('live-count');
   if (liveCountEl) liveCountEl.innerText = "1";
