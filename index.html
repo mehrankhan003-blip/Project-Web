@@ -148,24 +148,28 @@
         Vital Signs
       </p>
 
-      <!-- Progress Bar (Explicit LTR direction for correct L-to-R seeking) -->
-      <div class="space-y-1 pt-1" dir="ltr">
-        <div id="seek-container" class="w-full bg-white/20 hover:bg-white/30 rounded-full h-2 overflow-visible cursor-pointer relative flex items-center">
-          <!-- White Progress Fill -->
-          <div id="progress-bar" class="bg-white h-full w-0 rounded-full transition-all duration-150 relative"></div>
-          
-          <!-- Moving Lala Chai Pin Avatar -->
-          <div id="chai-pin" class="absolute -top-3.5 -ml-3 text-lg transition-all duration-150 select-none pointer-events-none drop-shadow-md" style="left: 0%;">
-            ☕
-          </div>
-        </div>
-        
-        <div class="flex justify-between text-[11px] font-mono text-white/50 dir-ltr pt-0.5">
-          <span id="time-curr">0:00</span>
-          <span>/</span>
-          <span id="time-dur">0:00</span>
-        </div>
-      </div>
+<!-- Progress Bar Container (Dir LTR for proper left-to-right movement) -->
+<div class="space-y-1 pt-1" dir="ltr">
+  <div id="seek-container" class="w-full bg-white/20 hover:bg-white/30 rounded-full h-2 relative cursor-pointer flex items-center overflow-visible">
+    
+    <!-- White Progress Fill Line -->
+    <div id="progress-bar" class="bg-white h-full w-0 rounded-full relative transition-all duration-150"></div>
+    
+    <!-- Moving Chai Wala Lala Pin Avatar -->
+    <div id="chai-pin" class="absolute -top-3.5 -ml-3 z-20 flex items-center justify-center transition-all duration-150 select-none pointer-events-none drop-shadow-lg" style="left: 0%;">
+      <span class="bg-amber-900 border border-amber-400 text-xs px-1.5 py-0.5 rounded-full flex items-center gap-0.5 shadow-md transform hover:scale-110">
+        👨‍🍳☕
+      </span>
+    </div>
+
+  </div>
+  
+  <div class="flex justify-between text-[11px] font-mono text-white/50 dir-ltr pt-1">
+    <span id="time-curr">0:00</span>
+    <span>/</span>
+    <span id="time-dur">0:00</span>
+  </div>
+</div>
     </div>
 
     <!-- Player Controls (Right Side) -->
