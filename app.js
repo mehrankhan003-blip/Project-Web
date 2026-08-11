@@ -47,6 +47,7 @@ let chaiCount = 0;
 let ytPlayer = null;
 let progressInterval = null;
 let toastTimeout = null;
+let isUnlocked = false;
 
 // DOM Elements
 const trackTitleEl = document.getElementById('track-title');
@@ -68,22 +69,22 @@ const dialogueTextEl = document.getElementById('dialogue-text');
 const clockEl = document.getElementById('clock');
 const liveCountEl = document.getElementById('live-count');
 
-// ══ 3. PAN WALA EXACT YOUTUBE IFRAME ENGINE ══
-// Create hidden container for iframe if not exists
+// ══ 3. PAN WALA YOUTUBE ENGINE (ABORTION FIX) ══
 let hiddenDiv = document.getElementById('yt-player-container');
 if (!hiddenDiv) {
   hiddenDiv = document.createElement('div');
   hiddenDiv.id = 'yt-player-container';
-  hiddenDiv.style.position = 'absolute';
-  hiddenDiv.style.top = '-9999px';
-  hiddenDiv.style.left = '-9999px';
+  hiddenDiv.style.position = 'fixed';
+  hiddenDiv.style.bottom = '-999px';
+  hiddenDiv.style.right = '-999px';
   hiddenDiv.style.width = '1px';
   hiddenDiv.style.height = '1px';
+  hiddenDiv.style.opacity = '0.01';
   hiddenDiv.innerHTML = `<div id="yt-audio-player"></div>`;
   document.body.appendChild(hiddenDiv);
 }
 
-// Load YouTube Iframe API
+// Load API
 const tag = document.createElement('script');
 tag.src = "https://www.youtube.com/iframe_api";
 const firstScriptTag = document.getElementsByTagName('script')[0];
@@ -103,7 +104,8 @@ function onYouTubeIframeAPIReady() {
       'iv_load_policy': 3,
       'modestbranding': 1,
       'rel': 0,
-      'playsinline': 1
+      'playsinline': 1,
+      'origin': window.location.origin
     },
     events: {
       'onReady': onPlayerReady,
@@ -112,7 +114,7 @@ function onYouTubeIframeAPIReady() {
   });
 }
 
-function onPlayerReady(event) {
+function onPlayerReady() {
   updateTrackUI(currentTrackIndex);
 }
 
@@ -157,6 +159,13 @@ function togglePlay() {
   }
 }
 
+// Global User Gesture Unlock (Browser Security Fix)
+document.body.addEventListener('click', () => {
+  if (!isUnlocked && ytPlayer && ytPlayer.playVideo) {
+    isUnlocked = true;
+  }
+}, { once: true });
+
 function prevTrack() {
   const nextIdx = (currentTrackIndex - 1 + playlist.length) % playlist.length;
   loadAndPlayTrack(nextIdx);
@@ -167,7 +176,7 @@ function nextTrack() {
   loadAndPlayTrack(nextIdx);
 }
 
-// ══ 4. SEEKBAR LOOP & CONTROLS ══
+// ══ 4. SEEKBAR LOOP ══
 function startSeekLoop() {
   stopSeekLoop();
   progressInterval = setInterval(() => {
@@ -207,7 +216,7 @@ function formatTime(seconds) {
   return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
 }
 
-// ══ 5. CHAI DIALOGUE & EVENTS ══
+// ══ 5. CHAI DIALOGUES & EVENTS ══
 if (chaiBtn) {
   chaiBtn.addEventListener('click', () => {
     chaiCount++;
@@ -239,7 +248,6 @@ if (dialogueBtn) {
 if (playBtn) playBtn.addEventListener('click', togglePlay);
 if (prevBtn) prevBtn.addEventListener('click', prevTrack);
 if (nextBtn) nextBtn.addEventListener('click', nextTrack);
-
 // ══ 100% REAL LIVE VISITORS ENGINE (No Fake Numbers) ══
 function initRealTimeVisitors() {
   const liveCountEl = document.getElementById('live-count');
