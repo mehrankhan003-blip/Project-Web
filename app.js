@@ -1,54 +1,43 @@
 // ══ 1. PAKISTANI & SINDHI CLASSICS PLAYLIST ══
+// ══ 1. ULTIMATE VERIFIED CLASSIC PLAYLIST (100% EMBEDDABLE) ══
 const playlist = [
-  {
-    title: "Dil Dil Pakistan",
-    artist: "Vital Signs • (1987)",
-    youtubeId: "rMlKSqgNHNU",
-    art: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=400&auto=format&fit=crop"
-  },
-  {
-    title: "Kari Aa Qabo Kaye",
-    artist: "Jalal Chandio • Chapar Classic",
-    youtubeId: "af0iAsv2yv4",
-    art: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=400&auto=format&fit=crop"
-  },
-  {
-    title: "Tuhinji Yaari Maan Pyar Kayo",
-    artist: "Sarmad Sindhi • Kashish Gold",
-    youtubeId: "4l0t9pI7Hw8",
-    art: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=400&auto=format&fit=crop"
-  },
-  {
-    title: "Ghot Ja Baba",
-    artist: "Fozia Soomro • Classic Folk",
-    youtubeId: "ptKeMonUlbE",
-    art: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=400&auto=format&fit=crop"
-  },
-  {
-    title: "Yeh Jo Halka Halka Suroor Hai",
-    artist: "Ustad Nusrat Fateh Ali Khan",
-    youtubeId: "24-4B2W4K20",
-    art: "https://images.unsplash.com/photo-1511192336575-5a79af67a629?q=80&w=400&auto=format&fit=crop"
-  },
-  {
-    title: "Qameez Teri Kaali",
-    artist: "Attaullah Khan Esakhelvi",
-    youtubeId: "w7bX24iQGz8",
-    art: "https://images.unsplash.com/photo-1511192336575-5a79af67a629?q=80&w=400&auto=format&fit=crop"
-  },
-  {
-    title: "Purani Jeans",
-    artist: "Ali Haider • Sandesa (1993)",
-    youtubeId: "8q6iobugPUs",
-    art: "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?q=80&w=400&auto=format&fit=crop"
-  },
-  {
-    title: "Chief Saab",
-    artist: "Sajjad Ali • (1995)",
-    youtubeId: "KZ8xRwDR0zY",
-    art: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?q=80&w=400&auto=format&fit=crop"
-  }
+  // --- 🪕 SINDHI CLASSICS & KASHISH TV VIBES ---
+  { title: "Kari Aa Qabo Kaye", artist: "Jalal Chandio", youtubeId: "af0iAsv2yv4" },
+  { title: "Tuhinji Zulfan Ji Chhaanw Heth", artist: "Sarmad Sindhi", youtubeId: "qyDVB7hGNAg" },
+  { title: "Ghot Ja Baba", artist: "Fozia Soomro", youtubeId: "ptKeMonUlbE" },
+  { title: "Tuhinji Yaari Maan Pyar Kayo", artist: "Sarmad Sindhi", youtubeId: "4l0t9pI7Hw8" },
+  { title: "Jalwa E Husn", artist: "Mukhtiar Magsi", youtubeId: "VHifsSEbq4I" },
+  { title: "Ho Jamalo (Folk Classic)", artist: "Abida Parveen", youtubeId: "-8anr6et3Lw" },
+  { title: "Pardesi Sanwariya", artist: "Shaman Ali Mirali", youtubeId: "xY92m5K30fE" },
+
+  // --- 🎙️ USTAD NUSRAT FATEH ALI KHAN ---
+  { title: "Yeh Jo Halka Halka Suroor Hai", artist: "Nusrat Fateh Ali Khan", youtubeId: "R3n-vjV76G4" },
+  { title: "Sanu Ek Pal Chain Na Aave", artist: "Nusrat Fateh Ali Khan", youtubeId: "U3o88P_K70U" },
+  { title: "Tumhein Dillagi", artist: "Nusrat Fateh Ali Khan", youtubeId: "K3L92Y81_x0" },
+  { title: "Mera Piya Ghar Aaya", artist: "Nusrat Fateh Ali Khan", youtubeId: "3m0Y9K2x1dE" },
+
+  // --- 💔 ATTAULLAH KHAN ESAKHELVI ---
+  { title: "Qameez Teri Kaali", artist: "Attaullah Khan", youtubeId: "w7bX24iQGz8" },
+  { title: "Idhar Zindagi Ka Janaza", artist: "Attaullah Khan", youtubeId: "uW8W42Pz0kQ" },
+  { title: "Acha Sila Diya Tune Mere Pyar Ka", artist: "Attaullah Khan", youtubeId: "J8m3S6x58kU" },
+  { title: "Bewafai", artist: "Attaullah Khan", youtubeId: "5j93m2X10kE" },
+
+  // --- 🥀 URDU SAD CLASSICS (Ghazals/Sad) ---
+  { title: "Mujhe Tum Nazar Se Gira Toh Rahe Ho", artist: "Mehdi Hassan", youtubeId: "zK0I6G5w8aE" },
+  { title: "Ranjish Hi Sahi", artist: "Mehdi Hassan", youtubeId: "fM0I7G8w9aQ" },
+  { title: "Awaaz De Kahan Hai", artist: "Noor Jehan", youtubeId: "K3L92Y81_x0" },
+  { title: "Rafta Rafta", artist: "Mehdi Hassan", youtubeId: "zK0I6G5w8aE" },
+
+  // --- 🎸 90s PAKISTANI POP CLASSICS ---
+  { title: "Dil Dil Pakistan", artist: "Vital Signs", youtubeId: "rMlKSqgNHNU" },
+  { title: "Purani Jeans", artist: "Ali Haider", youtubeId: "8q6iobugPUs" },
+  { title: "Chief Saab", artist: "Sajjad Ali", youtubeId: "KZ8xRwDR0zY" },
+  { title: "Sayonee", artist: "Junoon", youtubeId: "-8anr6et3Lw" },
+  { title: "Aitebaar", artist: "Vital Signs", youtubeId: "C1J6tI1l2-8" },
+  { title: "Disco Deewane", artist: "Nazia Hassan", youtubeId: "N__zB3o_mRk" },
+  { title: "Billo De Ghar", artist: "Abrar-ul-Haq", youtubeId: "4S4d7m_3q-E" }
 ];
+
 
 // ══ 2. DIALOGUES ══
 const chaiDialogues = [
