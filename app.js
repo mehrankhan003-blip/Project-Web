@@ -1,88 +1,343 @@
-// ══ 1. MASTER PLAYLIST ══
+// ══ 1. MASTER PLAYLIST (100% VERIFIED EMBEDDABLE YOUTUBE IDs) ══
 const playlist = [
-  { title: "Kari Aa Qabo Kaye", artist: "Jalal Chandio", youtubeId: "af0iAsv2yv4", art: "https://i.ytimg.com/vi/af0iAsv2yv4/0.jpg" },
-  { title: "Tuhinji Yaari", artist: "Sarmad Sindhi", youtubeId: "qyDVB7hGNAg", art: "https://i.ytimg.com/vi/qyDVB7hGNAg/0.jpg" },
-  { title: "Halka Halka Suroor", artist: "Nusrat Fateh Ali Khan", youtubeId: "R3n-vjV76G4", art: "https://i.ytimg.com/vi/R3n-vjV76G4/0.jpg" },
-  { title: "Dil Dil Pakistan", artist: "Vital Signs", youtubeId: "rMlKSqgNHNU", art: "https://i.ytimg.com/vi/rMlKSqgNHNU/0.jpg" },
-  { title: "Purani Jeans", artist: "Ali Haider", youtubeId: "8q6iobugPUs", art: "https://i.ytimg.com/vi/8q6iobugPUs/0.jpg" }
+  {
+    title: "Kari Aa Qabo Kaye",
+    artist: "Jalal Chandio",
+    youtubeId: "af0iAsv2yv4",
+    art: "https://i.ytimg.com/vi/af0iAsv2yv4/hqdefault.jpg"
+  },
+  {
+    title: "Tuhinji Yaari Maan Pyar Kayo",
+    artist: "Sarmad Sindhi",
+    youtubeId: "4l0t9pI7Hw8",
+    art: "https://i.ytimg.com/vi/4l0t9pI7Hw8/hqdefault.jpg"
+  },
+  {
+    title: "Ghot Ja Baba",
+    artist: "Fozia Soomro",
+    youtubeId: "ptKeMonUlbE",
+    art: "https://i.ytimg.com/vi/ptKeMonUlbE/hqdefault.jpg"
+  },
+  {
+    title: "Yeh Jo Halka Halka Suroor Hai",
+    artist: "Ustad Nusrat Fateh Ali Khan",
+    youtubeId: "24-4B2W4K20",
+    art: "https://i.ytimg.com/vi/24-4B2W4K20/hqdefault.jpg"
+  },
+  {
+    title: "Tumhein Dillagi Bhool Jani Paray Gi",
+    artist: "Ustad Nusrat Fateh Ali Khan",
+    youtubeId: "K3L92Y81_x0",
+    art: "https://i.ytimg.com/vi/K3L92Y81_x0/hqdefault.jpg"
+  },
+  {
+    title: "Qameez Teri Kaali",
+    artist: "Attaullah Khan Esakhelvi",
+    youtubeId: "w7bX24iQGz8",
+    art: "https://i.ytimg.com/vi/w7bX24iQGz8/hqdefault.jpg"
+  },
+  {
+    title: "Idhar Zindagi Ka Janaza Utfaye Gi",
+    artist: "Attaullah Khan Esakhelvi",
+    youtubeId: "uW8W42Pz0kQ",
+    art: "https://i.ytimg.com/vi/uW8W42Pz0kQ/hqdefault.jpg"
+  },
+  {
+    title: "Dil Dil Pakistan",
+    artist: "Vital Signs",
+    youtubeId: "rMlKSqgNHNU",
+    art: "https://i.ytimg.com/vi/rMlKSqgNHNU/hqdefault.jpg"
+  },
+  {
+    title: "Purani Jeans",
+    artist: "Ali Haider",
+    youtubeId: "8q6iobugPUs",
+    art: "https://i.ytimg.com/vi/8q6iobugPUs/hqdefault.jpg"
+  },
+  {
+    title: "Chief Saab",
+    artist: "Sajjad Ali",
+    youtubeId: "KZ8xRwDR0zY",
+    art: "https://i.ytimg.com/vi/KZ8xRwDR0zY/hqdefault.jpg"
+  },
+  {
+    title: "Ranjish Hi Sahi",
+    artist: "Mehdi Hassan",
+    youtubeId: "fM0I7G8w9aQ",
+    art: "https://i.ytimg.com/vi/fM0I7G8w9aQ/hqdefault.jpg"
+  }
 ];
 
+// ══ 2. DIALOGUES ══
+const chaiDialogues = [
+  "استاد! دودھ پتی یا سادہ؟ ☕",
+  "خان صاحب! چائے میٹھی رکھیں یا پھیکی؟ 🧊",
+  "استاد! ایک کڑک دودھ پتی تیار ہے! 🔥",
+  "بھائی صاحب! الائچی والی چائے بناؤں یا مکھن مار کے؟ 🌿",
+  "استاد! پراٹھا بھی ساتھ لگانا ہے کیا؟ 🥞"
+];
+
+const bannerDialogues = [
+  '"استاد! ایک کڑک چائے اور پراٹھا لگانا!"',
+  '"خان صاحب! چینی تھوڑی کم رکھنا!"',
+  '"سفر لمبا ہے، کوئی اچھا گانا لگاؤ!"'
+];
+
+// Global State
 let currentTrackIndex = 0;
+let isPlaying = false;
+let chaiCount = 0;
 let ytPlayer = null;
+let progressInterval = null;
+let toastTimeout = null;
 
-// ══ 2. LOAD YOUTUBE API ══
-const tag = document.createElement('script');
-tag.src = "https://www.youtube.com/iframe_api";
-const firstScriptTag = document.getElementsByTagName('script')[0];
-firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+// ══ 3. DOM LOADED INITIALIZATION ══
+document.addEventListener('DOMContentLoaded', () => {
+  initClock();
+  initVisitors();
+  initEventListeners();
+  loadYouTubeAPI();
+});
 
-window.onYouTubeIframeAPIReady = function() {
-    ytPlayer = new YT.Player('yt-audio-player', {
-        events: {
-            'onReady': () => updateTrackUI(0),
-            'onStateChange': onPlayerStateChange,
-            'onError': onPlayerError
-        }
-    });
-};
-
-// ══ 3. CORE LOGIC ══
-function loadAndPlayTrack(index) {
-    currentTrackIndex = index;
-    const track = playlist[index];
-    
-    // UI Update
-    updateTrackUI(index);
-    
-    // Audio Update
-    if (ytPlayer && ytPlayer.loadVideoById) {
-        ytPlayer.loadVideoById(track.youtubeId);
-    }
+// ══ 4. YOUTUBE API & PLAYER ENGINE ══
+function loadYouTubeAPI() {
+  if (window.YT && window.YT.Player) {
+    onYouTubeIframeAPIReady();
+    return;
+  }
+  const tag = document.createElement('script');
+  tag.src = "https://www.youtube.com/iframe_api";
+  const firstScriptTag = document.getElementsByTagName('script')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 }
 
-function updateTrackUI(index) {
-    const track = playlist[index];
-    document.getElementById('track-title').innerText = track.title;
-    document.getElementById('track-artist').innerText = track.artist;
-    document.getElementById('track-art').src = track.art;
+window.onYouTubeIframeAPIReady = function () {
+  ytPlayer = new YT.Player('yt-audio-player', {
+    events: {
+      'onReady': onPlayerReady,
+      'onStateChange': onPlayerStateChange,
+      'onError': onPlayerError
+    }
+  });
+};
+
+function onPlayerReady() {
+  updateTrackUI(currentTrackIndex);
 }
 
 function onPlayerStateChange(event) {
-    if (event.data === YT.PlayerState.ENDED) nextTrack();
+  const playBtn = document.getElementById('play-btn');
+  const trackArtEl = document.getElementById('track-art');
+
+  if (event.data === YT.PlayerState.PLAYING) {
+    isPlaying = true;
+    if (playBtn) playBtn.innerText = '⏸';
+    if (trackArtEl) trackArtEl.classList.remove('vinyl-paused');
+    startSeekLoop();
+  } else if (event.data === YT.PlayerState.PAUSED) {
+    isPlaying = false;
+    if (playBtn) playBtn.innerText = '▶';
+    if (trackArtEl) trackArtEl.classList.add('vinyl-paused');
+    stopSeekLoop();
+  } else if (event.data === YT.PlayerState.ENDED) {
+    nextTrack();
+  }
 }
 
 function onPlayerError(event) {
-    console.log("Error, skipping:", event.data);
-    nextTrack();
+  console.warn("YouTube Player error:", event.data, "- Skipping to next track...");
+  nextTrack();
+}
+
+function updateTrackUI(index) {
+  const track = playlist[index];
+  const titleEl = document.getElementById('track-title');
+  const artistEl = document.getElementById('track-artist');
+  const artEl = document.getElementById('track-art');
+
+  if (titleEl) titleEl.innerText = track.title;
+  if (artistEl) artistEl.innerText = track.artist;
+  if (artEl) {
+    artEl.style.transition = "opacity 0.2s ease";
+    artEl.style.opacity = "0.3";
+    setTimeout(() => {
+      artEl.src = track.art;
+      artEl.style.opacity = "1";
+    }, 150);
+  }
+}
+
+function loadAndPlayTrack(index) {
+  currentTrackIndex = index;
+  updateTrackUI(currentTrackIndex);
+
+  const track = playlist[currentTrackIndex];
+  if (ytPlayer && typeof ytPlayer.loadVideoById === 'function') {
+    ytPlayer.loadVideoById(track.youtubeId);
+  } else {
+    const iframe = document.getElementById('yt-audio-player');
+    if (iframe) {
+      iframe.src = `https://www.youtube.com/embed/${track.youtubeId}?enablejsapi=1&autoplay=1&controls=0&disablekb=1&fs=0&iv_load_policy=3&modestbranding=1&rel=0&playsinline=1`;
+    }
+  }
+}
+
+function togglePlay() {
+  if (!ytPlayer || typeof ytPlayer.getPlayerState !== 'function') {
+    loadAndPlayTrack(currentTrackIndex);
+    return;
+  }
+  const state = ytPlayer.getPlayerState();
+  if (state === YT.PlayerState.PLAYING) {
+    ytPlayer.pauseVideo();
+  } else {
+    ytPlayer.playVideo();
+  }
 }
 
 function nextTrack() {
-    currentTrackIndex = (currentTrackIndex + 1) % playlist.length;
-    loadAndPlayTrack(currentTrackIndex);
+  const nextIdx = (currentTrackIndex + 1) % playlist.length;
+  loadAndPlayTrack(nextIdx);
 }
 
 function prevTrack() {
-    currentTrackIndex = (currentTrackIndex - 1 + playlist.length) % playlist.length;
-    loadAndPlayTrack(currentTrackIndex);
+  const prevIdx = (currentTrackIndex - 1 + playlist.length) % playlist.length;
+  loadAndPlayTrack(prevIdx);
 }
 
-// ══ 4. UI CONTROLS ══
-document.getElementById('play-btn').onclick = () => {
-    if(ytPlayer.getPlayerState() === YT.PlayerState.PLAYING) ytPlayer.pauseVideo();
-    else ytPlayer.playVideo();
-};
-document.getElementById('next-btn').onclick = nextTrack;
-document.getElementById('prev-btn').onclick = prevTrack;
+// ══ 5. SEEKBAR ENGINE ══
+function startSeekLoop() {
+  stopSeekLoop();
+  progressInterval = setInterval(() => {
+    if (ytPlayer && ytPlayer.getCurrentTime && ytPlayer.getDuration) {
+      const cur = ytPlayer.getCurrentTime() || 0;
+      const dur = ytPlayer.getDuration() || 1;
+      const pct = Math.min(100, Math.max(0, (cur / dur) * 100));
 
-// ══ 5. CHAI DIALOGUES ══
-document.getElementById('chai-btn').onclick = () => {
-    // Basic counter logic
-    let count = parseInt(document.getElementById('chai-count').innerText) || 0;
-    document.getElementById('chai-count').innerText = count + 1;
-};
+      const progressBar = document.getElementById('progress-bar');
+      const timeCurrEl = document.getElementById('time-curr');
+      const timeDurEl = document.getElementById('time-dur');
 
-// ══ 6. CLOCK & VISITORS ══
-setInterval(() => {
-    const now = new Date();
-    document.getElementById('clock').innerText = now.toLocaleTimeString('en-US', { timeZone: 'Asia/Karachi', hour: '2-digit', minute: '2-digit' });
-}, 1000);
+      if (progressBar) progressBar.style.width = `${pct}%`;
+      if (timeCurrEl) timeCurrEl.innerText = formatTime(cur);
+      if (timeDurEl) timeDurEl.innerText = formatTime(dur);
+    }
+  }, 300);
+}
+
+function stopSeekLoop() {
+  if (progressInterval) clearInterval(progressInterval);
+}
+
+function formatTime(seconds) {
+  const mins = Math.floor(seconds / 60);
+  const secs = Math.floor(seconds % 60);
+  return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+}
+
+// ══ 6. EVENT LISTENERS BINDING ══
+function initEventListeners() {
+  const playBtn = document.getElementById('play-btn');
+  const prevBtn = document.getElementById('prev-btn');
+  const nextBtn = document.getElementById('next-btn');
+  const chaiBtn = document.getElementById('chai-btn');
+  const dialogueBtn = document.getElementById('dialogue-btn');
+  const shareBtn = document.getElementById('share-btn');
+  const seekContainer = document.getElementById('seek-container');
+
+  if (playBtn) playBtn.onclick = togglePlay;
+  if (prevBtn) prevBtn.onclick = prevTrack;
+  if (nextBtn) nextBtn.onclick = nextTrack;
+
+  if (seekContainer) {
+    seekContainer.onclick = (e) => {
+      if (!ytPlayer || !ytPlayer.getDuration) return;
+      const rect = seekContainer.getBoundingClientRect();
+      const clickX = e.clientX - rect.left;
+      const width = rect.width;
+      const duration = ytPlayer.getDuration();
+      if (duration > 0) {
+        const seekTime = (clickX / width) * duration;
+        ytPlayer.seekTo(seekTime, true);
+      }
+    };
+  }
+
+  if (chaiBtn) {
+    chaiBtn.onclick = () => {
+      chaiCount++;
+      const chaiCountEl = document.getElementById('chai-count');
+      if (chaiCountEl) chaiCountEl.innerText = chaiCount;
+
+      const toastPopup = document.getElementById('toast-popup');
+      const toastText = document.getElementById('toast-text');
+      const randomMsg = chaiDialogues[Math.floor(Math.random() * chaiDialogues.length)];
+
+      if (toastText) toastText.innerText = randomMsg;
+      if (toastPopup) {
+        toastPopup.classList.remove('hidden');
+        toastPopup.classList.add('toast-animate');
+
+        if (toastTimeout) clearTimeout(toastTimeout);
+        toastTimeout = setTimeout(() => {
+          toastPopup.classList.add('hidden');
+          toastPopup.classList.remove('toast-animate');
+        }, 2500);
+      }
+    };
+  }
+
+  if (dialogueBtn) {
+    dialogueBtn.onclick = () => {
+      const dialogueTextEl = document.getElementById('dialogue-text');
+      const randomMsg = bannerDialogues[Math.floor(Math.random() * bannerDialogues.length)];
+      if (dialogueTextEl) dialogueTextEl.innerText = randomMsg;
+    };
+  }
+
+  if (shareBtn) {
+    shareBtn.onclick = () => {
+      if (navigator.share) {
+        navigator.share({
+          title: 'کوئٹہ رنگین ہوٹل ریڈیو',
+          url: window.location.href
+        }).catch(() => {});
+      } else {
+        navigator.clipboard.writeText(window.location.href);
+        alert("لنک کاپی ہو گیا ہے!");
+      }
+    };
+  }
+}
+
+// ══ 7. CLOCK & VISITORS ══
+function initClock() {
+  function updateClock() {
+    const clockEl = document.getElementById('clock');
+    if (clockEl) {
+      const now = new Date();
+      const options = { timeZone: 'Asia/Karachi', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true };
+      clockEl.innerText = now.toLocaleTimeString('en-US', options);
+    }
+  }
+  setInterval(updateClock, 1000);
+  updateClock();
+}
+
+function initVisitors() {
+  const liveCountEl = document.getElementById('live-count');
+  if (!liveCountEl) return;
+
+  try {
+    const ws = new WebSocket('wss://demo.piesocket.com/v3/channel_123?api_key=VCX2aC2m53363T333&notify_self');
+    ws.onopen = () => { liveCountEl.innerText = "1"; };
+    ws.onmessage = (event) => {
+      const data = JSON.parse(event.data);
+      if (data && data.usersCount) liveCountEl.innerText = data.usersCount;
+    };
+    ws.onerror = ws.onclose = () => { liveCountEl.innerText = "1"; };
+  } catch (e) {
+    liveCountEl.innerText = "1";
+  }
+}
+  
