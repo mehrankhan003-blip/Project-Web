@@ -1,52 +1,35 @@
 // ══ 1. PAKISTANI & SINDHI CLASSICS PLAYLIST ══
 const playlist = [
-  // --- SINDHI CLASSICS ---
+  {
+    title: "Dil Dil Pakistan",
+    artist: "Vital Signs • (1987)",
+    youtubeId: "rMlKSqgNHNU",
+    art: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=400&auto=format&fit=crop"
+  },
   {
     title: "Kari Aa Qabo Kaye",
-    artist: "Jalal Chandio",
+    artist: "Jalal Chandio • Chapar Classic",
     youtubeId: "af0iAsv2yv4",
     art: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=400&auto=format&fit=crop"
   },
   {
     title: "Tuhinji Yaari Maan Pyar Kayo",
-    artist: "Sarmad Sindhi",
+    artist: "Sarmad Sindhi • Kashish Gold",
     youtubeId: "4l0t9pI7Hw8",
     art: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=400&auto=format&fit=crop"
   },
   {
     title: "Ghot Ja Baba",
-    artist: "Fozia Soomro",
+    artist: "Fozia Soomro • Classic Folk",
     youtubeId: "ptKeMonUlbE",
     art: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=400&auto=format&fit=crop"
   },
   {
-    title: "Ho Jamalo (Folk)",
-    artist: "Abida Parveen",
-    youtubeId: "-8anr6et3Lw",
-    art: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=400&auto=format&fit=crop"
-  },
-
-  // --- NUSRAT FATEH ALI KHAN ---
-  {
     title: "Yeh Jo Halka Halka Suroor Hai",
-    artist: "Nusrat Fateh Ali Khan",
+    artist: "Ustad Nusrat Fateh Ali Khan",
     youtubeId: "24-4B2W4K20",
     art: "https://images.unsplash.com/photo-1511192336575-5a79af67a629?q=80&w=400&auto=format&fit=crop"
   },
-  {
-    title: "Sanu Ek Pal Chain Na Aave",
-    artist: "Nusrat Fateh Ali Khan",
-    youtubeId: "U3o88P_K70U",
-    art: "https://images.unsplash.com/photo-1511192336575-5a79af67a629?q=80&w=400&auto=format&fit=crop"
-  },
-  {
-    title: "Tumhein Dillagi Bhool Jani Paray Gi",
-    artist: "Nusrat Fateh Ali Khan",
-    youtubeId: "K3L92Y81_x0",
-    art: "https://images.unsplash.com/photo-1511192336575-5a79af67a629?q=80&w=400&auto=format&fit=crop"
-  },
-
-  // --- ATTAULLAH KHAN ---
   {
     title: "Qameez Teri Kaali",
     artist: "Attaullah Khan Esakhelvi",
@@ -54,36 +37,16 @@ const playlist = [
     art: "https://images.unsplash.com/photo-1511192336575-5a79af67a629?q=80&w=400&auto=format&fit=crop"
   },
   {
-    title: "Idhar Zindagi Ka Janaza Utfaye Gi",
-    artist: "Attaullah Khan Esakhelvi",
-    youtubeId: "uW8W42Pz0kQ",
-    art: "https://images.unsplash.com/photo-1511192336575-5a79af67a629?q=80&w=400&auto=format&fit=crop"
-  },
-
-  // --- URDU POP & CLASSICS ---
-  {
-    title: "Dil Dil Pakistan",
-    artist: "Vital Signs",
-    youtubeId: "rMlKSqgNHNU",
-    art: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=400&auto=format&fit=crop"
-  },
-  {
     title: "Purani Jeans",
-    artist: "Ali Haider",
+    artist: "Ali Haider • Sandesa (1993)",
     youtubeId: "8q6iobugPUs",
     art: "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?q=80&w=400&auto=format&fit=crop"
   },
   {
     title: "Chief Saab",
-    artist: "Sajjad Ali",
+    artist: "Sajjad Ali • (1995)",
     youtubeId: "KZ8xRwDR0zY",
     art: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?q=80&w=400&auto=format&fit=crop"
-  },
-  {
-    title: "Ranjish Hi Sahi",
-    artist: "Mehdi Hassan",
-    youtubeId: "fM0I7G8w9aQ",
-    art: "https://images.unsplash.com/photo-1511192336575-5a79af67a629?q=80&w=400&auto=format&fit=crop"
   }
 ];
 
@@ -130,20 +93,20 @@ const dialogueTextEl = document.getElementById('dialogue-text');
 const clockEl = document.getElementById('clock');
 const liveCountEl = document.getElementById('live-count');
 
-// ══ 3. YOUTUBE IFRAME ENGINE ══
+// ══ 3. ROBUST YOUTUBE PLAYER BINDING ══
 const tag = document.createElement('script');
 tag.src = "https://www.youtube.com/iframe_api";
 const firstScriptTag = document.getElementsByTagName('script')[0];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-function onYouTubeIframeAPIReady() {
+window.onYouTubeIframeAPIReady = function() {
   ytPlayer = new YT.Player('yt-audio-player', {
     events: {
       'onReady': onPlayerReady,
       'onStateChange': onPlayerStateChange
     }
   });
-}
+};
 
 function onPlayerReady() {
   updateTrackUI(currentTrackIndex);
@@ -175,13 +138,25 @@ function updateTrackUI(index) {
 function loadAndPlayTrack(index) {
   currentTrackIndex = index;
   updateTrackUI(currentTrackIndex);
-  if (ytPlayer && ytPlayer.loadVideoById) {
-    ytPlayer.loadVideoById(playlist[currentTrackIndex].youtubeId);
+
+  const targetId = playlist[currentTrackIndex].youtubeId;
+
+  if (ytPlayer && typeof ytPlayer.loadVideoById === 'function') {
+    ytPlayer.loadVideoById(targetId);
+  } else {
+    // Direct Fallback Reload
+    const iframe = document.getElementById('yt-audio-player');
+    if (iframe) {
+      iframe.src = `https://www.youtube.com/embed/${targetId}?enablejsapi=1&autoplay=1&controls=0&disablekb=1&fs=0&iv_load_policy=3&modestbranding=1&rel=0&playsinline=1`;
+    }
   }
 }
 
 function togglePlay() {
-  if (!ytPlayer || !ytPlayer.getPlayerState) return;
+  if (!ytPlayer || !ytPlayer.getPlayerState) {
+    loadAndPlayTrack(currentTrackIndex);
+    return;
+  }
   const state = ytPlayer.getPlayerState();
   if (state === YT.PlayerState.PLAYING) {
     ytPlayer.pauseVideo();
@@ -200,7 +175,7 @@ function nextTrack() {
   loadAndPlayTrack(nextIdx);
 }
 
-// ══ 4. SEEKBAR LOOP & CHAI PIN MOTION ══
+// ══ 4. SEEKBAR & MOTION LOOP ══
 function startSeekLoop() {
   stopSeekLoop();
   progressInterval = setInterval(() => {
@@ -241,7 +216,7 @@ function formatTime(seconds) {
   return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
 }
 
-// ══ 5. CHAI DIALOGUES & TOAST POPUP ══
+// ══ 5. CHAI POPUP DIALOGUE ══
 if (chaiBtn) {
   chaiBtn.addEventListener('click', () => {
     chaiCount++;
@@ -274,28 +249,20 @@ if (playBtn) playBtn.addEventListener('click', togglePlay);
 if (prevBtn) prevBtn.addEventListener('click', prevTrack);
 if (nextBtn) nextBtn.addEventListener('click', nextTrack);
 
-// ══ 6. REAL TIME VISITORS ENGINE ══
+// ══ 6. REAL LIVE VISITORS ══
 function initRealTimeVisitors() {
   if (!liveCountEl) return;
   const ws = new WebSocket('wss://demo.piesocket.com/v3/channel_123?api_key=VCX2aC2m53363T333&notify_self');
   let activeUsers = 1;
 
-  ws.onopen = () => {
-    liveCountEl.innerText = activeUsers;
-  };
-
+  ws.onopen = () => { liveCountEl.innerText = activeUsers; };
   ws.onmessage = (event) => {
     try {
       const data = JSON.parse(event.data);
-      if (data && data.usersCount) {
-        liveCountEl.innerText = data.usersCount;
-      }
-    } catch (e) {}
+      if (data && data.usersCount) liveCountEl.innerText = data.usersCount;
+    } catch(e) {}
   };
-
-  ws.onerror = ws.onclose = () => {
-    liveCountEl.innerText = "1";
-  };
+  ws.onerror = ws.onclose = () => { liveCountEl.innerText = "1"; };
 }
 initRealTimeVisitors();
 
