@@ -381,7 +381,7 @@ function updateClock() {
 setInterval(updateClock, 1000);
 updateClock();
 
-// Progress Loop Engine with Moving Chai Pin
+// Moving Chai Wala Lala Motion Engine
 const chaiPin = document.getElementById('chai-pin');
 
 function startSeekLoop() {
