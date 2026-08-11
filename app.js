@@ -1,28 +1,75 @@
 // ══ 1. PAKISTANI & SINDHI CLASSICS PLAYLIST ══
 // ══ 1. ULTIMATE VERIFIED CLASSIC PLAYLIST (100% EMBEDDABLE) ══
+// 1. HARD-LOCKED PLAYLIST (Title aur Audio kabhi alag nahi honge)
 const playlist = [
-  // --- SINDHI CLASSICS (Verified) ---
   { title: "Kari Aa Qabo Kaye", artist: "Jalal Chandio", youtubeId: "af0iAsv2yv4", art: "https://i.ytimg.com/vi/af0iAsv2yv4/0.jpg" },
   { title: "Tuhinji Yaari", artist: "Sarmad Sindhi", youtubeId: "qyDVB7hGNAg", art: "https://i.ytimg.com/vi/qyDVB7hGNAg/0.jpg" },
-  { title: "Ghot Ja Baba", artist: "Fozia Soomro", youtubeId: "ptKeMonUlbE", art: "https://i.ytimg.com/vi/ptKeMonUlbE/0.jpg" },
-  { title: "Manzoor Sakhirani", artist: "Master Manzoor", youtubeId: "mX43o8k1p9Y", art: "https://i.ytimg.com/vi/mX43o8k1p9Y/0.jpg" },
-  
-  // --- NUSRAT FATEH ALI KHAN (Verified) ---
   { title: "Halka Halka Suroor", artist: "Nusrat Fateh Ali Khan", youtubeId: "R3n-vjV76G4", art: "https://i.ytimg.com/vi/R3n-vjV76G4/0.jpg" },
-  { title: "Sanu Ek Pal Chain", artist: "Nusrat Fateh Ali Khan", youtubeId: "U3o88P_K70U", art: "https://i.ytimg.com/vi/U3o88P_K70U/0.jpg" },
-  { title: "Tumhein Dillagi", artist: "Nusrat Fateh Ali Khan", youtubeId: "K3L92Y81_x0", art: "https://i.ytimg.com/vi/K3L92Y81_x0/0.jpg" },
-  
-  // --- ATTAULLAH KHAN (Verified) ---
-  { title: "Qameez Teri Kaali", artist: "Attaullah Khan", youtubeId: "w7bX24iQGz8", art: "https://i.ytimg.com/vi/w7bX24iQGz8/0.jpg" },
-  { title: "Idhar Zindagi Ka Janaza", artist: "Attaullah Khan", youtubeId: "uW8W42Pz0kQ", art: "https://i.ytimg.com/vi/uW8W42Pz0kQ/0.jpg" },
-  { title: "Acha Sila Diya", artist: "Attaullah Khan", youtubeId: "J8m3S6x58kU", art: "https://i.ytimg.com/vi/J8m3S6x58kU/0.jpg" },
-
-  // --- URDU CLASSICS (Verified) ---
   { title: "Dil Dil Pakistan", artist: "Vital Signs", youtubeId: "rMlKSqgNHNU", art: "https://i.ytimg.com/vi/rMlKSqgNHNU/0.jpg" },
-  { title: "Purani Jeans", artist: "Ali Haider", youtubeId: "8q6iobugPUs", art: "https://i.ytimg.com/vi/8q6iobugPUs/0.jpg" },
-  { title: "Chief Saab", artist: "Sajjad Ali", youtubeId: "KZ8xRwDR0zY", art: "https://i.ytimg.com/vi/KZ8xRwDR0zY/0.jpg" },
-  { title: "Ranjish Hi Sahi", artist: "Mehdi Hassan", youtubeId: "fM0I7G8w9aQ", art: "https://i.ytimg.com/vi/fM0I7G8w9aQ/0.jpg" }
+  { title: "Purani Jeans", artist: "Ali Haider", youtubeId: "8q6iobugPUs", art: "https://i.ytimg.com/vi/8q6iobugPUs/0.jpg" }
 ];
+
+let currentTrackIndex = 0;
+let ytPlayer = null;
+
+// Load API
+const tag = document.createElement('script');
+tag.src = "https://www.youtube.com/iframe_api";
+const firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+window.onYouTubeIframeAPIReady = function() {
+    ytPlayer = new YT.Player('yt-audio-player', {
+        events: { 'onStateChange': onPlayerStateChange, 'onError': onPlayerError }
+    });
+};
+
+// 2. ATOMIC SYNC FUNCTION (Title aur Audio ek sath update honge)
+function loadAndPlayTrack(index) {
+    currentTrackIndex = index;
+    const track = playlist[index];
+    
+    console.log("Loading Title:", track.title);
+    
+    // UI update
+    document.getElementById('track-title').innerText = track.title;
+    document.getElementById('track-artist').innerText = track.artist;
+    document.getElementById('track-art').src = track.art;
+    
+    // Audio update
+    if (ytPlayer && ytPlayer.loadVideoById) {
+        ytPlayer.loadVideoById(track.youtubeId);
+    }
+}
+
+function nextTrack() {
+    currentTrackIndex = (currentTrackIndex + 1) % playlist.length;
+    loadAndPlayTrack(currentTrackIndex);
+}
+
+function prevTrack() {
+    currentTrackIndex = (currentTrackIndex - 1 + playlist.length) % playlist.length;
+    loadAndPlayTrack(currentTrackIndex);
+}
+
+function onPlayerStateChange(event) {
+    if (event.data === YT.PlayerState.ENDED) nextTrack();
+}
+
+function onPlayerError(event) {
+    console.error("YouTube Error Code:", event.data);
+    // Agar error aaye to agla gana chala do
+    nextTrack();
+}
+
+// UI Buttons
+document.getElementById('play-btn').onclick = () => {
+    if(ytPlayer.getPlayerState() === YT.PlayerState.PLAYING) ytPlayer.pauseVideo();
+    else ytPlayer.playVideo();
+};
+document.getElementById('next-btn').onclick = nextTrack;
+document.getElementById('prev-btn').onclick = prevTrack;
+
 
 
 // ══ 2. DIALOGUES ══
