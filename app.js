@@ -1,18 +1,101 @@
-// ══ 1. PAKISTANI CLASSIC PLAYLIST ══
-// ══ 1. PAKISTANI CLASSIC PLAYLIST (100% WORKING EMBEDDABLE YOUTUBE IDs) ══
 const playlist = [
+  // --- VITAL SIGNS & JUNUON (POP / ROCK NOSTALGIA) ---
   {
     title: "Dil Dil Pakistan",
-    artist: "Vital Signs",
+    artist: "Vital Signs • (1987)",
     youtubeId: "rMlKSqgNHNU",
     art: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=400&auto=format&fit=crop"
   },
   {
     title: "Sayonee",
-    artist: "Junoon",
+    artist: "Junoon • Azadi (1997)",
     youtubeId: "-8anr6et3Lw",
     art: "https://images.unsplash.com/photo-1465847899084-d164df4dedc6?q=80&w=400&auto=format&fit=crop"
   },
+  {
+    title: "Aitebaar",
+    artist: "Vital Signs • (1993)",
+    youtubeId: "C1J6tI1l2-8",
+    art: "https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?q=80&w=400&auto=format&fit=crop"
+  },
+  {
+    title: "Goray Rang Ka Zamana",
+    artist: "Vital Signs • (1989)",
+    youtubeId: "vJ3c9jD-y2E",
+    art: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=400&auto=format&fit=crop"
+  },
+  {
+    title: "Sanwali Saloni",
+    artist: "Vital Signs • (1991)",
+    youtubeId: "LgW8cM7Q3mU",
+    art: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=400&auto=format&fit=crop"
+  },
+  {
+    title: "Yaar Binisbat",
+    artist: "Junoon • (1997)",
+    youtubeId: "E43j8I7C6J0",
+    art: "https://images.unsplash.com/photo-1465847899084-d164df4dedc6?q=80&w=400&auto=format&fit=crop"
+  },
+
+  // --- NAZIA HASSAN & SAJJAD ALI ---
+  {
+    title: "Disco Deewane",
+    artist: "Nazia Hassan & Zoheb Hassan",
+    youtubeId: "N__zB3o_mRk",
+    art: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=400&auto=format&fit=crop"
+  },
+  {
+    title: "Aap Jaisa Koi",
+    artist: "Nazia Hassan • Qurbani (1980)",
+    youtubeId: "vJtI9R5lM8Q",
+    art: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=400&auto=format&fit=crop"
+  },
+  {
+    title: "Chief Saab",
+    artist: "Sajjad Ali • (1995)",
+    youtubeId: "KZ8xRwDR0zY",
+    art: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?q=80&w=400&auto=format&fit=crop"
+  },
+  {
+    title: "Babiya",
+    artist: "Sajjad Ali • (1993)",
+    youtubeId: "jT3f8U6Z4gY",
+    art: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?q=80&w=400&auto=format&fit=crop"
+  },
+  {
+    title: "Sohni Lagdi",
+    artist: "Sajjad Ali • (1999)",
+    youtubeId: "xY_E80Y1_6k",
+    art: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?q=80&w=400&auto=format&fit=crop"
+  },
+
+  // --- ALI HAIDER & ABRAR UL HAQ & STRINGS ---
+  {
+    title: "Purani Jeans",
+    artist: "Ali Haider • Sandesa (1993)",
+    youtubeId: "8q6iobugPUs",
+    art: "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?q=80&w=400&auto=format&fit=crop"
+  },
+  {
+    title: "Billo De Ghar",
+    artist: "Abrar-ul-Haq • (1995)",
+    youtubeId: "4S4d7m_3q-E",
+    art: "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?q=80&w=400&auto=format&fit=crop"
+  },
+  {
+    title: "Duur",
+    artist: "Strings • Duur (2000)",
+    youtubeId: "d9GgX1R3x5k",
+    art: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=400&auto=format&fit=crop"
+  },
+  {
+    title: "Anjane",
+    artist: "Strings • (2000)",
+    youtubeId: "k5j2e98M3cE",
+    art: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=400&auto=format&fit=crop"
+  },
+
+  // --- USTAD NUSRAT FATEH ALI KHAN & SUFI CLASSICS ---
   {
     title: "Yeh Jo Halka Halka Suroor Hai",
     artist: "Ustad Nusrat Fateh Ali Khan",
@@ -20,16 +103,54 @@ const playlist = [
     art: "https://images.unsplash.com/photo-1511192336575-5a79af67a629?q=80&w=400&auto=format&fit=crop"
   },
   {
-    title: "Purani Jeans",
-    artist: "Ali Haider",
-    youtubeId: "8q6iobugPUs",
-    art: "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?q=80&w=400&auto=format&fit=crop"
+    title: "Sanu Ek Pal Chain Na Aave",
+    artist: "Ustad Nusrat Fateh Ali Khan",
+    youtubeId: "U3o88P_K70U",
+    art: "https://images.unsplash.com/photo-1511192336575-5a79af67a629?q=80&w=400&auto=format&fit=crop"
   },
   {
-    title: "Chief Saab",
-    artist: "Sajjad Ali",
-    youtubeId: "KZ8xRwDR0zY",
-    art: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?q=80&w=400&auto=format&fit=crop"
+    title: "Mera Piya Ghar Aaya",
+    artist: "Ustad Nusrat Fateh Ali Khan",
+    youtubeId: "J8m3S6x58kU",
+    art: "https://images.unsplash.com/photo-1511192336575-5a79af67a629?q=80&w=400&auto=format&fit=crop"
+  },
+  {
+    title: "Ali Maula Ali Maula Ali Dam Dam",
+    artist: "Ustad Nusrat Fateh Ali Khan",
+    youtubeId: "K3L92Y81_x0",
+    art: "https://images.unsplash.com/photo-1511192336575-5a79af67a629?q=80&w=400&auto=format&fit=crop"
+  },
+
+  // --- VINTAGE LOLLYWOOD & FOLK CLASSICS ---
+  {
+    title: "Mera Laung Gawacha",
+    artist: "Musarrat Nazir",
+    youtubeId: "6I24fJkG4zE",
+    art: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=400&auto=format&fit=crop"
+  },
+  {
+    title: "Chitte Dand Hasne Nu",
+    artist: "Musarrat Nazir",
+    youtubeId: "xY92m5K30fE",
+    art: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=400&auto=format&fit=crop"
+  },
+  {
+    title: "Mujhe Tum Nazar Se Gira Toh Rahe Ho",
+    artist: "Mehdi Hassan",
+    youtubeId: "3m0Y9K2x1dE",
+    art: "https://images.unsplash.com/photo-1511192336575-5a79af67a629?q=80&w=400&auto=format&fit=crop"
+  },
+  {
+    title: "Rafta Rafta Woh Meri Hasti Ka",
+    artist: "Mehdi Hassan",
+    youtubeId: "5j93m2X10kE",
+    art: "https://images.unsplash.com/photo-1511192336575-5a79af67a629?q=80&w=400&auto=format&fit=crop"
+  },
+  {
+    title: "Aagaye Humahan",
+    artist: "Madam Noor Jehan",
+    youtubeId: "8x92m3K10lE",
+    art: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=400&auto=format&fit=crop"
   }
 ];
 
@@ -260,3 +381,21 @@ function updateClock() {
 setInterval(updateClock, 1000);
 updateClock();
 
+// Progress Loop Engine with Moving Chai Pin
+const chaiPin = document.getElementById('chai-pin');
+
+function startSeekLoop() {
+  stopSeekLoop();
+  progressInterval = setInterval(() => {
+    if (ytPlayer && ytPlayer.getCurrentTime && ytPlayer.getDuration) {
+      const cur = ytPlayer.getCurrentTime() || 0;
+      const dur = ytPlayer.getDuration() || 1;
+      const pct = Math.min(100, Math.max(0, (cur / dur) * 100));
+      
+      if (progressBar) progressBar.style.width = `${pct}%`;
+      if (chaiPin) chaiPin.style.left = `${pct}%`;
+      if (timeCurrEl) timeCurrEl.innerText = formatTime(cur);
+      if (timeDurEl) timeDurEl.innerText = formatTime(dur);
+    }
+  }, 300);
+}
