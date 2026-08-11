@@ -235,3 +235,21 @@ function updateClock() {
 }
 setInterval(updateClock, 1000);
 updateClock();
+
+function onPlayerStateChange(event) {
+  const trackArtEl = document.getElementById('track-art');
+  
+  if (event.data === YT.PlayerState.PLAYING) {
+    isPlaying = true;
+    playBtn.innerText = '⏸';
+    if (trackArtEl) trackArtEl.classList.remove('vinyl-paused');
+    startProgressLoop();
+  } else if (event.data === YT.PlayerState.PAUSED) {
+    isPlaying = false;
+    playBtn.innerText = '▶';
+    if (trackArtEl) trackArtEl.classList.add('vinyl-paused');
+    stopProgressLoop();
+  } else if (event.data === YT.PlayerState.ENDED) {
+    nextTrack();
+  }
+}
