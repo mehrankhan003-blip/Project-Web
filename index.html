@@ -1,292 +1,193 @@
 <!DOCTYPE html>
-<html lang="ur" dir="rtl" class="dark">
+<html lang="ur" dir="rtl" class="h-full">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>ڈیلکس ساؤنڈ اسکیپ — کلاسک آڈیو پلیئر</title>
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Gulzar&family=Noto+Nastaliq+Urdu:wght@400;700&family=Orbitron:wght@600;900&display=swap" rel="stylesheet">
-    <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chai Khana Radio ☕ — Quetta Dhaba & Truck Art Vibes</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Urdu Google Fonts (Noto Nastaliq Urdu & Gulzar) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Gulzar&family=Noto+Nastaliq+Urdu:wght@400..700&family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
 
-    <style>
-        body {
-            font-family: 'Noto Nastaliq Urdu', serif;
-            background-color: #050608;
-            background-image: 
-                radial-gradient(at 0% 0%, rgba(234, 179, 8, 0.08) 0px, transparent 50%),
-                radial-gradient(at 100% 100%, rgba(220, 38, 38, 0.08) 0px, transparent 50%);
-            color: #f3f4f6;
-            -webkit-tap-highlight-color: transparent;
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            nastaliq: ['"Noto Nastaliq Urdu"', 'serif'],
+            gulzar: ['Gulzar', 'serif'],
+            sans: ['Outfit', 'sans-serif'],
+          },
+          colors: {
+            truckRed: '#D90429',
+            truckYellow: '#FFB703',
+            truckBlue: '#023E8A',
+            truckGreen: '#2A9D8F',
+            dhabaBrown: '#2B1E1A',
+          }
         }
-        .font-gulzar { font-family: 'Gulzar', serif; }
-        .font-orbitron { font-family: 'Orbitron', sans-serif; }
+      }
+    }
+  </script>
 
-        /* Metallic Glass Card */
-        .glass-card {
-            background: linear-gradient(145deg, rgba(20, 24, 33, 0.9), rgba(10, 12, 18, 0.95));
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-        }
-
-        /* Fixed Perfect Circle Reels */
-        .reel-container {
-            aspect-ratio: 1 / 1;
-        }
-
-        .spinning {
-            animation: spin 3s linear infinite;
-        }
-        @keyframes spin {
-            100% { transform: rotate(-360deg); }
-        }
-
-        .glow-gold {
-            box-shadow: 0 0 25px rgba(234, 179, 8, 0.3);
-        }
-    </style>
+  <style>
+    /* Neon Glow & Truck Art Styling */
+    .truck-border {
+      border: 4px solid #FFB703;
+      outline: 4px dashed #D90429;
+    }
+    .neon-text {
+      text-shadow: 0 0 8px rgba(255, 183, 3, 0.8), 0 0 20px rgba(217, 4, 41, 0.6);
+    }
+    .bg-dhaba {
+      background: linear-gradient(to bottom, rgba(15, 23, 42, 0.85), rgba(43, 30, 26, 0.95)),
+                  url('https://images.unsplash.com/photo-1544717297-fa95b6ee9643?q=80&w=1600&auto=format&fit=crop');
+      background-size: cover;
+      background-position: center;
+    }
+  </style>
 </head>
-<body class="min-h-screen flex flex-col justify-between items-center p-3 md:p-6 selection:bg-amber-500 selection:text-black">
 
-    <!-- Top Clean Header -->
-    <header class="w-full max-w-md md:max-w-4xl text-center py-4 mb-2">
-        <div class="inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/30 px-4 py-1 rounded-full text-amber-400 text-xs font-bold mb-2">
-            <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
-            پاکستان ڈیلکس آڈیو
-        </div>
-        <h1 class="text-3xl md:text-5xl font-bold font-gulzar text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-amber-100 to-amber-500 drop-shadow-sm">
-            ڈیلکس نوسٹالجیا
-        </h1>
-    </header>
+<body class="bg-zinc-950 text-white min-h-full font-sans bg-dhaba flex flex-col justify-between selection:bg-truckYellow selection:text-black">
 
-    <!-- Main Deck Container -->
-    <main class="w-full max-w-md md:max-w-4xl">
-        
-        <div class="glass-card rounded-3xl p-5 md:p-8 space-y-6">
-            
-            <!-- Cassette Tape Unit (Fixed Responsive Ratio) -->
-            <div class="bg-gradient-to-b from-slate-900 to-black p-4 md:p-6 rounded-2xl border border-amber-500/30 relative glow-gold overflow-hidden">
-                
-                <!-- Display Screen -->
-                <div class="flex justify-between items-center bg-black/80 px-4 py-2.5 rounded-xl border border-gray-800 mb-5 font-orbitron text-xs">
-                    <span id="status-text" class="text-amber-400 flex items-center gap-2 font-sans text-xs">
-                        <i class="fa-solid fa-compact-disc text-amber-400"></i> تیار ہے
-                    </span>
-                    <span id="time-display" class="text-gray-400 tracking-wider">00:00</span>
-                </div>
+  <!-- TOP BAR: Live PKT Time & Live Dhaba Visitors -->
+  <header class="w-full px-4 py-3 border-b border-yellow-500/20 bg-black/40 backdrop-blur-md flex justify-between items-center z-50">
+    <!-- Live Time -->
+    <div class="flex items-center gap-2 bg-yellow-500/10 px-3 py-1 rounded-full border border-yellow-500/30">
+      <span class="text-xs text-yellow-400 font-semibold tracking-wider dir-ltr" id="clock">--:-- --</span>
+      <span class="text-[10px] text-yellow-200/70 font-nastaliq">پاکستان وقت</span>
+    </div>
 
-                <!-- Cassette Center Assembly -->
-                <div class="bg-slate-950 p-4 rounded-xl border border-gray-800 flex items-center justify-between gap-2 my-2">
-                    
-                    <!-- Left Reel -->
-                    <div class="w-16 h-16 sm:w-20 sm:h-20 reel-container rounded-full border-4 border-dashed border-amber-400 bg-black flex items-center justify-center flex-shrink-0" id="reel1">
-                        <div class="w-6 h-6 sm:w-8 sm:h-8 bg-amber-500/20 rounded-full border border-amber-400/60"></div>
-                    </div>
+    <!-- Live Dhaba Count -->
+    <div class="flex items-center gap-2 bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/30">
+      <span class="relative flex h-2 w-2">
+        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+        <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+      </span>
+      <span class="text-xs font-bold text-emerald-300" id="live-count">48</span>
+      <span class="text-xs font-nastaliq text-emerald-200">ڈھابے پر موجود ہیں</span>
+    </div>
+  </header>
 
-                    <!-- Center Tape Bridge -->
-                    <div class="flex-1 flex flex-col items-center gap-1 px-2">
-                        <div class="w-full h-1.5 bg-gradient-to-r from-amber-700 via-yellow-500 to-amber-700 rounded-full opacity-80"></div>
-                        <span class="text-[10px] text-amber-300/80 font-bold whitespace-nowrap">👑 دیکھ مگر پیار سے</span>
-                        <div class="w-full h-1.5 bg-gradient-to-r from-amber-700 via-yellow-500 to-amber-700 rounded-full opacity-80"></div>
-                    </div>
+  <!-- MAIN CONTAINER -->
+  <main class="max-w-xl w-full mx-auto px-4 py-6 flex flex-col items-center justify-center gap-5">
 
-                    <!-- Right Reel -->
-                    <div class="w-16 h-16 sm:w-20 sm:h-20 reel-container rounded-full border-4 border-dashed border-amber-400 bg-black flex items-center justify-center flex-shrink-0" id="reel2">
-                        <div class="w-6 h-6 sm:w-8 sm:h-8 bg-amber-500/20 rounded-full border border-amber-400/60"></div>
-                    </div>
+    <!-- LOGO / HEADER (TRUCK ART STYLE) -->
+    <div class="text-center space-y-2">
+      <div class="inline-block px-4 py-1 bg-truckRed text-yellow-300 font-nastaliq text-sm rounded-full tracking-wider shadow-lg transform -rotate-1 border border-yellow-400">
+        👑 شاہی کوئٹہ ہوٹل اینڈ ڈرائیور ڈیرہ 👑
+      </div>
+      <h1 class="text-4xl sm:text-5xl font-bold font-gulzar text-truckYellow neon-text tracking-wide">
+        چائے خانہ ریڈیو
+      </h1>
+      <p class="font-nastaliq text-sm text-zinc-300/80">
+        "دیکھ مگر پیار سے — کلاسک پاکستان میلوڈیز"
+      </p>
+    </div>
 
-                </div>
+    <!-- DIALOGUE BANNER -->
+    <button id="dialogue-btn" class="w-full bg-black/60 border border-yellow-500/40 hover:border-yellow-400 p-3 rounded-2xl backdrop-blur-md text-center transition-all duration-300 shadow-lg group">
+      <span class="text-lg">💬</span>
+      <span id="dialogue-text" class="font-nastaliq text-yellow-200 text-base group-hover:text-white transition">
+        "استاد! ایک کڑک چائے اور پراٹھا لگانا!"
+      </span>
+    </button>
 
-                <!-- Current Track Name -->
-                <div class="mt-4 text-center">
-                    <h2 id="song-title" class="text-lg md:text-xl font-bold text-amber-300 truncate">
-                        کوئی گانا منتخب کریں
-                    </h2>
-                </div>
+    <!-- MUSIC PLAYER CARD -->
+    <div class="w-full bg-black/70 backdrop-blur-xl border-2 border-yellow-500/40 rounded-3xl p-5 shadow-[0_10px_30px_rgba(0,0,0,0.8)] relative overflow-hidden">
+      
+      <!-- Top Truck Art Pattern Decor -->
+      <div class="absolute top-0 inset-x-0 h-1.5 bg-gradient-to-r from-truckRed via-truckYellow to-truckGreen"></div>
 
-            </div>
-
-            <!-- Equalizer Canvas -->
-            <div class="bg-black/60 p-3 rounded-2xl border border-gray-800/80">
-                <canvas id="visualizer" class="w-full h-16 rounded-lg"></canvas>
-            </div>
-
-            <!-- Controls Section -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 items-center pt-2">
-                
-                <!-- Main Buttons -->
-                <div class="flex justify-center items-center gap-4">
-                    <button onclick="togglePlay()" id="play-btn" class="w-16 h-16 bg-amber-500 text-black rounded-full flex items-center justify-center text-2xl font-bold hover:scale-105 active:scale-95 transition shadow-lg shadow-amber-500/20">
-                        <i class="fa-solid fa-play ml-1"></i>
-                    </button>
-                    <button onclick="stopAudio()" class="w-12 h-12 bg-slate-800 text-red-400 rounded-full flex items-center justify-center text-lg font-bold hover:bg-slate-700 active:scale-95 transition border border-gray-700">
-                        <i class="fa-solid fa-stop"></i>
-                    </button>
-                </div>
-
-                <!-- Custom File Upload -->
-                <div class="w-full">
-                    <label class="w-full bg-slate-900 hover:bg-slate-800 border border-amber-500/30 text-amber-300 p-3.5 rounded-xl text-sm font-bold transition flex items-center justify-center gap-2 cursor-pointer shadow-md">
-                        <i class="fa-solid fa-file-audio text-amber-400"></i>
-                        <span>اپنا MP3 اپ لوڈ کریں</span>
-                        <input type="file" id="audio-file" accept="audio/*" class="hidden" onchange="loadCustomAudio(event)">
-                    </label>
-                </div>
-
-            </div>
-
-            <!-- Pre-loaded Song List -->
-            <div class="space-y-2 pt-2">
-                <h3 class="text-xs font-bold text-gray-400 mb-2 flex items-center gap-2">
-                    <i class="fa-solid fa-list-check text-amber-400"></i> کلاسک ڈیمو ٹریکس
-                </h3>
-                
-                <button onclick="playPreset('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3', 'کلاسک ٹریک 01 — نوسٹالجیا وائب')" 
-                        class="w-full text-right bg-slate-900/80 hover:bg-amber-500 hover:text-black p-3.5 rounded-xl text-sm font-bold transition flex items-center justify-between border border-gray-800/80 group">
-                    <span>1. کلاسک ریٹرو ٹریک 01</span>
-                    <i class="fa-solid fa-circle-play text-amber-400 group-hover:text-black text-lg"></i>
-                </button>
-
-                <button onclick="playPreset('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3', 'کلاسک ٹریک 02 — روڈ ٹرپ وائب')" 
-                        class="w-full text-right bg-slate-900/80 hover:bg-amber-500 hover:text-black p-3.5 rounded-xl text-sm font-bold transition flex items-center justify-between border border-gray-800/80 group">
-                    <span>2. کلاسک ریٹرو ٹریک 02</span>
-                    <i class="fa-solid fa-circle-play text-amber-400 group-hover:text-black text-lg"></i>
-                </button>
-            </div>
-
+      <!-- Album Art & Track Info -->
+      <div class="flex items-center gap-4 mb-4">
+        <!-- Vinyl Record / Art Cover -->
+        <div class="relative w-20 h-20 sm:w-24 sm:h-24 rounded-2xl overflow-hidden border-2 border-yellow-400/80 shrink-0 shadow-md">
+          <img id="track-art" src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=300&auto=format&fit=crop" class="w-full h-full object-cover" alt="Track Cover" />
+          <div class="absolute inset-0 bg-black/20"></div>
         </div>
 
-    </main>
+        <!-- Track Title & Singer -->
+        <div class="flex-1 overflow-hidden text-right" dir="rtl">
+          <span class="text-[10px] font-nastaliq text-truckYellow uppercase bg-truckRed/30 px-2 py-0.5 rounded border border-truckRed/50">
+            سپر ہٹ نغمہ
+          </span>
+          <h2 id="track-title" class="font-gulzar text-xl sm:text-2xl text-white truncate mt-1">
+            دل دل پاکستان
+          </h2>
+          <p id="track-artist" class="font-nastaliq text-xs text-zinc-400 truncate mt-0.5">
+            وائٹل سائنز (Vital Signs)
+          </p>
+        </div>
+      </div>
 
-    <!-- Footer -->
-    <footer class="py-4 text-center text-[10px] text-gray-500">
-        <p>© 2026 پاکستان ڈیلکس — نوسٹالجیا ویب ایپ</p>
-    </footer>
+      <!-- Audio Progress Bar (Interactive Seek) -->
+      <div class="space-y-1 my-3">
+        <div id="seek-container" class="w-full bg-zinc-800 rounded-full h-2.5 overflow-hidden cursor-pointer relative">
+          <div id="progress-bar" class="bg-gradient-to-r from-truckYellow to-truckRed h-full w-0 rounded-full transition-all duration-150"></div>
+        </div>
+        <div class="flex justify-between text-[11px] font-mono text-zinc-400" dir="ltr">
+          <span id="time-curr">0:00</span>
+          <span id="time-dur">0:00</span>
+        </div>
+      </div>
 
-    <!-- Audio Player Logic & Realtime Visualizer -->
-    <script>
-        const audio = new Audio();
-        let audioCtx, analyser, source, canvas, canvasCtx;
-        let isPlaying = false;
+      <!-- Controls & Truck Horn -->
+      <div class="flex items-center justify-between mt-4 px-2">
+        <!-- Truck Horn Button -->
+        <button id="horn-btn" class="p-3 bg-truckYellow/10 border border-truckYellow/40 rounded-2xl hover:bg-truckYellow/20 active:scale-95 transition text-xl" title="Truck Horn">
+          🎺
+        </button>
 
-        const reel1 = document.getElementById('reel1');
-        const reel2 = document.getElementById('reel2');
-        const songTitle = document.getElementById('song-title');
-        const statusText = document.getElementById('status-text');
-        const timeDisplay = document.getElementById('time-display');
-        const playBtn = document.getElementById('play-btn');
+        <!-- Playback Controls -->
+        <div class="flex items-center gap-3" dir="ltr">
+          <button id="prev-btn" class="p-3 rounded-full bg-white/5 hover:bg-white/10 active:scale-95 transition text-yellow-400">
+            ⏮️
+          </button>
 
-        function initVisualizer() {
-            if (audioCtx) return;
-            canvas = document.getElementById('visualizer');
-            canvasCtx = canvas.getContext('2d');
-            
-            audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-            analyser = audioCtx.createAnalyser();
-            analyser.fftSize = 64;
+          <button id="play-btn" class="p-4 rounded-full bg-gradient-to-tr from-truckRed to-truckYellow text-black font-bold shadow-lg hover:scale-105 active:scale-95 transition text-2xl">
+            ▶️
+          </button>
 
-            source = audioCtx.createMediaElementSource(audio);
-            source.connect(analyser);
-            analyser.connect(audioCtx.destination);
+          <button id="next-btn" class="p-3 rounded-full bg-white/5 hover:bg-white/10 active:scale-95 transition text-yellow-400">
+            ⏭️
+          </button>
+        </div>
 
-            renderFrame();
-        }
+        <!-- Volume Mute Toggle -->
+        <button id="mute-btn" class="p-3 bg-white/5 border border-white/10 rounded-2xl hover:bg-white/10 transition text-xl">
+          🔊
+        </button>
+      </div>
+    </div>
 
-        function renderFrame() {
-            requestAnimationFrame(renderFrame);
-            if (!analyser) return;
+    <!-- INTERACTIVE "KARAK CHAI" COUNTER & SHARE -->
+    <div class="w-full flex gap-3">
+      <button id="chai-btn" class="flex-1 bg-gradient-to-r from-amber-700 to-amber-900 border border-amber-500/50 hover:border-amber-400 p-3.5 rounded-2xl flex items-center justify-center gap-3 active:scale-95 transition shadow-lg">
+        <span class="text-2xl">☕</span>
+        <div class="text-right" dir="rtl">
+          <p class="font-gulzar text-sm text-amber-100">ایک کڑک چائے لاؤ</p>
+          <p class="font-nastaliq text-[10px] text-amber-300/80">کل چائے کے آرڈر: <span id="chai-count" class="font-bold font-mono text-xs text-white">0</span></p>
+        </div>
+      </button>
 
-            const bufferLength = analyser.frequencyBinCount;
-            const dataArray = new Uint8Array(bufferLength);
-            analyser.getByteFrequencyData(dataArray);
+      <button id="share-btn" class="bg-black/60 border border-white/10 hover:bg-black/80 px-4 rounded-2xl flex items-center justify-center text-xl active:scale-95 transition" title="Share Radio">
+        🔗
+      </button>
+    </div>
 
-            canvasCtx.clearRect(0, 0, canvas.width, canvas.height);
+  </main>
 
-            const barWidth = (canvas.width / bufferLength) * 2;
-            let barHeight;
-            let x = 0;
+  <!-- FOOTER -->
+  <footer class="w-full text-center py-4 border-t border-white/10 bg-black/50 text-xs font-nastaliq text-zinc-400">
+    طراحی و تیار کردہ — <span class="text-truckYellow font-bold">Quetta Dhaba Devs</span> ❤️
+  </footer>
 
-            for (let i = 0; i < bufferLength; i++) {
-                barHeight = (dataArray[i] / 255) * canvas.height;
-                
-                canvasCtx.fillStyle = `rgba(245, 158, 11, ${dataArray[i] / 255 + 0.2})`;
-                canvasCtx.fillRect(x, canvas.height - barHeight, barWidth, barHeight);
-
-                x += barWidth + 3;
-            }
-        }
-
-        function playPreset(url, title) {
-            initVisualizer();
-            if (audioCtx.state === 'suspended') audioCtx.resume();
-
-            audio.src = url;
-            songTitle.innerText = title;
-            audio.play();
-            setPlayingState(true);
-        }
-
-        function loadCustomAudio(e) {
-            const file = e.target.files[0];
-            if (file) {
-                initVisualizer();
-                if (audioCtx.state === 'suspended') audioCtx.resume();
-
-                audio.src = URL.createObjectURL(file);
-                songTitle.innerText = file.name;
-                audio.play();
-                setPlayingState(true);
-            }
-        }
-
-        function togglePlay() {
-            if (!audio.src) return;
-            initVisualizer();
-            if (audioCtx.state === 'suspended') audioCtx.resume();
-
-            if (isPlaying) {
-                audio.pause();
-                setPlayingState(false);
-            } else {
-                audio.play();
-                setPlayingState(true);
-            }
-        }
-
-        function stopAudio() {
-            audio.pause();
-            audio.currentTime = 0;
-            setPlayingState(false);
-            statusText.innerText = "روک دیا گیا";
-        }
-
-        function setPlayingState(playing) {
-            isPlaying = playing;
-            if (playing) {
-                reel1.classList.add('spinning');
-                reel2.classList.add('spinning');
-                playBtn.innerHTML = '<i class="fa-solid fa-pause"></i>';
-                statusText.innerHTML = '<i class="fa-solid fa-volume-high text-amber-400"></i> پلے ہو رہا ہے';
-            } else {
-                reel1.classList.remove('spinning');
-                reel2.classList.remove('spinning');
-                playBtn.innerHTML = '<i class="fa-solid fa-play ml-1"></i>';
-                statusText.innerHTML = '<i class="fa-solid fa-circle-pause text-gray-400"></i> پاؤزڈ';
-            }
-        }
-
-        // Time Counter Update
-        audio.ontimeupdate = () => {
-            const mins = Math.floor(audio.currentTime / 60);
-            const secs = Math.floor(audio.currentTime % 60);
-            timeDisplay.innerText = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
-        };
-
-        audio.onended = () => setPlayingState(false);
-    </script>
+  <!-- LINK TO JAVASCRIPT ENGINE -->
+  <script src="app.js"></script>
 </body>
 </html>
