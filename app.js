@@ -1,135 +1,81 @@
-// ══ 1. ULTIMATE VERIFIED PAKISTANI & SINDHI NOSTALGIA PLAYLIST ══
 const playlist = [
-  // --- 🪕 SINDHI CLASSICS & KASHISH TV HITS ---
-  {
-    title: "Kari Aa Qabo Kaye",
-    artist: "Jalal Chandio • Classic Chapar",
-    youtubeId: "af0iAsv2yv4",
-    art: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=400&auto=format&fit=crop"
-  },
-  {
-    title: "Tuhinji Yaari Maan Pyar Kayo",
-    artist: "Sarmad Sindhi • Kashish Gold",
-    youtubeId: "4l0t9pI7Hw8",
-    art: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=400&auto=format&fit=crop"
-  },
-  {
-    title: "Ghot Ja Baba",
-    artist: "Fozia Soomro • Classic Folk",
-    youtubeId: "ptKeMonUlbE",
-    art: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=400&auto=format&fit=crop"
-  },
-  {
-    title: "Tuhinji Zulfan Ji Chhaanw Heth",
-    artist: "Sarmad Sindhi • Evergreen Hits",
-    youtubeId: "qyDVB7hGNAg",
-    art: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=400&auto=format&fit=crop"
-  },
-  {
-    title: "Jalwa E Husn",
-    artist: "Mukhtiar Magsi • Kashish TV",
-    youtubeId: "VHifsSEbq4I",
-    art: "https://images.unsplash.com/photo-1465847899084-d164df4dedc6?q=80&w=400&auto=format&fit=crop"
-  },
-  {
-    title: "Ho Jamalo (Traditional Folk)",
-    artist: "Abida Parveen & Sindhi Artists",
-    youtubeId: "-8anr6et3Lw",
-    art: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=400&auto=format&fit=crop"
-  },
-
-  // --- 🎙️ ATTAULLAH KHAN ESAKHELVI (SAD NOSTALGIA) ---
-  {
-    title: "Qameez Teri Kaali",
-    artist: "Attaullah Khan Esakhelvi",
-    youtubeId: "w7bX24iQGz8",
-    art: "https://images.unsplash.com/photo-1511192336575-5a79af67a629?q=80&w=400&auto=format&fit=crop"
-  },
-  {
-    title: "Idhar Zindagi Ka Janaza Utfaye Gi",
-    artist: "Attaullah Khan Esakhelvi",
-    youtubeId: "uW8W42Pz0kQ",
-    art: "https://images.unsplash.com/photo-1511192336575-5a79af67a629?q=80&w=400&auto=format&fit=crop"
-  },
-
-  // --- 💫 USTAD NUSRAT FATEH ALI KHAN ---
-  {
-    title: "Yeh Jo Halka Halka Suroor Hai",
-    artist: "Ustad Nusrat Fateh Ali Khan",
-    youtubeId: "24-4B2W4K20",
-    art: "https://images.unsplash.com/photo-1511192336575-5a79af67a629?q=80&w=400&auto=format&fit=crop"
-  },
-  {
-    title: "Sanu Ek Pal Chain Na Aave",
-    artist: "Ustad Nusrat Fateh Ali Khan",
-    youtubeId: "U3o88P_K70U",
-    art: "https://images.unsplash.com/photo-1511192336575-5a79af67a629?q=80&w=400&auto=format&fit=crop"
-  },
-  {
-    title: "Tumhein Dillagi Bhool Jani Paray Gi",
-    artist: "Ustad Nusrat Fateh Ali Khan",
-    youtubeId: "K3L92Y81_x0",
-    art: "https://images.unsplash.com/photo-1511192336575-5a79af67a629?q=80&w=400&auto=format&fit=crop"
-  },
-
-  // --- 💔 URDU CLASSIC GHARANAS & SAD NOSTALGIA ---
-  {
-    title: "Mujhe Tum Nazar Se Gira Toh Rahe Ho",
-    artist: "Mehdi Hassan • Ghazal Master",
-    youtubeId: "zK0I6G5w8aE",
-    art: "https://images.unsplash.com/photo-1511192336575-5a79af67a629?q=80&w=400&auto=format&fit=crop"
-  },
-  {
-    title: "Ranjish Hi Sahi",
-    artist: "Mehdi Hassan • Sad Classic",
-    youtubeId: "fM0I7G8w9aQ",
-    art: "https://images.unsplash.com/photo-1511192336575-5a79af67a629?q=80&w=400&auto=format&fit=crop"
-  },
-
-  // --- 🎸 90s PAKISTANI POP & HIGHWAY CLASSICS ---
-  {
-    title: "Purani Jeans",
-    artist: "Ali Haider • Sandesa (1993)",
-    youtubeId: "8q6iobugPUs",
-    art: "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?q=80&w=400&auto=format&fit=crop"
-  },
-  {
-    title: "Dil Dil Pakistan",
-    artist: "Vital Signs • (1987)",
-    youtubeId: "rMlKSqgNHNU",
-    art: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=400&auto=format&fit=crop"
-  },
-  {
-    title: "Chief Saab",
-    artist: "Sajjad Ali • (1995)",
-    youtubeId: "KZ8xRwDR0zY",
-    art: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?q=80&w=400&auto=format&fit=crop"
-  },
-  {
-    title: "Sayonee",
-    artist: "Junoon • Azadi (1997)",
-    youtubeId: "-8anr6et3Lw",
-    art: "https://images.unsplash.com/photo-1465847899084-d164df4dedc6?q=80&w=400&auto=format&fit=crop"
-  },
-  {
-    title: "Aitebaar",
-    artist: "Vital Signs • Jadu (1993)",
-    youtubeId: "C1J6tI1l2-8",
-    art: "https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?q=80&w=400&auto=format&fit=crop"
-  },
-  {
-    title: "Disco Deewane",
-    artist: "Nazia Hassan & Zoheb Hassan",
-    youtubeId: "N__zB3o_mRk",
-    art: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=400&auto=format&fit=crop"
-  },
-  {
-    title: "Billo De Ghar",
-    artist: "Abrar-ul-Haq • (1995)",
-    youtubeId: "4S4d7m_3q-E",
-    art: "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?q=80&w=400&auto=format&fit=crop"
-  }
+  // --- SINDHI CLASSICS ---
+  { title: "Kari Aa Qabo Kaye", artist: "Jalal Chandio", youtubeId: "af0iAsv2yv4" },
+  { title: "Tuhinji Yaari Maan Pyar Kayo", artist: "Sarmad Sindhi", youtubeId: "4l0t9pI7Hw8" },
+  { title: "Ghot Ja Baba", artist: "Fozia Soomro", youtubeId: "ptKeMonUlbE" },
+  { title: "Ho Jamalo (Folk)", artist: "Abida Parveen", youtubeId: "-8anr6et3Lw" },
+  
+  // --- NUSRAT FATEH ALI KHAN ---
+  { title: "Yeh Jo Halka Halka Suroor Hai", artist: "Nusrat Fateh Ali Khan", youtubeId: "24-4B2W4K20" },
+  { title: "Sanu Ek Pal Chain Na Aave", artist: "Nusrat Fateh Ali Khan", youtubeId: "U3o88P_K70U" },
+  { title: "Tumhein Dillagi", artist: "Nusrat Fateh Ali Khan", youtubeId: "K3L92Y81_x0" },
+  
+  // --- ATTAULLAH KHAN ---
+  { title: "Qameez Teri Kaali", artist: "Attaullah Khan", youtubeId: "w7bX24iQGz8" },
+  { title: "Idhar Zindagi Ka Janaza", artist: "Attaullah Khan", youtubeId: "uW8W42Pz0kQ" },
+  
+  // --- URDU POP & CLASSICS ---
+  { title: "Dil Dil Pakistan", artist: "Vital Signs", youtubeId: "rMlKSqgNHNU" },
+  { title: "Purani Jeans", artist: "Ali Haider", youtubeId: "8q6iobugPUs" },
+  { title: "Chief Saab", artist: "Sajjad Ali", youtubeId: "KZ8xRwDR0zY" },
+  { title: "Ranjish Hi Sahi", artist: "Mehdi Hassan", youtubeId: "fM0I7G8w9aQ" }
 ];
+
+let currentTrackIndex = 0;
+let ytPlayer = null;
+
+// Load API
+const tag = document.createElement('script');
+tag.src = "https://www.youtube.com/iframe_api";
+const firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+function onYouTubeIframeAPIReady() {
+    ytPlayer = new YT.Player('yt-audio-player', {
+        events: {
+            'onStateChange': onPlayerStateChange
+        }
+    });
+}
+
+// FIX: Title aur Audio ka "Hard Lock"
+function loadAndPlayTrack(index) {
+    currentTrackIndex = index;
+    
+    // 1. UI Update Immediately
+    const track = playlist[index];
+    document.getElementById('track-title').innerText = track.title;
+    document.getElementById('track-artist').innerText = track.artist;
+    
+    // 2. Audio Update
+    if (ytPlayer && ytPlayer.loadVideoById) {
+        ytPlayer.loadVideoById(track.youtubeId);
+    }
+}
+
+function nextTrack() {
+    let nextIdx = (currentTrackIndex + 1) % playlist.length;
+    loadAndPlayTrack(nextIdx);
+}
+
+function prevTrack() {
+    let prevIdx = (currentTrackIndex - 1 + playlist.length) % playlist.length;
+    loadAndPlayTrack(prevIdx);
+}
+
+function onPlayerStateChange(event) {
+    if (event.data == YT.PlayerState.ENDED) {
+        nextTrack();
+    }
+}
+
+// UI Controls
+document.getElementById('play-btn').addEventListener('click', () => {
+    if(ytPlayer.getPlayerState() == YT.PlayerState.PLAYING) ytPlayer.pauseVideo();
+    else ytPlayer.playVideo();
+});
+document.getElementById('next-btn').addEventListener('click', nextTrack);
+document.getElementById('prev-btn').addEventListener('click', prevTrack);
 // ══ 2. DIALOGUES ══
 const chaiDialogues = [
   "استاد! دودھ پتی یا سادہ؟ ☕",
