@@ -1,6 +1,4 @@
-// ══ 1. PAKISTANI & SINDHI CLASSICS PLAYLIST ══
-// ══ 1. ULTIMATE VERIFIED CLASSIC PLAYLIST (100% EMBEDDABLE) ══
-// 1. HARD-LOCKED PLAYLIST (Title aur Audio kabhi alag nahi honge)
+// ══ 1. MASTER PLAYLIST ══
 const playlist = [
   { title: "Kari Aa Qabo Kaye", artist: "Jalal Chandio", youtubeId: "af0iAsv2yv4", art: "https://i.ytimg.com/vi/af0iAsv2yv4/0.jpg" },
   { title: "Tuhinji Yaari", artist: "Sarmad Sindhi", youtubeId: "qyDVB7hGNAg", art: "https://i.ytimg.com/vi/qyDVB7hGNAg/0.jpg" },
@@ -12,7 +10,7 @@ const playlist = [
 let currentTrackIndex = 0;
 let ytPlayer = null;
 
-// Load API
+// ══ 2. LOAD YOUTUBE API ══
 const tag = document.createElement('script');
 tag.src = "https://www.youtube.com/iframe_api";
 const firstScriptTag = document.getElementsByTagName('script')[0];
@@ -20,26 +18,42 @@ firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
 window.onYouTubeIframeAPIReady = function() {
     ytPlayer = new YT.Player('yt-audio-player', {
-        events: { 'onStateChange': onPlayerStateChange, 'onError': onPlayerError }
+        events: {
+            'onReady': () => updateTrackUI(0),
+            'onStateChange': onPlayerStateChange,
+            'onError': onPlayerError
+        }
     });
 };
 
-// 2. ATOMIC SYNC FUNCTION (Title aur Audio ek sath update honge)
+// ══ 3. CORE LOGIC ══
 function loadAndPlayTrack(index) {
     currentTrackIndex = index;
     const track = playlist[index];
     
-    console.log("Loading Title:", track.title);
+    // UI Update
+    updateTrackUI(index);
     
-    // UI update
-    document.getElementById('track-title').innerText = track.title;
-    document.getElementById('track-artist').innerText = track.artist;
-    document.getElementById('track-art').src = track.art;
-    
-    // Audio update
+    // Audio Update
     if (ytPlayer && ytPlayer.loadVideoById) {
         ytPlayer.loadVideoById(track.youtubeId);
     }
+}
+
+function updateTrackUI(index) {
+    const track = playlist[index];
+    document.getElementById('track-title').innerText = track.title;
+    document.getElementById('track-artist').innerText = track.artist;
+    document.getElementById('track-art').src = track.art;
+}
+
+function onPlayerStateChange(event) {
+    if (event.data === YT.PlayerState.ENDED) nextTrack();
+}
+
+function onPlayerError(event) {
+    console.log("Error, skipping:", event.data);
+    nextTrack();
 }
 
 function nextTrack() {
@@ -52,17 +66,7 @@ function prevTrack() {
     loadAndPlayTrack(currentTrackIndex);
 }
 
-function onPlayerStateChange(event) {
-    if (event.data === YT.PlayerState.ENDED) nextTrack();
-}
-
-function onPlayerError(event) {
-    console.error("YouTube Error Code:", event.data);
-    // Agar error aaye to agla gana chala do
-    nextTrack();
-}
-
-// UI Buttons
+// ══ 4. UI CONTROLS ══
 document.getElementById('play-btn').onclick = () => {
     if(ytPlayer.getPlayerState() === YT.PlayerState.PLAYING) ytPlayer.pauseVideo();
     else ytPlayer.playVideo();
@@ -70,64 +74,18 @@ document.getElementById('play-btn').onclick = () => {
 document.getElementById('next-btn').onclick = nextTrack;
 document.getElementById('prev-btn').onclick = prevTrack;
 
+// ══ 5. CHAI DIALOGUES ══
+document.getElementById('chai-btn').onclick = () => {
+    // Basic counter logic
+    let count = parseInt(document.getElementById('chai-count').innerText) || 0;
+    document.getElementById('chai-count').innerText = count + 1;
+};
 
-
-// ══ 2. DIALOGUES ══
-const chaiDialogues = [
-  "استاد! دودھ پتی یا سادہ؟ ☕",
-  "خان صاحب! چائے میٹھی رکھیں یا پھیکی؟ 🧊",
-  "استاد! ایک کڑک دودھ پتی تیار ہے! 🔥",
-  "بھائی صاحب! الائچی والی چائے بناؤں یا مکھن مار کے؟ 🌿",
-  "استاد! پراٹھا بھی ساتھ لگانا ہے کیا؟ 🥞"
-];
-
-const bannerDialogues = [
-  '"استاد! ایک کڑک چائے اور پراٹھا لگانا!"',
-  '"خان صاحب! چینی تھوڑی کم رکھنا!"',
-  '"سفر لمبا ہے، کوئی اچھا گانا لگاؤ!"'
-];
-
-let currentTrackIndex = 0;
-let isPlaying = false;
-let chaiCount = 0;
-let ytPlayer = null;
-let progressInterval = null;
-let toastTimeout = null;
-
-// DOM Elements
-const trackTitleEl = document.getElementById('track-title');
-const trackArtistEl = document.getElementById('track-artist');
-const trackArtEl = document.getElementById('track-art');
-const playBtn = document.getElementById('play-btn');
-const prevBtn = document.getElementById('prev-btn');
-const nextBtn = document.getElementById('next-btn');
-const progressBar = document.getElementById('progress-bar');
-const chaiPin = document.getElementById('chai-pin');
-const seekContainer = document.getElementById('seek-container');
-const timeCurrEl = document.getElementById('time-curr');
-const timeDurEl = document.getElementById('time-dur');
-const chaiBtn = document.getElementById('chai-btn');
-const chaiCountEl = document.getElementById('chai-count');
-const toastPopup = document.getElementById('toast-popup');
-const toastText = document.getElementById('toast-text');
-const dialogueBtn = document.getElementById('dialogue-btn');
-const dialogueTextEl = document.getElementById('dialogue-text');
-const clockEl = document.getElementById('clock');
-const liveCountEl = document.getElementById('live-count');
-
-// ══ 3. ROBUST YOUTUBE PLAYER BINDING ══
-const tag = document.createElement('script');
-tag.src = "https://www.youtube.com/iframe_api";
-const firstScriptTag = document.getElementsByTagName('script')[0];
-firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-window.onYouTubeIframeAPIReady = function() {
-  ytPlayer = new YT.Player('yt-audio-player', {
-    events: {
-      'onReady': onPlayerReady,
-      'onStateChange': onPlayerStateChange
-    }
-  });
+// ══ 6. CLOCK & VISITORS ══
+setInterval(() => {
+    const now = new Date();
+    document.getElementById('clock').innerText = now.toLocaleTimeString('en-US', { timeZone: 'Asia/Karachi', hour: '2-digit', minute: '2-digit' });
+}, 1000);
 };
 
 function onPlayerReady() {
