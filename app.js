@@ -103,7 +103,38 @@ const playlist = [
   { title:"Allah Hoo", artist:"Nusrat Fateh Ali Khan", youtubeId:"wjynrRhztU8" }
 
 ];
-
+const additionalPlaylist = [
+  {title:"Kali Kali Zulfon Ke Phande Na",artist:"Nusrat Fateh Ali Khan",youtubeId:"lsqsggtTZfs"},
+  {title:"Saja Hai Maikhana",artist:"Nusrat Fateh Ali Khan",youtubeId:"8dlkBDK0_Aw"},
+  {title:"Jani Door Gaye",artist:"Nusrat Fateh Ali Khan",youtubeId:"r8mIeP3aRQs"},
+  {title:"Khula Hai Maikhana",artist:"Nusrat Fateh Ali Khan",youtubeId:"npmJUYt6Z8U"},
+  {title:"Tere Bina Rogi Hoye Pyase Nain",artist:"Nusrat Fateh Ali Khan / Noor Jehan",youtubeId:"mBcGSdafEHc"},
+  {title:"Kise Da Yaar Na Vichre",artist:"Nusrat Fateh Ali Khan",youtubeId:"ocMEmQ3s8qE"},
+  {title:"Sun Charkhe Di Mithi Mithi Ghook",artist:"Nusrat Fateh Ali Khan",youtubeId:"ogTjOq0GKiM"},
+  {title:"Sukh Mahi Naal Le Gaya",artist:"Nusrat Fateh Ali Khan",youtubeId:"zJv5_1BH18M"},
+  {title:"Piya Re Piya Re",artist:"Nusrat Fateh Ali Khan",youtubeId:"6BmS-qphjko"},
+  {title:"Na Rukte Hain Ansoo",artist:"Nusrat Fateh Ali Khan",youtubeId:"c5RbkAcgGAE"},
+  {title:"Dil Nu Soch Vichar Baray Ne",artist:"Nusrat Fateh Ali Khan",youtubeId:"jDPf_DZOXC0"},
+  {title:"Bina Mahi Kiven Dil Parchavan",artist:"Nusrat Fateh Ali Khan",youtubeId:"SNiivv-FbJA"},
+  {title:"Kithe Ishq Da Rog Na Laa Baithin",artist:"Nusrat Fateh Ali Khan",youtubeId:"SL8cCiTWwZA"},
+  {title:"Meri Zindagi Tera Pyar",artist:"Nusrat Fateh Ali Khan",youtubeId:"yW9mLaPt1_E"},
+  {title:"Tere Bin Nahin Lagda",artist:"Nusrat Fateh Ali Khan",youtubeId:"f6uRxh2l0I4"},
+  {title:"Mere Baad Kisko Satao Ge",artist:"Nusrat Fateh Ali Khan",youtubeId:"XPYuEVzQFrw"},
+  {title:"Sitaro Tum To Sou Jao",artist:"Nusrat Fateh Ali Khan",youtubeId:"1ssmTxiJ08U"},
+  {title:"Rabba Kadi Vi Na Paen Vichore",artist:"Nusrat Fateh Ali Khan",youtubeId:"PAqOeo8Mi5A"},
+  {title:"Haqeeqat Ka Agar Afsana Ban Jaye",artist:"Nusrat Fateh Ali Khan",youtubeId:"mjH8v6UFt5w"},
+  {title:"Lagian De Dukh Wakhre",artist:"Nusrat Fateh Ali Khan",youtubeId:"mis8DRqkKsg"},
+  {title:"Phiroon Dhoondta Maikada Tauba Tauba",artist:"Nusrat Fateh Ali Khan",youtubeId:"ySCH6C_VYoc"},
+  {title:"Hanju Akhiyan De Vehre Vich",artist:"Nusrat Fateh Ali Khan",youtubeId:"0An3w-0M5rk"},
+  {title:"Wadah Kar Ke Sajjan Nahee Aya",artist:"Nusrat Fateh Ali Khan",youtubeId:"LTrtgO-rmWo"},
+  {title:"Judaiyan De Dukhre",artist:"Nusrat Fateh Ali Khan",youtubeId:"OiACfbYjzz4"},
+  {title:"Jadon Yaad Sajjan Teri Ayee",artist:"Nusrat Fateh Ali Khan",youtubeId:"zbScacT9KW4"},
+  {title:"Aj Yaadan Teriyan Aaiyan",artist:"Nusrat Fateh Ali Khan",youtubeId:"lzkLaQSLtlE"},
+  {title:"Wohi Khuda Hai",artist:"Nusrat Fateh Ali Khan",youtubeId:"gDOlh5FYHhg"},
+  {title:"Meri Ankhon Ko Bakhshe Hain Ansoo",artist:"Nusrat Fateh Ali Khan",youtubeId:"KTBANeJD2E4"},
+  {title:"Kehde Ghar Jawan",artist:"Nusrat Fateh Ali Khan",youtubeId:"42vjaGgnlJ8"},
+  {title:"Chithi Kehre Watnan Nu Pawan",artist:"Nusrat Fateh Ali Khan",youtubeId:"5pQU2TBbYPg"}
+];
 const chaiDialogues=[
 "استاد! دودھ پتی یا سادہ؟ ☕",
 "خان صاحب! چائے میٹھی رکھیں یا پھیکی؟ 🧊",
