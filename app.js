@@ -1,53 +1,107 @@
 // QUETTA RANGEEN HOTEL - RADIO PLAYER
 
-const playlist=[
-{title:"Ae Rah-e-Haq Ke Shaheedo",artist:"Naseem Begum • Old ISPR",youtubeId:"cZ4J1F_P1Xw"},
-{title:"Yeh Ghazi Yeh Tere Purisrar",artist:"Junaid Jamshed",youtubeId:"Q_H2M_X2M1c"},
-{title:"Qasam Us Waqt Ki",artist:"Junaid Jamshed",youtubeId:"V_K1X_M1c5E"},
-{title:"Aye Puttar Hattan Te Nahi Vikde",artist:"Noor Jehan • 1965 War",youtubeId:"M_X2M_X2M1c"},
-{title:"Apni Jaan Nazar Karoon",artist:"Mehdi Hassan",youtubeId:"P_H2M_X2M1c"},
+const playlist = [
 
-{title:"Woh Humsafar Tha",artist:"Quratulain Balouch • OST",youtubeId:"zK0I6G5w8aE"},
-{title:"Mera Ishq",artist:"Quratulain Balouch",youtubeId:"LgB8T3qD7wE"},
-{title:"Bewafaiyaan",artist:"Quratulain Balouch",youtubeId:"8rP2vW_K1Dk"},
-{title:"Sab Jag Soye",artist:"Quratulain Balouch",youtubeId:"Qp0cK-G1w8I"},
-{title:"Saaiyaan",artist:"Quratulain Balouch",youtubeId:"xY92m5K30fE"},
+  { title:"Afreen Afreen", artist:"Rahat Fateh Ali Khan & Momina Mustehsan", youtubeId:"kw4tT7SCmaY" },
 
-{title:"Tu Ne Deewana Banaya",artist:"Abida Parveen",youtubeId:"N__zB3o_mRk"},
-{title:"Jab Se Tune Mujhe Deewana",artist:"Abida Parveen",youtubeId:"-8anr6et3Lw"},
-{title:"Dhoondo Ge Agar Mulkon",artist:"Abida Parveen",youtubeId:"VHifsSEbq4I"},
-{title:"Mahi Yaar Di Gharoli",artist:"Abida Parveen",youtubeId:"K1X_M_X2M1c"},
-{title:"Arez-e-Baqaf-e-Bahar",artist:"Abida Parveen",youtubeId:"yT7Zk_X2M1c"},
+  { title:"Tu Jhoom", artist:"Naseebo Lal & Abida Parveen", youtubeId:"7D4vNcK6D38" },
 
-{title:"Sighra Aawo Sanwal",artist:"Sanam Marvi",youtubeId:"vB4kF_M1c5E"},
-{title:"O Lal Meri Pat",artist:"Sanam Marvi",youtubeId:"mX43o8k1p9Y"},
-{title:"Yaar Vekho",artist:"Sanam Marvi",youtubeId:"Mq0SgfbuDks"},
-{title:"Man Kunto Maula",artist:"Sanam Marvi",youtubeId:"XQZ_P_H2M1c"},
+  { title:"Thagyan", artist:"Zain Zohaib & Quratulain Balouch", youtubeId:"nNZvaMoiATE" },
 
-{title:"Rovay Rovay",artist:"Master Manzoor",youtubeId:"KZ8xRwDR0zY"},
-{title:"Bewafa Tuheji Yaad",artist:"Master Manzoor",youtubeId:"hP83e-j_F5U"},
-{title:"Dard Ji Dastan",artist:"Master Manzoor",youtubeId:"H5xN_g49_00"},
+  { title:"Phir Milenge", artist:"Faisal Kapadia & Young Stunners", youtubeId:"S5FyS7tQuUw" },
 
-{title:"Tuhinji Yaari Maan Pyar Kayo",artist:"Sarmad Sindhi",youtubeId:"qyDVB7hGNAg"},
-{title:"Pyar Tuhinjo",artist:"Sarmad Sindhi",youtubeId:"qRSPKb9oFy8"},
-{title:"Asan Jo Hal",artist:"Sarmad Sindhi",youtubeId:"6I24fJkG4zE"},
-{title:"Rovay Rovay",artist:"Sarmad Sindhi",youtubeId:"ptKeMonUlbE"},
+  { title:"Kana Yaari", artist:"Kaifi Khalil, Eva B & Abdul Wahab Bugti", youtubeId:"zQDAi8tI-cU" },
 
-{title:"Qameez Teri Kaali",artist:"Attaullah Khan",youtubeId:"swqOz9wmjkM"},
-{title:"Idhar Zindagi Ka Janaza",artist:"Attaullah Khan",youtubeId:"uW8W42Pz0kQ"},
-{title:"Acha Sila Diya Tune",artist:"Attaullah Khan",youtubeId:"J8m3S6x58kU"},
-{title:"Dhokha Diya Kar",artist:"Attaullah Khan",youtubeId:"gZ-g73a_g0o"},
+  { title:"Mehram", artist:"Asfar Hussain & Arooj Aftab", youtubeId:"BUm_hFMlsgg" },
 
-{title:"Kinna Sohna Tainu",artist:"Nusrat Fateh Ali Khan",youtubeId:"R3n-vjV76G4"},
-{title:"Sanu Ek Pal Chain Na Aave",artist:"Nusrat Fateh Ali Khan",youtubeId:"U3o88P_K70U"},
-{title:"Yeh Jo Halka Halka",artist:"Nusrat Fateh Ali Khan",youtubeId:"24-4B2W4K20"},
-{title:"Tumhein Dillagi",artist:"Nusrat Fateh Ali Khan",youtubeId:"K3L92Y81_x0"},
-{title:"Allah Hoo",artist:"Nusrat Fateh Ali Khan",youtubeId:"BajgVA0SkqY"},
+  { title:"Go", artist:"Abdullah Siddiqui & Atif Aslam", youtubeId:"GR5U85eo4yQ" },
 
-{title:"Ranjish Hi Sahi",artist:"Mehdi Hassan",youtubeId:"fM0I7G8w9aQ"},
-{title:"Mujhe Tum Nazar Se",artist:"Mehdi Hassan",youtubeId:"zK0I6G5w8aE"},
-{title:"Pyar Tuhinjo",artist:"Sarmad Sindhi",youtubeId:"qRSPKb9oFy8"},
-{title:"Asan Jo Hal",artist:"Sarmad Sindhi",youtubeId:"6I24fJkG4zE"}
+  { title:"Aaqa", artist:"Abida Parveen & Ali Sethi", youtubeId:"LekqDjknArc" },
+
+  { title:"Tera Woh Pyar", artist:"Momina Mustehsan & Asim Azhar", youtubeId:"8367ETnagHo" },
+
+  { title:"Piya Ghar Aaya", artist:"Fareed Ayaz & Abu Muhammad Qawwal", youtubeId:"WzlO79d3S8c" },
+
+  { title:"Rang", artist:"Rahat Fateh Ali Khan & Amjad Sabri", youtubeId:"Uks8psEpmB4" },
+
+  { title:"Paar Chanaa De", artist:"Shilpa Rao & Noori", youtubeId:"TrPvQvbp3Cg" },
+
+  { title:"Tajdar-e-Haram", artist:"Atif Aslam", youtubeId:"a18py61_F_w" },
+
+  { title:"Aaj Jaane Ki Zid Na Karo", artist:"Farida Khanum", youtubeId:"KDJL2FyRDeA" },
+
+  { title:"Ranjish Hi Sahi", artist:"Ali Sethi", youtubeId:"pba_YmWDAIU" },
+
+  { title:"Kaatay Na Katay", artist:"Aima Baig, Humera Arshad & Rachel Viccaji", youtubeId:"a2IK6XfdYss" },
+
+  { title:"Aatish", artist:"Shuja Haider & Aima Baig", youtubeId:"J5fHX8iNggs" },
+
+  { title:"Nami Danam", artist:"Chand Tara Orchestra", youtubeId:"N1UCViygC1Q" },
+
+  { title:"Mahi Aaja", artist:"Asim Azhar & Momina Mustehsan", youtubeId:"s05KLrFhuM4" },
+
+  { title:"Shikwa / Jawab-e-Shikwa", artist:"Natasha Baig, Fareed Ayaz & Abu Muhammad Qawwal", youtubeId:"LrCek73_e_M" },
+
+  { title:"Balaghal Ula Be Kamalihi", artist:"Abida Parveen", youtubeId:"dYPWLlfD05Q" },
+
+  { title:"Man Kunto Maula", artist:"Javed Bashir & Ali Azmat", youtubeId:"6XcMiqJGkQE" },
+
+  { title:"Aaja Re Moray Saiyaan", artist:"Zeb Bangash", youtubeId:"bq29w9MJKTQ" },
+
+  { title:"Faasle", artist:"Kaavish & Quratulain Balouch", youtubeId:"9sekgEXGm-E" },
+
+  { title:"Dam Mastam", artist:"Rahat Fateh Ali Khan", youtubeId:"e6o8GhoofzE" },
+
+  { title:"Allahu Akbar", artist:"Ahmed Jehanzeb & Shafqat Amanat Ali", youtubeId:"oJaO4JdFWB8" },
+
+  { title:"Baanware", artist:"Shuja Haider & Aima Baig", youtubeId:"PePGHi6IeZQ" },
+
+  { title:"Jaan-e-Bahaaraan", artist:"Ali Zafar", youtubeId:"BTf68TSLGH4" },
+
+  { title:"Sammi Meri Waar", artist:"Umair Jaswal & Quratulain Balouch", youtubeId:"KHLNSxe5Y8A" },
+
+  { title:"Sajon", artist:"Mekaal Hasan Band", youtubeId:"FgotlS3olp0" },
+
+  { title:"Babu Bhai", artist:"Ali Azmat", youtubeId:"awp1Zr94Yrw" },
+
+  { title:"Laila O Laila", artist:"Rostam Mirlashari", youtubeId:"EAwJynFW64U" },
+
+  { title:"Chori Chori", artist:"Meesha Shafi", youtubeId:"RZ4k4035JdA" },
+
+  { title:"Sultanat", artist:"Aunty Disco Project", youtubeId:"mt03MoMPvR4" },
+
+  { title:"Chaap Tilak", artist:"Abida Parveen & Rahat Fateh Ali Khan", youtubeId:"7SDrjwtfKMk" },
+
+  { title:"Sasu Mangay", artist:"Naseebo Lal & Umair Jaswal", youtubeId:"0KFhnMIm0z4" },
+
+  { title:"Tu Kuja Man Kuja", artist:"Shiraz Uppal & Rafaqat Ali Khan", youtubeId:"ZQMn5wIoAno" },
+
+  { title:"O Re", artist:"Noori", youtubeId:"Z3CT6cKL_0g" },
+
+  { title:"Jal Pari", artist:"Atif Aslam", youtubeId:"Kf6MsltI7lQ" },
+
+  { title:"Mere Rashke Qamar", artist:"Nusrat Fateh Ali Khan", youtubeId:"gY01irEl8Eo" },
+
+  { title:"Yeh Jo Halka Halka Suroor Hai", artist:"Nusrat Fateh Ali Khan", youtubeId:"FIlNElG3JM8" },
+
+  { title:"Dama Dam Mast Qalandar", artist:"Abida Parveen", youtubeId:"-tyvWdq2pyc" },
+
+  { title:"Nindiya Re", artist:"Kaavish", youtubeId:"TXlCszaKvXM" },
+
+  { title:"Aaya Laariye", artist:"Meesha Shafi & Naeem Abbas Rufi", youtubeId:"zVnbojCYPxU" },
+
+  { title:"Lagi Bina / Chal Mele Noon Challiye", artist:"Saieen Zahoor & Sanam Marvi", youtubeId:"I3tS2oTUvHI" },
+
+  { title:"Mujhay Baar Baar", artist:"Abbas Ali Khan", youtubeId:"KaT9lEyqzU0" },
+
+  { title:"Dost", artist:"Abida Parveen", youtubeId:"hzb6uI7xRA8" },
+
+  { title:"Ronay Na Diya", artist:"Sajjad Ali & Zaw Ali", youtubeId:"qMB7ZvgfHIM" },
+
+  { title:"Tere Yad Satandi", artist:"Sajjad Ali", youtubeId:"xs993dDPxYQ" },
+
+  { title:"Allah Hoo", artist:"Nusrat Fateh Ali Khan", youtubeId:"wjynrRhztU8" }
+
 ];
 
 const chaiDialogues=[
