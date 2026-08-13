@@ -102,8 +102,6 @@ const playlist = [
 
   { title:"Allah Hoo", artist:"Nusrat Fateh Ali Khan", youtubeId:"wjynrRhztU8" }
 
-];
-const additionalPlaylist = [
   {title:"Kali Kali Zulfon Ke Phande Na",artist:"Nusrat Fateh Ali Khan",youtubeId:"lsqsggtTZfs"},
   {title:"Saja Hai Maikhana",artist:"Nusrat Fateh Ali Khan",youtubeId:"8dlkBDK0_Aw"},
   {title:"Jani Door Gaye",artist:"Nusrat Fateh Ali Khan",youtubeId:"r8mIeP3aRQs"},
