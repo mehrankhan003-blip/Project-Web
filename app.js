@@ -11,7 +11,6 @@ const playlist = [
   { title: "Yeh Jo Halka Halka Suroor Hai", artist: "Ustad Nusrat Fateh Ali Khan", youtubeId: "24-4B2W4K20", art: "https://i.ytimg.com/vi/24-4B2W4K20/hqdefault.jpg" },
   { title: "Tumhein Dillagi Bhool Jani Paray Gi", artist: "Ustad Nusrat Fateh Ali Khan", youtubeId: "K3L92Y81_x0", art: "https://i.ytimg.com/vi/K3L92Y81_x0/hqdefault.jpg" },
   { title: "Sanu Ek Pal Chain Na Aave", artist: "Ustad Nusrat Fateh Ali Khan", youtubeId: "U3o88P_K70U", art: "https://i.ytimg.com/vi/U3o88P_K70U/hqdefault.jpg" },
-  { title: "Tajdar-e-Haram", artist: "Sabri Brothers • Classic Qawwali", youtubeId: "c_H3X1N_mO0", art: "https://i.ytimg.com/vi/c_H3X1N_mO0/hqdefault.jpg" },
 
   // --- 💔 ATTAULLAH KHAN ESAKHELVI ---
   { title: "Qameez Teri Kaali", artist: "Attaullah Khan Esakhelvi", youtubeId: "w7bX24iQGz8", art: "https://i.ytimg.com/vi/w7bX24iQGz8/hqdefault.jpg" },
@@ -26,6 +25,87 @@ const playlist = [
   { title: "Billo De Ghar", artist: "Abrar-ul-Haq", youtubeId: "4S4d7m_3q-E", art: "https://i.ytimg.com/vi/4S4d7m_3q-E/hqdefault.jpg" },
   { title: "Bin Tere Kyun Haan", artist: "Jawad Ahmed", youtubeId: "hP83e-j_F5U", art: "https://i.ytimg.com/vi/hP83e-j_F5U/hqdefault.jpg" }
 ];
+
+// ══ 2. DIALOGUES ══
+const chaiDialogues = [
+  "استاد! دودھ پتی یا سادہ؟ ☕",
+  "خان صاحب! چائے میٹھی رکھیں یا پھیکی؟ 🧊",
+  "استاد! ایک کڑک دودھ پتی تیار ہے! 🔥",
+  "بھائی صاحب! الائچی والی چائے بناؤں یا مکھن مار کے؟ 🌿",
+  "استاد! پراٹھا بھی ساتھ لگانا ہے کیا؟ 🥞"
+];
+
+const bannerDialogues = [
+  '"استاد! ایک کڑک چائے اور پراٹھا لگانا!"',
+  '"خان صاحب! چینی تھوڑی کم رکھنا!"',
+  '"سفر لمبا ہے، کوئی اچھا گانا لگاؤ!"'
+];
+
+// Global States
+let currentTrackIndex = 0;
+let isPlaying = false;
+let chaiCount = 0;
+let ytPlayer = null;
+let progressInterval = null;
+let toastTimeout = null;
+
+// ══ 3. DOM LOADED INITIALIZATION ══
+document.addEventListener('DOMContentLoaded', () => {
+  initClock();
+  initVisitors();
+  initEventListeners();
+  populatePlaylistDropdown();
+  loadYouTubeAPI();
+});
+
+// ══ 4. YOUTUBE API ENGINE ══
+function loadYouTubeAPI() {
+  if (window.YT && window.YT.Player) {
+    onYouTubeIframeAPIReady();
+    return;
+  }
+  const tag = document.createElement('script');
+  tag.src = "https://www.youtube.com/iframe_api";
+  const firstScriptTag = document.getElementsByTagName('script')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+}
+
+window.onYouTubeIframeAPIReady = function () {
+  ytPlayer = new YT.Player('yt-audio-player', {
+    events: {
+      'onReady': onPlayerReady,
+      'onStateChange': onPlayerStateChange,
+      'onError': onPlayerError
+    }
+  });
+};
+
+function onPlayerReady() {
+  updateTrackUI(currentTrackIndex);
+}
+
+function onPlayerStateChange(event) {
+  if (event.data === YT.PlayerState.PLAYING) {
+    isPlaying = true;
+    updatePlayBtnUI(true);
+    startSeekLoop();
+  } else if (event.data === YT.PlayerState.PAUSED) {
+    isPlaying = false;
+    updatePlayBtnUI(false);
+    stopSeekLoop();
+  } else if (event.data === YT.PlayerState.ENDED) {
+    nextTrack();
+  }
+}
+
+// Auto-Skip Error Handler
+function onPlayerError(event) {
+  console.warn("Track Blocked/Error Code:", event.data, "— Skipping to next...");
+  setTimeout(() => { nextTrack(); }, 500);
+}
+
+// Dropdown Sync
+function populatePlaylistDropdown() {
   const selectEl = document.getElementById('playlist-select');
   if (!selectEl) return;
 
@@ -37,14 +117,17 @@ const playlist = [
     selectEl.appendChild(opt);
   });
 
+  selectEl.value = currentTrackIndex;
+
   selectEl.onchange = (e) => {
     const selectedIdx = parseInt(e.target.value, 10);
     loadAndPlayTrack(selectedIdx);
   };
 }
 
+// Updates Titles, Album Art AND Dropdown Index
 function updateTrackUI(index) {
-  const track = playlist[index] || playlist[0];
+  const track = playlist[index];
   const titleEl = document.getElementById('track-title');
   const artistEl = document.getElementById('track-artist');
   const artEl = document.getElementById('track-art');
@@ -52,7 +135,7 @@ function updateTrackUI(index) {
 
   if (titleEl) titleEl.innerText = track.title;
   if (artistEl) artistEl.innerText = track.artist;
-  if (selectEl) selectEl.value = index;
+  if (selectEl) selectEl.value = index; // Synchronizes Index Dropdown
 
   if (artEl) {
     artEl.style.transition = "opacity 0.2s ease";
@@ -68,10 +151,14 @@ function loadAndPlayTrack(index) {
   currentTrackIndex = index;
   updateTrackUI(currentTrackIndex);
 
-  if (ytPlayer && typeof ytPlayer.playVideoAt === 'function') {
-    ytPlayer.playVideoAt(currentTrackIndex);
-  } else if (ytPlayer && typeof ytPlayer.loadVideoById === 'function') {
-    ytPlayer.loadVideoById(playlist[currentTrackIndex].youtubeId);
+  const track = playlist[currentTrackIndex];
+  if (ytPlayer && typeof ytPlayer.loadVideoById === 'function') {
+    ytPlayer.loadVideoById(track.youtubeId);
+  } else {
+    const iframe = document.getElementById('yt-audio-player');
+    if (iframe) {
+      iframe.src = `https://www.youtube.com/embed/${track.youtubeId}?enablejsapi=1&autoplay=1&controls=0&disablekb=1&fs=0&iv_load_policy=3&modestbranding=1&rel=0&playsinline=1`;
+    }
   }
 }
 
@@ -231,4 +318,4 @@ function initClock() {
 function initVisitors() {
   const liveCountEl = document.getElementById('live-count');
   if (liveCountEl) liveCountEl.innerText = "1";
-}
+                                                }
