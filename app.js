@@ -100,7 +100,7 @@ const playlist = [
 
   { title:"Tere Yad Satandi", artist:"Sajjad Ali", youtubeId:"xs993dDPxYQ" },
 
-  { title:"Allah Hoo", artist:"Nusrat Fateh Ali Khan", youtubeId:"wjynrRhztU8" }
+  { title:"Allah Hoo", artist:"Nusrat Fateh Ali Khan", youtubeId:"wjynrRhztU8" },
 
   {title:"Kali Kali Zulfon Ke Phande Na",artist:"Nusrat Fateh Ali Khan",youtubeId:"lsqsggtTZfs"},
   {title:"Saja Hai Maikhana",artist:"Nusrat Fateh Ali Khan",youtubeId:"8dlkBDK0_Aw"},
